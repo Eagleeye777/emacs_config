@@ -34,5 +34,22 @@
 ;; Und der Shortcut dazu
 (global-set-key (kbd "C-c d") 'insert-date)
 
+;; stealing from the Prelude pack
+
+(defun prelude-search (query-url prompt)
+  "Open the search url constructed with the QUERY-URL.
+ PROMPT sets the `read-string prompt."
+  (browse-url
+   (concat query-url
+           (url-hexify-string
+            (if mark-active
+                (buffer-substring (region-beginning) (region-end))
+              (read-string prompt))))))
+
+(defun prelude-google ()
+  "Googles a query or region if any."
+  (interactive)
+  (prelude-search "http://www.google.com/search?q=" "Google: "))
+
 
 

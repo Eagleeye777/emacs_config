@@ -1,9 +1,11 @@
-; w3m als emacs Browser
+;;; w3m and other setup
+
+;;setting up conkeror as an additional web broweser
+(setq  browse-url-generic-program "con") ;; requires a launch script of some kind for conqeror
+
 (require 'w3m)
- (setq browse-url-browser-function 'w3m-browse-url)
+(setq browse-url-browser-function 'w3m-browse-url)
  (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
- ;; optional keyboard short-cut (muss ich umdefiniere, da dieses Binding mit dem Mail-Kommando in Konflikt steht
-;; (global-set-key "\C-xm" 'browse-url-at-point)
 
 (setq w3m-use-cookies t)
 
@@ -24,5 +26,12 @@
   (interactive)
   (browse-url-firefox (or (w3m-anchor) ;; (2)
                           (w3m-image)))) ;; (3)
+
+(defun w3m-open-current-page-in-conqeror ()
+  "Open the current URL in Mozilla Firefox."
+  (interactive)
+  (browse-url-generic w3m-current-url)) ;; (1)
+
 (define-key w3m-mode-map "f" 'w3m-open-current-page-in-firefox)
 (define-key w3m-mode-map "F" 'w3m-open-link-or-image-in-firefox)
+(define-key w3m-mode-map "c" 'w3m-open-current-page-in-conqeror)

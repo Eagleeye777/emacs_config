@@ -20,5 +20,17 @@
 (setq ido-use-virtual-buffers t)
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/ido-hacks")
 
-;(require 'ido-hacks)
-;(ido-hacks-mode)
+;; Smex
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/smex")
+(require 'smex) 
+(smex-initialize) 
+;; Ido hacks laden 
+(require 'ido-hacks)
+(ido-hacks-mode)
+;; Important (set this keybind after ido-hacks)                  
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+

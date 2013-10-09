@@ -1,4 +1,8 @@
-;;;.emacs configuration File
+;;; package init.el 
+
+;;.emacs configuration File
+
+;; Loading all the various init files here
 
 ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.elc")
@@ -23,6 +27,7 @@
 (load "~/.emacs.d/python_init.elc")
 ;;w3m Configurations
 (load "~/.emacs.d/w3m_init.elc")
+
 ; Custom Keybindings 
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; Alt+a
 (global-set-key (kbd "C-b") ' helm-mini)
@@ -32,6 +37,9 @@
 (global-set-key (kbd "<f5>") 'delete-window) ; 
 (global-set-key (kbd "<f6>") 'visit-ansi-term)
 (global-set-key (kbd "<f7>") ' magit-status)
+(global-set-key (kbd "M-<") ' prelude-google)
+(global-set-key (kbd "C-<") ' browse-url)
+(global-set-key (kbd "C-x C-o") 'browse-url-at-point)
 
 
 (custom-set-variables
