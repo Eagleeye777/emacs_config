@@ -1,6 +1,5 @@
 ;;;.emacs configuration File
-(require 'epa-file)
-(epa-file-enable)
+
 ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.elc")
 ;; Display Settings
@@ -16,18 +15,23 @@
 (load "~/.emacs.d/auctex_init.elc")
 ;; el get und Package repos
 (load "~/.emacs.d/package_init.elc")
+;;alles zu ido
 (load "~/.emacs.d/ido_init.elc")
 ;; Alle möglichen anderen Packete
-(load "/home/sschaumburg/.emacs.d/various_init.elc")
-
+(load "~/.emacs.d/various_init.elc")
+;; Python Stuff
+(load "~/.emacs.d/python_init.elc")
+;;w3m Configurations
+(load "~/.emacs.d/w3m_init.elc")
 ; Custom Keybindings 
-(global-set-key (kbd "<f6>") 'visit-ansi-term)
-(global-set-key (kbd "<f4>") 'goto-line) ; 
-(global-set-key (kbd "<f5>") 'delete-window) ; 
-(global-set-key (kbd "<f2>") 'cua-mode) ; 
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; Alt+a
 (global-set-key (kbd "C-b") ' helm-mini)
+(global-set-key (kbd "<f2>") 'cua-mode) ; 
 (global-set-key (kbd "<f3>") ' mu4e)
+(global-set-key (kbd "<f4>") 'goto-line) ; 
+(global-set-key (kbd "<f5>") 'delete-window) ; 
+(global-set-key (kbd "<f6>") 'visit-ansi-term)
+(global-set-key (kbd "<f7>") ' magit-status)
 
 
 (custom-set-variables
@@ -53,5 +57,5 @@
 ;;(setq sauron-dbus-cookie t)
 ;; gnus (gnus habe ich gerade verworfen)
 ;(load "~/emacs.d/gnus_init.el")
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/helm")
-(require 'helm-config)
+
+

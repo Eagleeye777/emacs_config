@@ -33,3 +33,6 @@
 (insert (format-time-string "%d.%m %Y")))
 ;; Und der Shortcut dazu
 (global-set-key (kbd "C-c d") 'insert-date)
+
+
+

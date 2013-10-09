@@ -19,12 +19,8 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-; w3m als emacs Browser
- (setq browse-url-browser-function 'w3m-browse-url)
- (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
- ;; optional keyboard short-cut (muss ich umdefiniere, da dieses Binding mit dem Mail-Kommando in Konflikt steht
-;; (global-set-key "\C-xm" 'browse-url-at-point)
-
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/helm")
+(require 'helm-config)
 
 ;; git emacs
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/git-emacs")
