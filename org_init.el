@@ -18,6 +18,19 @@
 (setq org-support-shift-select t)
 (setq org-replace-disputed-keys t) ;; Damit Windmove und Cua Funktionieren
 (setq org-use-speed-commands t)
+(setq org-hide-leading-stars 'hidestars)
+;; deutsch as export language
+(setq org-export-default-language "de")
+
+;; deutscher Kalender:
+(setq calendar-week-start-day 1
+      calendar-day-name-array
+        ["Sonntag" "Montag" "Dienstag" "Mittwoch"
+         "Donnerstag" "Freitag" "Samstag"]
+      calendar-month-name-array
+        ["Januar" "Februar" "März" "April" "Mai"
+         "Juni" "Juli" "August" "September"
+         "Oktober" "November" "Dezember"])
 
 ;;(setq org-outline-path-complete-in-steps nil)
 
@@ -38,6 +51,7 @@
 ;; Drawers und log
 (setq org-drawers '("PROPERTIES" "CLOCK" "LOGBOOK" "RESULTS" "NOTES"))
 (setq org-log-into-drawer t)
+(setq org-log-done 'time)
 
 ;; Setting up Org Keybindings 
 
