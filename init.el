@@ -1,9 +1,8 @@
 ;;;.emacs configuration File
-
+(require 'epa-file)
+(epa-file-enable)
 ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.elc")
-;; Alle möglichen anderen Packete
-(load "/home/sschaumburg/.emacs.d/various_init.elc")
 ;; Display Settings
 (load "~/.emacs.d/layout_init.elc")
 ; setting up org mode and deft(extern File)
@@ -18,6 +17,8 @@
 ;; el get und Package repos
 (load "~/.emacs.d/package_init.elc")
 (load "~/.emacs.d/ido_init.elc")
+;; Alle möglichen anderen Packete
+(load "/home/sschaumburg/.emacs.d/various_init.elc")
 
 ; Custom Keybindings 
 (global-set-key (kbd "<f6>") 'visit-ansi-term)

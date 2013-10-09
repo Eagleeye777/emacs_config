@@ -1,6 +1,7 @@
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
-
+;; disable beeping
+(setq visible-bell t)
 ;Der cua Mode 
 (cua-mode t)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands

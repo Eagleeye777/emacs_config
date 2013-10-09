@@ -57,6 +57,8 @@
 
 (setq mu4e-attachment-dir  "~/Downloads")
 (setq mu4e-view-show-images t )
-(when (fboundp 'imagemagick-register-types)
-  (imagemagick-register-types))
-(setq mu4e-view-prefer-html t)
+;;(when (fboundp 'imagemagick-register-types)
+;;  (imagemagick-register-types))
+;;(setq mu4e-view-prefer-html t)
+
+(setq mu4e-html2text-command "html2text -utf8 -width 72")

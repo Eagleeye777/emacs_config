@@ -3,3 +3,6 @@ auto-save-list/
 *.elc
 *~
 *#
+/.#bookmarks
+/.org-id-locations
+/ac-comphist.dat
