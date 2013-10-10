@@ -1,5 +1,7 @@
 ;; Changes all yes/no questions to y/n type
+(add-to-list 'load-path "~/.emacs.d")
 (fset 'yes-or-no-p 'y-or-n-p)
+
 ;; disable beeping
 (setq visible-bell t)
 ;Der cua Mode 
@@ -8,10 +10,9 @@
 (transient-mark-mode 1) ;; No region when it is not highlighted
 
 ;better defaults package
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/better-defaults")
-(require 'better-defaults)
+(load "~/.emacs.d/better-defaults")
 
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/undo-tree")
+(add-to-list 'load-path "~/.emacs.d/el-get/undo-tree")
 
 ; comes in handy for managing the state of changes during longer edits (see C-x u)
 (require'undo-tree)

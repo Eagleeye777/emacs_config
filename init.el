@@ -1,11 +1,10 @@
 ;;; package init.el 
 
 ;;.emacs configuration File
-
 ;; Loading all the various init files here
 
 ;; Allgemeine grundlegende Einstellungen
-(load "/home/sschaumburg/.emacs.d/gen_init.elc")
+(load "/home/sschaumburg/.emacs.d/gen_init.el")
 ;; Display Settings
 (load "~/.emacs.d/layout_init.elc")
 ; setting up org mode and deft(extern File)
@@ -15,8 +14,6 @@
 (setq mail-user-agent 'mu4e-user-agent)
 ; Custom Functions 
 (load "/home/sschaumburg/.emacs.d/func_init.elc")
-;; auctex und ac.amath
-(load "~/.emacs.d/auctex_init.elc")
 ;; el get und Package repos
 (load "~/.emacs.d/package_init.elc")
 ;;alles zu ido
@@ -24,9 +21,11 @@
 ;; Alle möglichen anderen Packete
 (load "~/.emacs.d/various_init.elc")
 ;; Python Stuff
-(load "~/.emacs.d/python_init.elc")
+;;(load "~/.emacs.d/python_init.elc")
 ;;w3m Configurations
 (load "~/.emacs.d/w3m_init.elc")
+;; auctex und ac.amath
+(load "~/.emacs.d/auctex_init.elc")
 
 
 ; Custom Keybindings 
@@ -48,9 +47,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("2c73700ef9c2c3aacaf4b65a7751b8627b95a1fd8cebed8aa199f2afb089a85f" default)))
  '(dired-listing-switches "-alhog")
  '(gnutls-min-prime-bits 1024))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background "nil")))))
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

@@ -33,7 +33,7 @@
 
 ;; ac.math hinzufügen   ac.math ist ein Code-completion feature für Latex. 
 (add-to-list 'load-path "/home/sschaumburg/Dokumente/") ;;Der Pfad muss ggf. entsprechend angepasst werden. 
-(autoload 'ac-math "" "" t)
+(require 'ac-math)
 ;(require 'ac-math)
 (add-to-list 'ac-modes 'latex-mode)   ; make auto-complete aware of {{{latex-mode}}}
 (defun ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
