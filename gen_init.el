@@ -12,6 +12,8 @@
 (require 'better-defaults)
 
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/undo-tree")
+
+; comes in handy for managing the state of changes during longer edits (see C-x u)
 (require'undo-tree)
 (global-undo-tree-mode 1)
 (defalias 'redo 'undo-tree-redo)
@@ -25,6 +27,10 @@
 ;Windcycle (für Buffer Navigation)
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/windcycle")
 (autoload 'windcycle "" "" t)
+
+;Winner Mode (Nice Addition for quickly reverting window changes)
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
 
 ;Workgroups für Layout Managment
 

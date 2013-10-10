@@ -52,4 +52,21 @@
   (prelude-search "http://www.google.com/search?q=" "Google: "))
 
 
+(require'undo-tree)
+(global-undo-tree-mode 1)
+(defalias 'redo 'undo-tree-redo)
+(global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
+(global-set-key (kbd "M-z") 'redo) ; 【ALT+z】
+
+
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/browse-kill-ring")
+(require 'browse-kill-ring)
+
+;Windcycle (für Buffer Navigation)
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/windcycle")
+(autoload 'windcycle "" "" t)
+
+;Winner Mode (Nice Addition for quickly reverting window changes)
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
 

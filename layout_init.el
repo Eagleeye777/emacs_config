@@ -17,6 +17,10 @@
 ;;powerline status bar
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/powerline")
 
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/monokai-theme-0.0.10")
+(require 'monokai-theme);;
+
+
 (require 'powerline)
 (powerline-center-theme)
 

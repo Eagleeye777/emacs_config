@@ -42,7 +42,7 @@
 
 (require 'smtpmail)
 
-;; alternatively, for emacs-24 you can use:
+;; Outgoing Mail
 (setq message-send-mail-function 'smtpmail-send-it
      smtpmail-stream-type 'starttls
      smtpmail-default-smtp-server "smtp.gmail.com"
@@ -62,3 +62,9 @@
 ;;(setq mu4e-view-prefer-html t)
 
 (setq mu4e-html2text-command "html2text -utf8 -width 72")
+(setq mu4e-update-interval 60)
+(add-hook 'mu4e-index-updated-hook
+          (defun new-mail-sound ()
+            (shell-command "aplay /home/sschaumburg/Dokumente/cartoon005.wav&> /dev/null")))
+
+

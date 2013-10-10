@@ -28,6 +28,7 @@
 ;;w3m Configurations
 (load "~/.emacs.d/w3m_init.elc")
 
+
 ; Custom Keybindings 
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; Alt+a
 (global-set-key (kbd "C-b") ' helm-mini)
@@ -40,30 +41,25 @@
 (global-set-key (kbd "M-<") ' prelude-google)
 (global-set-key (kbd "C-<") ' browse-url)
 (global-set-key (kbd "C-x C-o") 'browse-url-at-point)
-
+(global-set-key (kbd "C-c y") 'bury-buffer)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tango-dark)))
  '(dired-listing-switches "-alhog")
  '(gnutls-min-prime-bits 1024))
-(custom-set-faces
+(custom-set-faces)
  ;; custom-set-faces was added by Custom.
-;; hier
- ;; If you edit it by hand, you could mess it up, so ber careful.
+ ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "yellow green" :foreground "black" :box (:line-width -1 :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line :background "gray37" :foreground "dark orange" :box (:line-width -1 :style released-button) :weight light)))))
-
+;; '(default ((t (:background "black")))))
 
 ;;(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/sauron")
 ;;(require 'sauron)
 ;;(setq sauron-dbus-cookie t)
 ;; gnus (gnus habe ich gerade verworfen)
 ;(load "~/emacs.d/gnus_init.el")
-
 
