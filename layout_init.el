@@ -14,13 +14,16 @@
 ;terminals in Farbe
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
+; Theme laden
+
+;;(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/monokai-theme-0.0.10")
+;;(require 'monokai-theme);;
+
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/zenburn-theme-2.1")
+(require 'zenburn-theme)
+
 ;;powerline status bar
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/powerline")
-
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/monokai-theme-0.0.10")
-(require 'monokai-theme);;
-
-
 (require 'powerline)
 (powerline-center-theme)
 

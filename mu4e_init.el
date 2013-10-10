@@ -68,3 +68,4 @@
             (shell-command "aplay /home/sschaumburg/Dokumente/cartoon005.wav&> /dev/null")))
 
 
+;; dummes zeug
