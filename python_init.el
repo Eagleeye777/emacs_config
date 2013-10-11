@@ -17,21 +17,18 @@
 
 (add-hook 'python-mode-hook 'jedi:ac-setup)
 
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/autopair")
-
 (require 'autopair)
-
 (autopair-global-mode) ;; to enable in all buffers
 
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/pymacs")
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-(autoload 'pymacs-autoload "pymacs")
-(setq py-load-pymacs-p t)
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/pymacs")
+;; (autoload 'pymacs-apply "pymacs")
+;; (autoload 'pymacs-call "pymacs")
+;; (autoload 'pymacs-eval "pymacs" nil t)
+;; (autoload 'pymacs-exec "pymacs" nil t)
+;; (autoload 'pymacs-load "pymacs" nil t)
+;; (autoload 'pymacs-autoload "pymacs")
+;; (setq py-load-pymacs-p t)
 
 ; ropemacs
-(require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
+;;(require 'pymacs)
+;;(pymacs-load "ropemacs" "rope-")

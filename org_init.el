@@ -72,7 +72,6 @@
 
 
 ;setting up Deft (Notiz-Verwaltung, in Kombination mit Org-Mode)
-(add-to-list 'load-path "~/.emacs.d/el-get/deft")
 (require 'deft)
 (setq deft-extension "org")
 (setq deft-text-mode 'org-mode)

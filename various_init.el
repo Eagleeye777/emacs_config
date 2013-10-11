@@ -1,5 +1,4 @@
 ;smart operator
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/smart-operator")
 (autoload 'smart-operator "smart-operator" "Start smart-operator" t)
 
 ;Twittering mode
@@ -7,12 +6,10 @@
 (setq twittering-use-master-password t)
 (setq twittering-icon-mode t)
 
-
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/helm")
+;; Helm
 (require 'helm-config)
 
 ;; git emacs
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/git-emacs")
 (require 'git-emacs)
 
 ;;magit stuff related
@@ -29,3 +26,8 @@
 (eval-after-load 'magit
   '(progn
      (setq magit-repo-dirs "~/.emacs.d")))
+
+;; Pdf's aus emacs an evince weitergen
+(require 'openwith)
+(setq openwith-associations '(("\\.pdf\\'" "evince" (file))))
+(openwith-mode t)

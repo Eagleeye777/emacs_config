@@ -1,5 +1,5 @@
-(add-to-list 'load-path "/home/sschaumburg/mu/mu4e")
-
+;; Need load-path here, because package is self compiled
+(add-to-list 'load-path "~/mu/mu4e")
 (require 'mu4e)
 
 ;; default

@@ -3,8 +3,11 @@
 ;;.emacs configuration File
 ;; Loading all the various init files here
 
+;; el get und Package repos
+;; !!!! Do this one first, so everything is already on the load path
+(load "~/.emacs.d/package_init.elc")
 ;; Allgemeine grundlegende Einstellungen
-(load "/home/sschaumburg/.emacs.d/gen_init.el")
+(load "/home/sschaumburg/.emacs.d/gen_init.elc")
 ;; Display Settings
 (load "~/.emacs.d/layout_init.elc")
 ; setting up org mode and deft(extern File)
@@ -21,33 +24,24 @@
 ;; Alle möglichen anderen Packete
 (load "~/.emacs.d/various_init.elc")
 ;; Python Stuff
-;;(load "~/.emacs.d/python_init.elc")
+(load "~/.emacs.d/python_init.elc")
 ;;w3m Configurations
 (load "~/.emacs.d/w3m_init.elc")
 ;; auctex und ac.amath
 (load "~/.emacs.d/auctex_init.elc")
 
+;; keybindings
+(load "~/.emacs.d/keybinds.elc")
 
-; Custom Keybindings 
-(global-set-key (kbd "C-a") 'mark-whole-buffer) ; Alt+a
-(global-set-key (kbd "C-b") ' helm-mini)
-(global-set-key (kbd "<f2>") 'cua-mode) ; 
-(global-set-key (kbd "<f3>") ' mu4e)
-(global-set-key (kbd "<f4>") 'goto-line) ; 
-(global-set-key (kbd "<f5>") 'delete-window) ; 
-(global-set-key (kbd "<f6>") 'visit-ansi-term)
-(global-set-key (kbd "<f7>") ' magit-status)
-(global-set-key (kbd "M-<") ' prelude-google)
-(global-set-key (kbd "C-<") ' browse-url)
-(global-set-key (kbd "C-x C-o") 'browse-url-at-point)
-(global-set-key (kbd "C-c y") 'bury-buffer)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("2c73700ef9c2c3aacaf4b65a7751b8627b95a1fd8cebed8aa199f2afb089a85f" default)))
+ '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
+ '(custom-enabled-themes (quote (zenburn)))
+ '(custom-safe-themes (quote ("68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" "b0397cd02547a5cbd1726ca58ec12464067abc396901e9db0a7d13691ab2e476" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(dired-listing-switches "-alhog")
  '(gnutls-min-prime-bits 1024))
 (custom-set-faces
@@ -55,16 +49,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "nil")))))
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-;; '(default ((t (:background "black")))))
+ )
 
 ;;(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/sauron")
 ;;(require 'sauron)
 ;;(setq sauron-dbus-cookie t)
 ;; gnus (gnus habe ich gerade verworfen)
 ;(load "~/emacs.d/gnus_init.el")
-
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/auto-complete+")
+(require 'auto-complete+)

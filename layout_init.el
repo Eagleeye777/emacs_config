@@ -16,14 +16,9 @@
 
 ; Theme laden
 
-;;(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/monokai-theme-0.0.10")
-;;(require 'monokai-theme);;
-
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/zenburn-theme-2.1")
-(require 'zenburn-theme)
+;;(require 'monokai-theme)
 
 ;;powerline status bar
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/powerline")
 (require 'powerline)
 (powerline-center-theme)
 
