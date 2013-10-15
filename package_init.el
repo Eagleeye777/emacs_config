@@ -1,8 +1,3 @@
-(require 'package) ; hier werden die Packetrepositories für emacs definiert, damit emacs erweiterungen direct in emacs installiert werden können. 
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-
 ; Setting up El-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil 'noerror)
@@ -13,3 +8,15 @@
       (goto-char (point-max))
       (eval-print-last-sexp))))
 (el-get 'sync)
+
+(require 'package) ; hier werden die Packetrepositories für emacs definiert, damit emacs erweiterungen direct in emacs installiert werden können. 
+
+
+;;(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                         ("marmalade" . "http://marmalade-repo.org/packages/")
+  ;;                     ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)

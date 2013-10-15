@@ -10,16 +10,21 @@
 ;better defaults package
 (load "~/.emacs.d/better-defaults")
 ; comes in handy for managing the state of changes during longer edits (see C-x u)
+
+(require 'diminish)
+
 (require'undo-tree)
 (global-undo-tree-mode 1)
+(diminish 'undo-tree-mode)
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
 (global-set-key (kbd "M-z") 'redo) ; 【ALT+z】
 
-
 (autoload 'browse-kill-ring"" "" t)
+(browse-kill-ring-default-keybindings) ;; use M-y for browsing and selecting from Killring
 
 ;Windcycle (für Buffer Navigation)
+
 (autoload 'windcycle "" "" t)
 
 ;Winner Mode (Nice Addition for quickly reverting window changes)
@@ -28,6 +33,7 @@
 
 ;Workgroups für Layout Managment
 (require 'workgroups)
+(diminish 'workgroups-mode)
 (setq wg-prefix-key (kbd "C-c w"))
 (workgroups-mode 1)
 (wg-load "~/wg") ;Hier werden meine normalen Workgroups geladen

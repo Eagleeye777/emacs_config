@@ -16,4 +16,4 @@
 (global-set-key (kbd "C-x C-o") 'browse-url-at-point)
 (global-set-key (kbd "C-c y") 'bury-buffer)
 (global-set-key (kbd "C-c d") 'insert-date)
-blub
+(global-set-key (kbd "C-f") 'ispell-word)

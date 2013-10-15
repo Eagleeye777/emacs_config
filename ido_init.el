@@ -14,6 +14,10 @@
 ; zusätzlich ido-ubi laden 
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode t)
+(require 'flx-ido)
+(flx-ido-mode +1)
+(setq ido-enable-prefix nil)
+)
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
 (setq ido-use-virtual-buffers t)

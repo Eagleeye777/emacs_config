@@ -5,6 +5,7 @@
 (setq TeX-PDF-mode t) ;; .pdf statt .dvi per default:
 ;;Zeilenumbruch
 (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+(diminish auto-fill-function)
 ;;Syntax Higlight
 (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
 ;; Mathe Modus
@@ -22,7 +23,12 @@
 (load "preview-latex.el" nil t t)
 ;; aspell ist besser als ispell.
 ;; Zeile kommentieren, falls nicht installiert:
-(setq-default ispell-program-name "aspell")
+
+
+;; MIGRIERT NACH various_init.el
+
+
+;;(setq-default ispell-program-name "aspell")
 ;; Deutsche Rechtschreibung falls \usepackage{ngerman}
 ;; oder german benutzt wird
 (add-hook 'TeX-language-de-hook

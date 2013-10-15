@@ -19,6 +19,7 @@
 
 (require 'autopair)
 (autopair-global-mode) ;; to enable in all buffers
+(diminish 'autopair-mode)
 
 ;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/pymacs")
 ;; (autoload 'pymacs-apply "pymacs")

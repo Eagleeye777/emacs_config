@@ -22,3 +22,16 @@
 (require 'powerline)
 (powerline-center-theme)
 
+;; anzu-mode enhances isearch by showing total matches and current match position
+(require 'anzu)
+(global-anzu-mode)
+(diminish 'anzu-mode)
+
+;; highlight the current line
+(global-hl-line-mode +1)
+
+;; das Teste ich jetzt mal ein wenig
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
+(diminish 'volatile-highlights-mode)
+

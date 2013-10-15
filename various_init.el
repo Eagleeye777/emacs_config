@@ -27,7 +27,15 @@
   '(progn
      (setq magit-repo-dirs "~/.emacs.d")))
 
-;; Pdf's aus emacs an evince weitergen
+;; Pdf's aus emacs an evince weitergeben
 (require 'openwith)
 (setq openwith-associations '(("\\.pdf\\'" "evince" (file))))
 (openwith-mode t)
+
+;; .zsh file is shell script too
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
+
+;; flyspell-mode does spell-checking on the fly as you type
+(require 'flyspell)
+(setq ispell-program-name "aspell" ; use aspell instead of ispell
+      ispell-extra-args '("--sug-mode=ultra"))
