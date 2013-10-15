@@ -4,7 +4,6 @@
 (defvar predicate nil)
 (defvar inherit-input-method nil)
 (defvar ido-cur-list nil)
-
 ; normale Konfiguration
 ;; auskommentiertes wird schon in better defaults so gesetzt
 ;;(setq ido-enable-flex-matching t)
@@ -17,7 +16,7 @@
 (require 'flx-ido)
 (flx-ido-mode +1)
 (setq ido-enable-prefix nil)
-)
+
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
 (setq ido-use-virtual-buffers t)

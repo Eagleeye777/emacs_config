@@ -1,8 +1,8 @@
 4;; Custom Keybindings 
-;; Important (set smex keybinds after ido hacks)                  
+;; Important (set smex keybinds after ido hacks)     x             
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "<menu>") 'delete-window)
+;;(global-set-key (kbd "<menu>") 'delete-window)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-b") ' helm-mini)
 (global-set-key (kbd "<f2>") ' mu4e) 
@@ -17,3 +17,8 @@
 (global-set-key (kbd "C-c y") 'bury-buffer)
 (global-set-key (kbd "C-c d") 'insert-date)
 (global-set-key (kbd "C-f") 'ispell-word)
+
+;; Setting up Key-Chords here
+(key-chord-define-global  "dw" 'delete-window)
+(key-chord-define-global "jk" 'ispell-word)
+(key-chord-define-global "uu" 'ace-jump-mode)

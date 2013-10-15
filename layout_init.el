@@ -24,7 +24,7 @@
 
 ;; anzu-mode enhances isearch by showing total matches and current match position
 (require 'anzu)
-(global-anzu-mode)
+(global-anzu-mode +1)
 (diminish 'anzu-mode)
 
 ;; highlight the current line

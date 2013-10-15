@@ -1,11 +1,11 @@
 ;; auctex für Emacs verfügbar machen
-(load "auctex.el" nil t t)
+(load "auctex.el" nil  t t)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq TeX-PDF-mode t) ;; .pdf statt .dvi per default:
 ;;Zeilenumbruch
 (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-(diminish auto-fill-function)
+;;(diminish auto-fill-function)
 ;;Syntax Higlight
 (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
 ;; Mathe Modus

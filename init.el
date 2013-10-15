@@ -5,32 +5,34 @@
 
 ;; el get und Package repos
 ;; !!!! Do this one first, so everything is already on the load path
-(load "~/.emacs.d/package_init.elc")
+(defvar flx-ido-mode nil)
+
+(load "~/.emacs.d/package_init.el")
 ;; Allgemeine grundlegende Einstellungen
-(load "/home/sschaumburg/.emacs.d/gen_init.elc")
+(load "/home/sschaumburg/.emacs.d/gen_init.el")
 ;; Display Settings
-(load "~/.emacs.d/layout_init.elc")
+(load "~/.emacs.d/layout_init.el")
 ; setting up org mode and deft(extern File)
-(load "~/.emacs.d/org_init.elc" )
+(load "~/.emacs.d/org_init.el" )
 ;; Mail Client der Wahl
-(load "/home/sschaumburg/.emacs.d/mu4e_init.elc")
+(load "/home/sschaumburg/.emacs.d/mu4e_init.el")
 (setq mail-user-agent 'mu4e-user-agent)
 ; Custom Functions 
-(load "/home/sschaumburg/.emacs.d/func_init.elc")
+(load "/home/sschaumburg/.emacs.d/func_init.el")
 ;; el get und Package repos
-(load "~/.emacs.d/package_init.elc")
+(load "~/.emacs.d/package_init.el")
 ;;alles zu ido
-(load "~/.emacs.d/ido_init.elc")
+(load "~/.emacs.d/ido_init.el")
 ;; Alle möglichen anderen Packete
-(load "~/.emacs.d/various_init.elc")
+(load "~/.emacs.d/various_init.el")
 ;; Python Stuff
-(load "~/.emacs.d/python_init.elc")
+(load "~/.emacs.d/python_init.el")
 ;;w3m Configurations
-(load "~/.emacs.d/w3m_init.elc")
+(load "~/.emacs.d/w3m_init.el")
 ;; auctex und ac.amath
-(load "~/.emacs.d/auctex_init.elc")
+(load "~/.emacs.d/auctex_init.el")
 ;; keybindings
-(load "~/.emacs.d/keybinds.elc")
+(load "~/.emacs.d/keybinds.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
