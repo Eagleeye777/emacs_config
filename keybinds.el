@@ -4,7 +4,6 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;;(global-set-key (kbd "<menu>") 'delete-window)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
-(global-set-key (kbd "C-b") ' helm-mini)
 (global-set-key (kbd "<f2>") ' mu4e) 
 (global-set-key (kbd "<f3>") ' cua-mode)
 (global-set-key (kbd "<f4>") 'goto-line) ; 
@@ -22,3 +21,4 @@
 (key-chord-define-global  "dw" 'delete-window)
 (key-chord-define-global "jk" 'ispell-word)
 (key-chord-define-global "uu" 'ace-jump-mode)
+(key-chord-define-global "bb" 'helm-mini)

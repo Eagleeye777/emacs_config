@@ -7,26 +7,26 @@
 ; normale Konfiguration
 ;; auskommentiertes wird schon in better defaults so gesetzt
 ;;(setq ido-enable-flex-matching t)
+(setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
-(ido-mode 1) 
+(ido-mode t)
 
 ; zusätzlich ido-ubi laden 
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode t)
+;; better flx matching
 (require 'flx-ido)
 (flx-ido-mode +1)
-(setq ido-enable-prefix nil)
-
+;;(setq ido-enable-prefix nil)
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
 (setq ido-use-virtual-buffers t)
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/ido-hacks")
 
-;; Smex
+;; Smex (Ido für M-x)
 (require 'smex) 
 (smex-initialize) 
 
-;; Ido hacks laden 
+;; Ido hacks laden (speeding things up)
 (require 'ido-hacks)
 (ido-hacks-mode)
 

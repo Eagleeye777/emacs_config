@@ -1,21 +1,30 @@
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-comlete/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+(require 'auto-complete+)
+
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
+
 ;; disable beeping
 (setq visible-bell t)
+
 ;Der cua Mode 
 (cua-mode t)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 
-;better defaults package
+;;better defaults package
 (load "~/.emacs.d/better-defaults")
-; comes in handy for managing the state of changes during longer edits (see C-x u)
 
 (require 'diminish)
 
 (require'undo-tree)
 (global-undo-tree-mode 1)
 (diminish 'undo-tree-mode)
+(defalias 'undo 'undo-tree-undo)
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
 (global-set-key (kbd "M-z") 'redo) ; 【ALT+z】
@@ -40,3 +49,6 @@
 
 ;für flycheck
 (add-hook 'after-init-hook 'global-flycheck-mode)
+
+;;(add-hook 'dired-load-hook
+  ;;        (function (lambda () (load "dired-x"))))

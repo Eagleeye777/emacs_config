@@ -1,4 +1,6 @@
 ;;; package init.el 
+;; disable comments to compile once in a while
+;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 ;;.emacs configuration File
 ;; Loading all the various init files here
@@ -56,9 +58,8 @@
 ;;(setq sauron-dbus-cookie t)
 ;; gnus (gnus habe ich gerade verworfen)
 ;(load "~/emacs.d/gnus_init.el")
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/auto-complete+")
-(require 'auto-complete+)
 
 ;; reduce the frequency of garbage collection by making it happen on
 ;; each 50MB of allocated data (the default is on every 0.76MB)
 (setq gc-cons-threshold 50000000)
+
