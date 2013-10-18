@@ -21,6 +21,15 @@
 (autopair-global-mode) ;; to enable in all buffers
 (diminish 'autopair-mode)
 
+;; Fixing keybindings for term mode 
+;; autopair overrides noraml keybindings and causes problems there
+(add-hook 'term-mode-hook
+           #'(lambda ()
+             (setq autopair-dont-activate t)
+             (autopair-mode -1)))
+
+
+
 ;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/pymacs")
 ;; (autoload 'pymacs-apply "pymacs")
 ;; (autoload 'pymacs-call "pymacs")

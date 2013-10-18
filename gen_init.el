@@ -3,7 +3,15 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (global-auto-complete-mode t)
+
 (require 'auto-complete+)
+
+(set-default 'ac-sources
+             '(ac-source-dictionary
+               ac-source-words-in-buffer
+               ac-source-words-in-same-mode-buffers
+               ac-source-semantic
+               ac-source-yasnippet))
 
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -29,8 +37,13 @@
 (global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
 (global-set-key (kbd "M-z") 'redo) ; 【ALT+z】
 
+;; Browse kill ring settings
 (autoload 'browse-kill-ring"" "" t)
 (browse-kill-ring-default-keybindings) ;; use M-y for browsing and selecting from Killring
+(setq browse-kill-ring-highlight-current-entry t)
+(setq browse-kill-ring-no-duplicates t)
+(setq browse-kill-ring-display-duplicates nil)
+(setq browse-kill-ring-highlight-inserted-item nil)
 
 ;Windcycle (für Buffer Navigation)
 
@@ -50,5 +63,8 @@
 ;für flycheck
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
-;;(add-hook 'dired-load-hook
-  ;;        (function (lambda () (load "dired-x"))))
+;; few dired-fixes
+(add-hook 'dired-load-hook
+          (function (lambda () (load "dired-x"))))
+
+(put 'dired-find-alternate-file 'disabled nil)

@@ -1,4 +1,5 @@
 ;;; package init.el 
+
 ;; disable comments to compile once in a while
 ;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
@@ -21,8 +22,6 @@
 (setq mail-user-agent 'mu4e-user-agent)
 ; Custom Functions 
 (load "/home/sschaumburg/.emacs.d/func_init.el")
-;; el get und Package repos
-(load "~/.emacs.d/package_init.el")
 ;;alles zu ido
 (load "~/.emacs.d/ido_init.el")
 ;; Alle möglichen anderen Packete
@@ -35,7 +34,7 @@
 (load "~/.emacs.d/auctex_init.el")
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
-(custom-set-variables
+(custom-set-
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -44,7 +43,8 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes (quote ("2c73700ef9c2c3aacaf4b65a7751b8627b95a1fd8cebed8aa199f2afb089a85f" "412c7c16681ae6182aa44ef1b05fdea5cc156493f4b2f9f680499fed6d7b8c7d" "47195d85e4786b0f5877d0eca48e807e22b32c00c95c34deedbb842072e486bb" "68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" "b0397cd02547a5cbd1726ca58ec12464067abc396901e9db0a7d13691ab2e476" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(dired-listing-switches "-alhog")
- '(gnutls-min-prime-bits 1024))
+ '(gnutls-min-prime-bits 1024)
+ '(openwith-associations (quote (("\\.pdf\\'" "evince" (file)) ("\\.mp3\\'" "xmms" (file)) ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer" ("-idx" file)) ("\\.epub\\'" "calibre" (file)) ("\\.\\(?:jp?g\\|png\\)\\'" "display" (file))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -63,3 +63,8 @@
 ;; each 50MB of allocated data (the default is on every 0.76MB)
 (setq gc-cons-threshold 50000000)
 
+;; Font size
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(autoload 'expand-region "" "" t)
+(require 'expand-region)

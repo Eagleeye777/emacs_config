@@ -29,8 +29,10 @@
 
 ;; Pdf's aus emacs an evince weitergeben
 (require 'openwith)
-(setq openwith-associations '(("\\.pdf\\'" "evince" (file))))
 (openwith-mode t)
+;;(setq openwith-associations '(("\\.pdf\\'" "evince" (file))))
+;;(setq openwith-associations '(("\\.epub\\'" "calibre" (file))))
+
 
 ;; .zsh file is shell script too
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
@@ -54,3 +56,6 @@
   "ace-jump-mode"
   "Emacs quick move minor mode"
   t)
+
+
+(require 'sunrise-commander)
