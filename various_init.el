@@ -44,13 +44,13 @@
 (setq ispell-dictionary "german")
 
 ;; Erlaubt zusätzliche Keybindings durch simultanes pressen von Tasten
+;; Die eigentlichen Keybinds werden in keybinds.el definiert
 (require 'key-chord)
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay 0.15)
 (setq key-chord-one-key-delay 0.25)
  
-;; Die eigentlichen Keybinds werden in keybinds.el definiert
- 
+;;Jumping around in the buffers  
 (autoload
   'ace-jump-mode
   "ace-jump-mode"

@@ -1,17 +1,5 @@
-(require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-comlete/ac-dict")
-(require 'auto-complete-config)
-(ac-config-default)
-(global-auto-complete-mode t)
+(autoload 'expand-region "" "" t)
 
-(require 'auto-complete+)
-
-(set-default 'ac-sources
-             '(ac-source-dictionary
-               ac-source-words-in-buffer
-               ac-source-words-in-same-mode-buffers
-               ac-source-semantic
-               ac-source-yasnippet))
 
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -68,3 +56,14 @@
           (function (lambda () (load "dired-x"))))
 
 (put 'dired-find-alternate-file 'disabled nil)
+
+(require 'autopair)
+(autopair-global-mode) ;; to enable in all buffers
+(diminish 'autopair-mode)
+
+;; Fixing keybindings for term mode 
+;; autopair overrides noraml keybindings and causes problems there
+(add-hook 'term-mode-hook
+           '(lambda ()
+             (setq autopair-dont-activate t)
+             (autopair-mode -1)))

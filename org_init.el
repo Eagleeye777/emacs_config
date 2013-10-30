@@ -13,6 +13,7 @@
 ;; org mode General Settings
 (add-hook 'org-mode-hook 'turn-on-font-lock) 
 (add-hook 'text-mode-hook 'turn-on-auto-fill) ; automatische Zeilenumbrüche
+(add-hook 'org-mode-hook 'flyspell-mode)
 (setq org-completion-use-ido t)
 (setq org-return-follows-link t)
 (setq org-support-shift-select t)
@@ -72,10 +73,14 @@
 
 
 ;setting up Deft (Notiz-Verwaltung, in Kombination mit Org-Mode)
+(add-to-list 'load-path "~/.emacs.d/deft-multidir")
 (require 'deft)
 (setq deft-extension "org")
 (setq deft-text-mode 'org-mode)
-(setq deft-directory  "~/Dropbox/org/notes")
+(setq deft-directories
+       '("~/Dropbox/org/notes"))
+(add-to-list 'deft-directories "~/Dropbox/org/notes/egl_tutorium")
+
 (setq deft-use-filename-as-title t)
 
 ;; ;;; Versuchter Kalenderexport. Das ganze schlägt momentan aber fehl 
