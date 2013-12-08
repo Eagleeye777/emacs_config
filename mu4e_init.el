@@ -1,5 +1,5 @@
 ;; Need load-path here, because package is self compiled
-(add-to-list 'load-path "~/mu/mu4e")
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
 
 ;; default
@@ -60,7 +60,7 @@
 ;;(when (fboundp 'imagemagick-register-types)
 ;;  (imagemagick-register-types))
 ;;(setq mu4e-view-prefer-html t)
-
+(setq mu4e-headers-show-threads nil)
 (setq mu4e-html2text-command "html2text -utf8 -width 72")
 (setq mu4e-update-interval 60)
 ;; adding a new mail sound here

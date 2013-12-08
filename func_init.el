@@ -48,7 +48,7 @@
 (defun prelude-google ()
   "Googles a query or region if any."
   (interactive)
-  (prelude-search "http://www.google.com/search?q=" "Google: "))
+  (prelude-search "http://www.google.de/search?q=" "Google: "))
 
 
 

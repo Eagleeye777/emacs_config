@@ -79,7 +79,8 @@
 (setq deft-text-mode 'org-mode)
 (setq deft-directories
        '("~/Dropbox/org/notes"))
-(add-to-list 'deft-directories "~/Dropbox/org/notes/egl_tutorium")
+
+(add-to-list 'deft-directories "~/Dropbox/org/egl_tutorium")
 
 (setq deft-use-filename-as-title t)
 
