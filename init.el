@@ -27,9 +27,9 @@
 ;; Alle möglichen anderen Packete
 (load "~/.emacs.d/various_init.el")
 ;; Python Stuff
-(load "~/.emacs.d/python_init.el")
+;;(load "~/.emacs.d/python_init.el")
 ;;w3m Configurations
-(load "~/.emacs.d/w3m_init.el")
+;;(load "~/.emacs.d/w3m_init.el")
 ;; auctex und ac.amath
 (load "~/.emacs.d/auctex_init.el")
 ;; autocomplete and yasnippet
@@ -49,7 +49,6 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes (quote ("2c73700ef9c2c3aacaf4b65a7751b8627b95a1fd8cebed8aa199f2afb089a85f" "412c7c16681ae6182aa44ef1b05fdea5cc156493f4b2f9f680499fed6d7b8c7d" "47195d85e4786b0f5877d0eca48e807e22b32c00c95c34deedbb842072e486bb" "68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" "b0397cd02547a5cbd1726ca58ec12464067abc396901e9db0a7d13691ab2e476" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(dired-listing-switches "-alhog")
- '(gnutls-min-prime-bits 1024)
  '(openwith-associations (quote (("\\.docx\\'" "libreoffice" (file)) ("\\.doc\\'" "libreoffice" (file)) ("\\.odt\\'" "libreoffice" (file)) ("\\.pdf\\'" "evince" (file)) ("\\.mp3\\'" "xmms" (file)) ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer" ("-idx" file)) ("\\.epub\\'" "calibre" (file)) ("\\.\\(?:jp?g\\|png\\)\\'" "display" (file))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

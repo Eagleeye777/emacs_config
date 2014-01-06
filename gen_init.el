@@ -49,7 +49,7 @@
 (wg-load "~/wg") ;Hier werden meine normalen Workgroups geladen
 
 ;für flycheck
-(add-hook 'after-init-hook 'global-flycheck-mode)
+;;(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; few dired-fixes
 (add-hook 'dired-load-hook

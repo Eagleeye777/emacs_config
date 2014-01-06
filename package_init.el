@@ -7,7 +7,6 @@
     (let (el-get-master-branch)
       (goto-char (point-max))
       (eval-print-last-sexp))))
-(el-get 'sync)
 
 (require 'package) ; hier werden die Packetrepositories für emacs definiert, damit emacs erweiterungen direct in emacs installiert werden können. 
 
@@ -20,3 +19,47 @@
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
+
+; list all packages you want installed  
+
+(setq my-el-get-packages  
+      (append  
+       '(
+         ace-jump-mode              
+         ac-math    
+         anzu    
+         auto-complete
+         auto-complete+
+         autopair
+         bazaar
+         browse-kill-ring
+         deft
+         diminish         
+         expand-region    
+         flx
+         flymake    
+         git-emacs
+         helm    
+         ido-hacks         
+         ido-ubiquitous    
+         jedi    
+         key-chord    
+         magit    
+         openwith    
+         powerline    
+         python-mode    
+         smart-operator    
+         smex
+         twittering-mode    
+         undo-tree
+         volatile-highlights    
+         windcycle    
+         workgroups    
+         yasnippet
+         yasnippet-config
+         zenburn
+         zenburn-theme
+         flycheck    
+         ))) 
+
+(el-get 'sync my-el-get-packages)  

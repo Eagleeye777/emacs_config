@@ -58,4 +58,3 @@
   t)
 
 
-(require 'sunrise-commander)

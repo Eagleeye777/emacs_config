@@ -81,6 +81,7 @@
        '("~/Dropbox/org/notes"))
 
 (add-to-list 'deft-directories "~/Dropbox/org/egl_tutorium")
+(add-to-list 'deft-directories "~/Dropbox/org/")
 
 (setq deft-use-filename-as-title t)
 
