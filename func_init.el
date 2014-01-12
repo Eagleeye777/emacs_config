@@ -132,3 +132,14 @@ nil are ignored."
     modified-found
     )
   )
+
+;; Hilfs Funktion, die ich mir bei Adrea Crotti geklaut habe, brauche ich damit das Bang Snippet funktioniert
+
+(defun ca-all-asscs (asslist query)
+  "returns a list of all corresponding values (like rassoc)"
+  (cond
+   ((null asslist) nil)
+   (t
+    (if (equal (cdr (car asslist)) query)
+        (cons (car (car asslist)) (ca-all-asscs (cdr asslist) query))
+      (ca-all-asscs (cdr asslist) query)))))

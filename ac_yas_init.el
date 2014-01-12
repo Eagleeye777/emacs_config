@@ -14,6 +14,8 @@
                ac-source-yasnippet))
 
 (require 'yasnippet)
-(setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets")
+;; (setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets")
+(setq yas-snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"))
+(add-to-list 'yas-snippet-dirs ' "~/.emacs.d/snippets")
 (require 'yasnippet-config)
 (yas-global-mode 1)

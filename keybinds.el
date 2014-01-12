@@ -1,4 +1,4 @@
-;;  keybinds.el --- Setting up my custom binds here
+2;;  keybinds.el --- Setting up my custom binds here
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
@@ -17,7 +17,7 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 ;; (eval-after-load 'python-mode           ;
-;; (define-key python-mode-map (kbd "C-c ö") 'py-execute-region)
+(define-key python-mode-map (kbd "C-c ö") 'py-execute-region)
 ;; Setting up Key-Chords here
 ;; Binding a bunch of useful stuff for convenient acess. 
 (key-chord-define-global "cv" ' cua-mode)

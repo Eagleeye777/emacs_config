@@ -6,11 +6,12 @@
 ;;.emacs configuration File
 ;; Loading all the various init files here
 
-;; el get und Package repos
+;;w el get und Package repos
 ;; !!!! Do this one first, so everything is already on the load path
 (defvar flx-ido-mode nil)
 
 (load "~/.emacs.d/package_init.el")
+
 ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.el")
 ;; Display Settings
@@ -26,18 +27,20 @@
 (load "~/.emacs.d/ido_init.el")
 ;; Alle möglichen anderen Packete
 (load "~/.emacs.d/various_init.el")
-;; Python Stuff
-;;(load "~/.emacs.d/python_init.el")
 ;;w3m Configurations
-;;(load "~/.emacs.d/w3m_init.el")
+(load "~/.emacs.d/w3m_init.el")
 ;; auctex und ac.amath
 (load "~/.emacs.d/auctex_init.el")
 ;; autocomplete and yasnippet
 (load "~/.emacs.d/ac_yas_init.el")
+;; Python Stuff
+(load "~/.emacs.d/python_init.el")
+
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
-
-;;garbage collection
+;; Fixing a gnutls error warning and raising sercurity level of tls encyption
+(setq gnutls-min-prime-bits '"1024")
+;;garbagee 3collection
 (setq gc-cons-threshold 50000000)
 (require 'expand-region)
 (custom-set-variables
@@ -57,4 +60,16 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "nil"))))
  '(mode-line ((t (:background "#5c888b" :foreground "#f0dfaf" :box (:line-width 2 :color "#1e2320"))))))
+
+;; Hier waren versuche, was bei elpy aufzusetzten
+
+;; (package-initialize)
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/elpy")
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/virtualenv")
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/find-file-in-project")
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/highlight-indentation")
+
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/idomenu")
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/nose")
+
 

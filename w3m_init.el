@@ -19,7 +19,7 @@
 
 (defun w3m-open-current-page-in-firefox ()
   "Open the current URL in Mozilla Firefox."
-  (interactive)
+  (interactive)application.ini
   (browse-url-firefox w3m-current-url)) ;; (1)
 
 (defun w3m-open-link-or-image-in-firefox ()
