@@ -12,6 +12,7 @@
       ido-enable-prefix nil
       ido-use-filename-at-point 'guess
       ido-create-new-buffer 'always
+      ido-create-new-buffer 'always
       ido-use-virtual-buffers t)
 
 ;;normaler ido mode 

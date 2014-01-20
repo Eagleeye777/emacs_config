@@ -1,7 +1,7 @@
 ; Setting up El-get
 (require 'package)
 (add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+ '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
 
@@ -34,8 +34,10 @@
          browse-kill-ring
          deft
          diminish         
+         emacs-w3m
          expand-region    
          flx
+         flycheck
          flymake    
          git-emacs
          guru-mode
@@ -47,6 +49,7 @@
          magit    
          openwith    
          powerline    
+         pydoc-info
          python-mode    
          smart-operator    
          smex
@@ -59,7 +62,7 @@
          yasnippet-config
          zenburn
          zenburn-theme
-         flycheck    
+             
          ))) 
 
 (el-get 'sync my-el-get-packages)  

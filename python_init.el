@@ -1,6 +1,6 @@
 ;;; this file provides some settings for using python with emacs
 (package-initialize)
-(elpy-enable)
+;; (elpy-enable)
 ;; (elpy-use-ipython "ipython3")
 
 ;; ;;Setting up pyhton-mode
@@ -27,7 +27,7 @@
 ;; ;; ; try to automagically figure out indentation
 
 (add-hook 'python-mode-hook 'auto-complete-mode)
-(add-hook 'python-mode-hook 'jedi:ac-setup)
+(add-hook 'python-mode-hook 'jedi:setup)
 
 ;; ;emacs iypthon notebook (mal gucken ob ich was damit anfangen kann)
 ;; ;;(require 'ein)
@@ -87,3 +87,5 @@
 
 (add-hook 'python-mode-hook 'flymake-activate)
 (add-hook 'python-mode-hook 'auto-complete-mode)
+;; Erlaubt nachschlagen von Dokumentation mit C-h S (Großschreibung beachten)
+(require 'pydoc-info)

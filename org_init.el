@@ -1,11 +1,14 @@
-;; ;Setting up org-Mode here
 
+;; ;Setting up org-Mode here
+;; deutsch as export language
+(setq org-export-default-language "de")
 ;; My org files (Setting up the enviroment)
 (setq org-directory (expand-file-name (file-name-as-directory "~/Dropbox/org")))
 (setq org-default-notes-file (concat org-directory "/notes.org"))
+
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
-;; Files for mobile-org:
+;; Files for mobile-org (Handy-Export)
 (setq org-mobile-directory (expand-file-name "mobileOrg" org-directory))
 (setq org-mobile-files  (expand-file-name "default.org" org-directory))
 (setq org-mobile-inbox-for-pull (expand-file-name "from-mobile.org" org-directory))
@@ -20,8 +23,6 @@
 (setq org-replace-disputed-keys t) ;; Damit Windmove und Cua Funktionieren
 (setq org-use-speed-commands t)
 (setq org-hide-leading-stars 'hidestars)
-;; deutsch as export language
-(setq org-export-default-language "de")
 
 ;; deutscher Kalender:
 (setq calendar-week-start-day 1
@@ -46,6 +47,7 @@
 (setq org-todo-keywords
       '((sequence "TODO" "STARTED" "|" "FROZEN" "DONE" "DELEGATED")))
 ;;here was hin
+
 ;; Eigene Tag Liste
 (setq org-tag-alist '(("privat") ("uni")("Computer")("Linux") ("Someday")))
 
@@ -84,6 +86,94 @@
 (add-to-list 'deft-directories "~/Dropbox/org/")
 
 (setq deft-use-filename-as-title t)
+
+(require 'org)
+(require 'org-latex)
+
+(add-to-list 'org-export-latex-classes
+  '("djcb-org-article"
+"\\documentclass[11pt,a4paper]{article}
+\\usepackage[T1]{fontenc}
+\\usepackage{fontspec}
+\\usepackage{graphicx} 
+\\defaultfontfeatures{Mapping=tex-text}
+\\setromanfont{Gentium}
+\\setromanfont [BoldFont={Gentium Basic Bold},
+                ItalicFont={Gentium Basic Italic}]{Gentium Basic}
+\\setsansfont{Charis SIL}
+\\setmonofont[Scale=0.8]{DejaVu Sans Mono}
+\\usepackage{geometry}
+\\geometry{a4paper, textwidth=6.5in, textheight=10in,
+            marginparsep=7pt, marginparwidth=.6in}
+\\pagestyle{empty}
+\\title{}
+      [NO-DEFAULT-PACKAGES]
+      [NO-PACKAGES]"
+     ("\\section{%s}" . "\\section*{%s}")
+     ("\\subsection{%s}" . "\\subsection*{%s}")
+     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
+(add-to-list 'org-export-latex-classes
+  '("samuel-default"
+"\\documentclass{scrartcl}  % Eine Klasse für beidseitige Texte mit Kapiteln 
+             %
+ %%%%%%%%%%%%% Unverzichtbare Pakte
+ \\usepackage[T1]{fontenc}% fontenc und inputenc ermöglichen
+ \\usepackage[utf8]{inputenc}% Silbentrennung und
+                              % Eingabe von Umlauten.
+
+ \\usepackage{% Man kann auch mehrere Pakete ohne Optionen
+             % in einen \\usepackage-Befehl packen.
+   babel,    % Babel für diverse Sprachanpassungen
+   fixltx2e  % Verbessert einige Kernkompetenzen von LaTeX2e
+ }
+             %
+ %%%%%%%%%%%%% Typografisch empfehlenswerte Pakete
+ \\usepackage{% 
+   ellipsis, % Korrigiert den Weißraum um Auslassungspunkte
+   ragged2e, % Ermöglicht Flattersatz mit Silbentrennung
+  marginnote,% Für bessere Randnotizen mit \\marginnote statt
+             % \marginline
+ }
+ 
+\\usepackage[tracking=true]{microtype}%
+             % Microtype ist einfach super, aber lesen Sie
+             % unbedingt die Anleitung um das Folgende zu
+             % verstehen.
+\\DeclareMicrotypeSet*[tracking]{my}% 
+   { font = */*/*/sc/* }% 
+\\SetTracking{ encoding = *, shape = sc }{ 45 }%
+\\usepackage{paralist}
+
+\\usepackage{ dejavu }
+\\usepackage[ left=2.5cm, right=4cm, top=2cm, bottom=2.3cm]{geometry} % Fürdie Einstellungen der Seitenränder
+\\usepackage{setspace} \\onehalfspacing % für Zeilenabstand                   
+\\setlength{\\parskip}{6pt} 
+\\usepackage{url}
+\\urlstyle{rm}
+\\usepackage{titlesec}
+%Fußnotenformatierung (Koma-Skript)
+\\setkomafont{footnote}{\\rmfamily}
+\\deffootnote[1em]{1em}{1em}{
+\\makebox[1.5em][l]{\\textsuperscript{\\thefootnotemark}}}
+\\usepackage{tabularx}
+\\title{}
+      [NO-DEFAULT-PACKAGES]
+      [NO-PACKAGES]"
+     ("\\section{%s}" . "\\section*{%s}")
+     ("\\subsection{%s}" . "\\subsection*{%s}")
+     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(setq org-latex-to-pdf-process 
+  '("latex -interaction nonstopmode %f"
+     "latex -interaction nonstopmode %f")) ;; for multiple passes
+
+;; org_init.el ends here
 
 ;; ;;; Versuchter Kalenderexport. Das ganze schlägt momentan aber fehl 
 ;; ;;; Hier die Anleitung http://orgmode.org/worg/org-tutorials/org-google-sync.html
@@ -125,5 +215,3 @@
 ;;   (let ((org-icalendar-verify-function 'org-mycal-export-limit))
 ;;     (org-export-icalendar-combine-agenda-files)))
 
-
-;;; org_init.el ends here

@@ -134,6 +134,8 @@ nil are ignored."
   )
 
 ;; Hilfs Funktion, die ich mir bei Adrea Crotti geklaut habe, brauche ich damit das Bang Snippet funktioniert
+(defun ca-with-comment (str)
+  (format "%s%s%s" comment-start str comment-end))
 
 (defun ca-all-asscs (asslist query)
   "returns a list of all corresponding values (like rassoc)"
@@ -143,3 +145,44 @@ nil are ignored."
     (if (equal (cdr (car asslist)) query)
         (cons (car (car asslist)) (ca-all-asscs (cdr asslist) query))
       (ca-all-asscs (cdr asslist) query)))))
+
+;; Glaube, die hier habe ich immer noch nicht zum laufen gekriegt
+(defun leo (word)
+  (interactive "Word: ")
+  (browse-url (format "http://dict.leo.org/?search=%s" word)))
+
+(global-set-key (kbd "C-c C-l") 'leo-at-point)
+
+(defun leo-at-point ()
+  "Open the Leo dictionary for the word at point."
+  (interactive)
+  (let ((word (thing-at-point 'word)))
+    (if (not word)
+        (error "No word found at point")
+      (browse-url-generic (format "http://dict.leo.org/?search=%s#results"
+                          word)))))
+
+;; Helper Functions for fixing the mark in Trancient mark mode 
+
+(defun push-mark-no-activate ()
+  "Pushes `point' to `mark-ring' and does not activate the region
+Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
+  (interactive)
+  (push-mark (point) t nil)
+  (message "Pushed mark to ring"))
+
+(global-set-key (kbd "C-ö") 'push-mark-no-activate)
+
+(defun jump-to-mark ()
+  "Jumps to the local mark, respecting the `mark-ring' order.
+This is the same as using \\[set-mark-command] with the prefix argument."
+  (interactive)
+  (set-mark-command 1))
+(global-set-key (kbd "M-ö") 'jump-to-mark)
+
+(defun exchange-point-and-mark-no-activate ()
+  "Identical to \\[exchange-point-and-mark] but will not activate the region."
+  (interactive)
+  (exchange-point-and-mark)
+  (deactivate-mark nil))
+(define-key global-map [remap exchange-point-and-mark] 'exchange-point-and-mark-no-activate)
