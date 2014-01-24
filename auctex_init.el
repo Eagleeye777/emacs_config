@@ -37,17 +37,24 @@
 (add-hook 'TeX-mode-hook (lambda ()
                              (TeX-fold-mode 1)))
 
-;; ac.math hinzufügen   ac.math ist ein Code-completion feature für Latex. 
+
+;; ac.math hinzufügen   ac.math ist ein Code-completion feature für Latex, dass die auto-complete sources erweitert. 
+
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/ac-math/") ;;Der Pfad muss ggf. entsprechend angepasst werden. 
+
 (require 'ac-math)
-;(require 'ac-math)
+
 (add-to-list 'ac-modes 'latex-mode)   ; make auto-complete aware of {{{latex-mode}}}
+(add-to-list 'ac-modes 'LaTex-mode)   ; make auto-complete aware of {{{latex-mode}}}
+
 (defun ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
   (setq ac-sources
      (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
                ac-sources))
 )
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
+(add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)
+
 (add-hook 'LaTeX-mode-hook '(setq TeX-command-default "LaTeX"))
 ;; set XeTeX mode in TeX/LaTeX
 (add-hook 'LaTeX-mode-hook 

@@ -186,3 +186,19 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (exchange-point-and-mark)
   (deactivate-mark nil))
 (define-key global-map [remap exchange-point-and-mark] 'exchange-point-and-mark-no-activate)
+
+;; Hilfsfunktionen, die ein paar Klammern einfügen und den Curor in die Mitte der Klammer setzten. 
+;; Ziel: Die im deutschen Tastaturlayout mühsam erreichbaren Klammern über einen Key-Chord effektiv einfügen, falls ich sie brauche. 
+(defun my_curly_braces ()
+  "Trying to set up set of curly braces here"
+  (interactive)
+(insert "{}")
+(backward-char 1)
+)
+
+(defun my_square_braces ()
+  "Trying to set up set of square braces here"
+  (interactive)
+(insert "[]")
+(backward-char 1)
+)

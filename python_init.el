@@ -1,8 +1,3 @@
-;;; this file provides some settings for using python with emacs
-(package-initialize)
-;; (elpy-enable)
-;; (elpy-use-ipython "ipython3")
-
 ;; ;;Setting up pyhton-mode
 (require 'python-mode)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -19,6 +14,17 @@
 (setq py-shell-switch-buffers-on-execute-p t)
 (setq py-smart-indentation t)
 
+(add-hook 'python-mode-hook 'auto-complete-mode)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
+
+(add-hook 'python-mode-hook
+         (lambda ()
+         (jedi:setup)
+         (jedi:ac-setup)                  
+            ))
+
 ;; ;; ; switch to the interpreter after executing code
 ;; ;; (setq py-shell-switch-buffers-on-execute-p t)
 ;; ;; (setq py-switch-buffers-on-execute-p t)
@@ -26,8 +32,6 @@
 ;; ;; (setq py-split-windows-on-execute-p nil)
 ;; ;; ; try to automagically figure out indentation
 
-(add-hook 'python-mode-hook 'auto-complete-mode)
-(add-hook 'python-mode-hook 'jedi:setup)
 
 ;; ;emacs iypthon notebook (mal gucken ob ich was damit anfangen kann)
 ;; ;;(require 'ein)
@@ -46,46 +50,39 @@
 ;; ;;(pymacs-load "ropemacs" "rope-")
 
 
-;; ;; (add-hook 'python-mode-hook
-;; ;;          (lambda ()
-;; ;;          (jedi:setup)
-;; ;;          (jedi:ac-setup)
-;; ;;             (local-set-key "\C-cd" 'jedi:show-doc)
-;; ;;             (local-set-key (kbd "M-q") 'jedi:complete)
-;; ;;             (local-set-key (kbd "M-.") 'jedi:goto-definition)))
 
-;; ;; Flymake settings for Python
-(defun flymake-python-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-inplace))
-         (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name))))
-    (list "epylint" (list local-file))))
+;; ;; ;; Flymake settings for Python
+;; (defun flymake-python-init ()
+;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;                      'flymake-create-temp-inplace))
+;;          (local-file (file-relative-name
+;;                       temp-file
+;;                       (file-name-directory buffer-file-name))))
+;;     (list "epylint" (list local-file))))
 
-(defun flymake-activate ()
-  "Activates flymake when real buffer and you have write access"
-  (if (and
-       (buffer-file-name)
-       (file-writable-p buffer-file-name))
-      (progn
-        (flymake-mode t)
-        ;; this is necessary since there is no flymake-mode-hook...
-        (local-set-key (kbd "C-c n") 'flymake-goto-next-error)
-        (local-set-key (kbd "C-c p") 'flymake-goto-prev-error))))
+;; (defun flymake-activate ()
+;;   "Activates flymake when real buffer and you have write access"
+;;   (if (and
+;;        (buffer-file-name)
+;;        (file-writable-p buffer-file-name))
+;;       (progn
+;;         (flymake-mode t)
+;;         ;; this is necessary since there is no flymake-mode-hook...
+;;         (local-set-key (kbd "C-c n") 'flymake-goto-next-error)
+;;         (local-set-key (kbd "C-c p") 'flymake-goto-prev-error))))
 
-(defun ca-flymake-show-help ()
-  (when (get-char-property (point) 'flymake-overlay)
-    (let ((help (get-char-property (point) 'help-echo)))
-      (if help (message "%s" help)))))
+;; (defun ca-flymake-show-help ()
+;;   (when (get-char-property (point) 'flymake-overlay)
+;;     (let ((help (get-char-property (point) 'help-echo)))
+;;       (if help (message "%s" help)))))
 
-(add-hook 'post-command-hook 'ca-flymake-show-help)
+;; (add-hook 'post-command-hook 'ca-flymake-show-help)
 
 
-(add-to-list 'flymake-allowed-file-name-masks
-             '("\\.py\\'" flymake-python-init))
+;; (add-to-list 'flymake-allowed-file-name-masks
+;;              '("\\.py\\'" flymake-python-init))
 
-(add-hook 'python-mode-hook 'flymake-activate)
-(add-hook 'python-mode-hook 'auto-complete-mode)
-;; Erlaubt nachschlagen von Dokumentation mit C-h S (Großschreibung beachten)
-(require 'pydoc-info)
+;; (add-hook 'python-mode-hook 'flymake-activate)
+;; (add-hook 'python-mode-hook 'auto-complete-mode)
+;; ;; Erlaubt nachschlagen von Dokumentation mit C-h S (Großschreibung beachten)
+;; (require 'pydoc-info)

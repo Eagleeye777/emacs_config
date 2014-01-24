@@ -41,7 +41,7 @@
 (require 'flyspell)
 (setq ispell-program-name "aspell" ; use aspell instead of ispell
       ispell-extra-args '("--sug-mode=ultra"))
-(setq ispell-dictionary "german")
+(setq ispell-dictionary "german8")
 
 ;; Erlaubt zusätzliche Keybindings durch simultanes pressen von Tasten
 ;; Die eigentlichen Keybinds werden in keybinds.el definiert
@@ -56,5 +56,6 @@
   "ace-jump-mode"
   "Emacs quick move minor mode"
   t)
-
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ace-jump-buffer-20131221.759")
+(require 'ace-jump-buffer)
 

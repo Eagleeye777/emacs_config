@@ -37,6 +37,7 @@
 (load "~/.emacs.d/python_init.el")
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
+
 ;; Fixing a gnutls error warning and raising sercurity level of tls encyption
 (setq gnutls-min-prime-bits '"1024")
 ;;garbagee 3collection
@@ -51,7 +52,7 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes (quote ("2c73700ef9c2c3aacaf4b65a7751b8627b95a1fd8cebed8aa199f2afb089a85f" "412c7c16681ae6182aa44ef1b05fdea5cc156493f4b2f9f680499fed6d7b8c7d" "47195d85e4786b0f5877d0eca48e807e22b32c00c95c34deedbb842072e486bb" "68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" "b0397cd02547a5cbd1726ca58ec12464067abc396901e9db0a7d13691ab2e476" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(dired-listing-switches "-alhog")
- '(openwith-associations (quote (("\\.docx\\'" "libreoffice" (file)) ("\\.doc\\'" "libreoffice" (file)) ("\\.odt\\'" "libreoffice" (file)) ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer" ("-idx" file)) ("\\.epub\\'" "calibre" (file)) ("\\.\\(?:jp?g\\|png\\)\\'" "display" (file))))))
+ '(openwith-associations (quote (("\\.pdf\\'" "evince" (file)) ("\\.docx\\'" "libreoffice" (file)) ("\\.doc\\'" "libreoffice" (file)) ("\\.odt\\'" "libreoffice" (file)) ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer" ("-idx" file)) ("\\.epub\\'" "calibre" (file)) ("\\.\\(?:jp?g\\|png\\)\\'" "display" (file))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,16 +60,4 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "nil"))))
  '(mode-line ((t (:background "#5c888b" :foreground "#f0dfaf" :box (:line-width 2 :color "#1e2320"))))))
-
-;; Hier waren versuche, was bei elpy aufzusetzten
-
-;; (package-initialize)
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/elpy")
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/virtualenv")
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/find-file-in-project")
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/highlight-indentation")
-
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/idomenu")
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/nose")
-
 
