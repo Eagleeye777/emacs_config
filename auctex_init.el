@@ -50,12 +50,13 @@
 (defun ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
   (setq ac-sources
      (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
-               ac-sources))
-)
+               ac-sources)))
+
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)
 
 (add-hook 'LaTeX-mode-hook '(setq TeX-command-default "LaTeX"))
+
 ;; set XeTeX mode in TeX/LaTeX
 (add-hook 'LaTeX-mode-hook 
           (lambda()

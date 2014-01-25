@@ -1,40 +1,52 @@
-;;; package init.el 
-
 ;; disable comments to compile once in a while
 ;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 ;;.emacs configuration File
 ;; Loading all the various init files here
 
-;;w el get und Package repos
 ;; !!!! Do this one first, so everything is already on the load path
 (defvar flx-ido-mode nil)
 
+;; el get und Package repos
 (load "~/.emacs.d/package_init.el")
 
 ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.el")
+
 ;; Display Settings
 (load "~/.emacs.d/layout_init.el")
+
+;; Alles zur Buffer Navigation 
+;; (load "~/.emacs.d/buffer_navigation.el")
+
 ; setting up org mode and deft(extern File)
 (load "~/.emacs.d/org_init.el" )
-;; Mail Client der Wahl
+
+;; All E-Mail Settings for mu4e  
 (load "/home/sschaumburg/.emacs.d/mu4e_init.el")
 (setq mail-user-agent 'mu4e-user-agent)
-; Custom Functions 
+
+; Custom Functions (All helper functions and whatever) 
 (load "/home/sschaumburg/.emacs.d/func_init.el")
-;;alles zu ido
+
+;;All the Ido Stuff 
 (load "~/.emacs.d/ido_init.el")
-;; Alle möglichen anderen Packete
+
+;; Whatever is left still 
 (load "~/.emacs.d/various_init.el")
+
 ;;w3m Configurations
 (load "~/.emacs.d/w3m_init.el")
+
 ;; auctex und ac.amath
 (load "~/.emacs.d/auctex_init.el")
+
 ;; autocomplete and yasnippet
 (load "~/.emacs.d/ac_yas_init.el")
-;; Python Stuff
+
+;3; Python Stuff
 (load "~/.emacs.d/python_init.el")
+
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
 

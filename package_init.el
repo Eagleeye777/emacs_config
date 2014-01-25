@@ -1,9 +1,11 @@
-; Setting up El-get
+;; Setting up package and Melpa
+
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
  '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
+; Setting up El-get here
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil 'noerror)
@@ -14,12 +16,8 @@
       (goto-char (point-max))
       (eval-print-last-sexp))))
 
-;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                        ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-
-; list all packages you want installed  
+; list all packages I want to be installed automatically. Hopefully, after a fresh Install this will get everything I want
 
 (setq my-el-get-packages  
       (append  
@@ -65,5 +63,6 @@
              
          ))) 
 
+;; Call to get everything installed
 (el-get 'sync my-el-get-packages)  
 (el-get 'sync) 

@@ -215,4 +215,4 @@
 ;;   (let ((org-icalendar-verify-function 'org-mycal-export-limit))
 ;;     (org-export-icalendar-combine-agenda-files)))
 
-(load "~/.emacs.d/org_ac_fix.el")
+;; (load "~/.emacs.d/org_ac_fix.el")

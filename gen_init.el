@@ -1,3 +1,4 @@
+;; Loading expand Region here
 (autoload 'expand-region "" "" t)
 
 
@@ -12,26 +13,23 @@
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 
-;;better defaults package
-(load "~/.emacs.d/better-defaults")
+;; Cosmetics
 
-(require 'diminish)
+;;moved from better defaults package
+  (show-paren-mode 1)
+  (setq-default indent-tabs-mode nil)
+  (setq x-select-enable-clipboard t
+        x-select-enable-primary t
+        save-interprogram-paste-before-kill t
+        apropos-do-all t
+        mouse-yank-at-point t
+        save-place-file (concat user-emacs-directory "places")
+        backup-directory-alist `(("." . ,(concat user-emacs-directory
+                                                 "backups"))))
 
-(require'undo-tree)
-(global-undo-tree-mode 1)
-(diminish 'undo-tree-mode)
-(defalias 'undo 'undo-tree-undo)
-(defalias 'redo 'undo-tree-redo)
-(global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
-(global-set-key (kbd "M-z") 'redo) ; 【ALT+z】
 
-;; Browse kill ring settings
-(autoload 'browse-kill-ring"" "" t)
-(browse-kill-ring-default-keybindings) ;; use M-y for browsing and selecting from Killring
-(setq browse-kill-ring-highlight-current-entry t)
-(setq browse-kill-ring-no-duplicates t)
-(setq browse-kill-ring-display-duplicates nil)
-(setq browse-kill-ring-highlight-inserted-item nil)
+(autoload 'diminish "" "" t)
+;; (require 'diminish)
 
 ;Windcycle (für Buffer Navigation)
 
@@ -48,8 +46,36 @@
 (workgroups-mode 1)
 (wg-load "~/wg") ;Hier werden meine normalen Workgroups geladen
 
-;für flycheck
-;;(add-hook 'after-init-hook 'global-flycheck-mode)
+;;Jumping around in the buffers  
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ace-jump-buffer-20131221.759")
+(require 'ace-jump-buffer)
+
+
+
+;; Setting up undo-tree
+(require'undo-tree)
+(global-undo-tree-mode 1)
+(diminish 'undo-tree-mode)
+
+;; These are necessary, for later setting up the Keybinds
+(defalias 'undo 'undo-tree-undo)
+(defalias 'redo 'undo-tree-redo)
+
+;; Browse kill ring settings
+(autoload 'browse-kill-ring"" "" t)
+(browse-kill-ring-default-keybindings) ;; use M-y for browsing and selecting from Killring
+(setq browse-kill-ring-highlight-current-entry t)
+(setq browse-kill-ring-no-duplicates t)
+(setq browse-kill-ring-display-duplicates nil)
+(setq browse-kill-ring-highlight-inserted-item nil)
+
+
 
 ;; few dired-fixes
 (add-hook 'dired-load-hook

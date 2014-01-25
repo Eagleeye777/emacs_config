@@ -1,3 +1,5 @@
+;;; layout_init.el Customizing the emac layout here
+
 ;kein Begrüßungsbildschirm
 (setq inhibit-startup-message t)
 
@@ -14,15 +16,31 @@
 ;terminals in Farbe
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-; Theme laden
 
-;;(require 'monokai-theme)
+;;; Moved from better defaults
+
+;; no menu Bars or Toolbars
+;;;###autoload
+(progn
+  (menu-bar-mode -1)
+  (when (fboundp 'tool-bar-mode)
+    (tool-bar-mode -1))
+  (when (fboundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+(require 'saveplace)
+(setq-default save-place t))
+
 
 ;;powerline status bar
 (require 'powerline)
 (powerline-center-theme)
 
 ;; anzu-mode enhances isearch by showing total matches and current match position
+
 (require 'anzu)
 (global-anzu-mode +1)
 (diminish 'anzu-mode)
@@ -30,7 +48,6 @@
 ;; highlight the current line
 (global-hl-line-mode +1)
 
-;; das Teste ich jetzt mal ein wenig
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
 (diminish 'volatile-highlights-mode)

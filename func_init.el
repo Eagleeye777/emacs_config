@@ -202,3 +202,80 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (insert "[]")
 (backward-char 1)
 )
+
+(defun prelude-ido-goto-symbol (&optional symbol-list)
+  "Refresh imenu and jump to a place in the buffer using Ido."
+  (interactive)
+  (unless (featurep 'imenu)
+    (require 'imenu nil t))
+  (cond
+   ((not symbol-list)
+    (let ((ido-mode ido-mode)
+          (ido-enable-flex-matching
+           (if (boundp 'ido-enable-flex-matching)
+               ido-enable-flex-matching t))
+          name-and-pos symbol-names position)
+      (unless ido-mode
+        (ido-mode 1)
+        (setq ido-enable-flex-matching t))
+      (while (progn
+               (imenu--cleanup)
+               (setq imenu--index-alist nil)
+               (prelude-ido-goto-symbol (imenu--make-index-alist))
+               (setq selected-symbol
+                     (ido-completing-read "Symbol? " symbol-names))
+               (string= (car imenu--rescan-item) selected-symbol)))
+      (unless (and (boundp 'mark-active) mark-active)
+        (push-mark nil t nil))
+      (setq position (cdr (assoc selected-symbol name-and-pos)))
+      (cond
+       ((overlayp position)
+        (goto-char (overlay-start position)))
+       (t
+        (goto-char position)))
+      (recenter)))
+   ((listp symbol-list)
+    (dolist (symbol symbol-list)
+      (let (name position)
+        (cond
+         ((and (listp symbol) (imenu--subalist-p symbol))
+          (prelude-ido-goto-symbol symbol))
+         ((listp symbol)
+          (setq name (car symbol))
+          (setq position (cdr symbol)))
+         ((stringp symbol)
+          (setq name symbol)
+          (setq position
+                (get-text-property 1 'org-imenu-marker symbol))))
+        (unless (or (null position) (null name)
+                    (string= (car imenu--rescan-item) name))
+          (add-to-list 'symbol-names (substring-no-properties name))
+          (add-to-list 'name-and-pos (cons (substring-no-properties name) position))))))))
+
+(defun prelude-recompile-elc-on-save ()
+  "Recompile your elc when saving an elisp file."
+  (add-hook 'after-save-hook
+            (lambda ()
+              (when (file-exists-p (byte-compile-dest-file buffer-file-name))
+                (emacs-lisp-byte-compile)))
+            nil
+           t))
+
+(defun select-current-line ()
+  "Select the current line"
+  (interactive)
+  (beginning-of-line) ; move to end of line
+  (set-mark (line-end-position)))
+
+;; ;; Diese Funktion funktioniert leider nicht. Der Tramp Befehl wird nicht ausgeführt. Daher klappts so leider nicht 
+;; (defun djcb-find-file-as-root ()
+;;   "Like `ido-find-file, but automatically edit the file with
+;; root-privileges (using tramp/sudo), if the file is not writable
+;; by user."
+;;   (interactive)
+;;   (let ((file (ido-read-file-name "Edit as root: ")))
+;;     (unless (file-writable-p file)
+;;       (setq file (concat "/sudo:root@localhost:" file)))
+;;     (find-file file)))
+;; ;; or some other keybinding...
+;; (global-set-key (kbd "C-x F") 'djcb-find-file-as-root)

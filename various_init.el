@@ -1,3 +1,5 @@
+;;; various_init.el -- Putting a bunch of stuff here that found no other place yet
+
 ;smart operator
 (autoload 'smart-operator "smart-operator" "Start smart-operator" t)
 
@@ -8,9 +10,15 @@
 
 ;; Helm
 (require 'helm-config)
+(autoload 'helm-git "helm-git") 
+(autoload 'helm-company "helm-company") ;; Not necessary if using ELPA package
+(eval-after-load 'company
+  '(progn
+     (define-key company-mode-map (kbd "C-:") 'helm-company)
+     (define-key company-active-map (kbd "C-:") 'helm-company)))
 
 ;; git emacs
-(require 'git-emacs)
+;; (require 'git-emacs)
 
 ;;magit stuff related
 (eval-after-load 'diff-mode
@@ -18,6 +26,8 @@
      (set-face-foreground 'diff-added "green4")
      (set-face-foreground 'diff-removed "red3")))
 
+
+;;magit stuff : Git-Version Controll for emacs
 (eval-after-load 'magit
   '(progn
      (set-face-foreground 'magit-diff-add "green4")
@@ -27,9 +37,11 @@
   '(progn
      (setq magit-repo-dirs "~/.emacs.d")))
 
+
 ;; Pdf's aus emacs an evince weitergeben
 (require 'openwith)
 (openwith-mode t)
+;; These things are defined via emacs-customization. Works better that way
 ;;(setq openwith-associations '(("\\.pdf\\'" "evince" (file))))
 ;;(setq openwith-associations '(("\\.epub\\'" "calibre" (file))))
 
@@ -58,4 +70,3 @@
   t)
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ace-jump-buffer-20131221.759")
 (require 'ace-jump-buffer)
-
