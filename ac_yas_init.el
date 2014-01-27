@@ -7,33 +7,46 @@
 ;; (yas/set-ac-modes)
 
 ;; Versuchsweise hier mal statt auto-complete ein anderes completion-packet
-(add-hook 'after-init-hook 'global-company-mode)
-;; (diminish 'company-mode)
+;; (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'emacs-lisp-mode-hook 'company-mode)
 
-;; (require 'auto-complete)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-comlete/ac-dict")
-;; ;; (require 'auto-complete-config)
-;; ;; (ac-config-default)
-;; ;; ;; Ich will selber defnieren, wo ich auto-complete benutzen möchte und wo nicht. 
-;; ;; (setq global-auto-complete-mode nil)
-;; ;; (require 'auto-complete+)
-;; ;; (define-key ac-complete-mode-map [tab] 'ac-expand)
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-comlete/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
+;; Ich will selber defnieren, wo ich auto-complete benutzen möchte und wo nicht.
+(setq global-auto-complete-mode nil)
+;; (require 'auto-complete+)
+;; (define-key ac-complete-mode-map [tab] 'ac-expand)
 
-;; (set-default 'ac-sources
-;;              '(ac-source-dictionary
-;;                ac-source-words-in-buffer
-;;                ac-source-words-in-same-mode-buffers
-;;                ac-source-semantic
-;;                ac-source-yasnippet))
+(set-default 'ac-sources
+'(ac-source-dictionary
+ac-source-words-in-buffer
+ac-source-words-in-same-mode-buffers
+ac-source-semantic
+ac-source-yasnippet))
 
-;; (add-to-list 'ac-modes 'org-mode)
-;; (add-to-list 'ac-modes 'mu4e-compose-mode)
+(add-to-list 'ac-modes 'org-mode)
+(add-to-list 'ac-modes 'mu4e-compose-mode)
 
-;; (add-hook 'org-mode-hook 'auto-complete-mode)
-;; (add-hook 'mu4e-compose-mode 'auto-complete-mode)
+(add-hook 'org-mode-hook 'auto-complete-mode)
+(add-hook 'mu4e-compose-mode 'auto-complete-mode)
 
-;; ;; (global-auto-complete-mode t)
-;; (ac-flyspell-workaround)
+;; (global-auto-complete-mode t)
+(ac-flyspell-workaround)
+
+
+;; Das hier war ein Versuch, die Auto-complete-Config Datei zu überladen. Ich hätte gerne die genaue Funktion aufgerufen, allerdings einige Dinge einfach gestrichen. Laut Stackoverflow hätte das eigentlich auch gehen müssen, tut es aber nun doch nicht. 
+;; http://stackoverflow.com/questions/15717103/preferred-method-of-overriding-an-emacs-lisp-function
+
+;; (eval-after-load "auto-complete-config"
+;;  '(defun ac-config-default ()
+;;     (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
+;;     (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
+;;     (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+;;     (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
+;;     (add-hook 'css-mode-hook 'ac-css-mode-setup)
+;;     (add-hook 'auto-complete-mode-hook 'ac-common-setup)))
 
 
 ;; ;; Fixes für yasnippet und org, nach org-mode Anleitung 

@@ -1,4 +1,12 @@
+;; Just trying to work around an issue wiht zsh Shell in Emacs. 
+;; Try to switch back to bash during emacsc use. 
+(setq shell-file-name "/bin/bash")
+
 (require 'term)
+
+(defun shell ()
+  (interactive)
+  (visit-ansi-term ))
 
 (defun visit-ansi-term ()
   "If the current buffer is:
@@ -266,6 +274,48 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (beginning-of-line) ; move to end of line
   (set-mark (line-end-position)))
+
+
+;; convenien functions for setting up color themes easily
+(defun zb ()
+  (interactive)
+  (unless (package-installed-p 'zenburn-theme)
+    (package-install 'zenburn-theme))
+  (load-theme 'zenburn)
+  (set-face-background 'vertical-border "black")
+  (set-face-foreground 'vertical-border "black")
+  (require 'hl-line)
+  (set-face-background 'hl-line "gray17")
+  (eval-after-load 'magit
+    '(progn (set-face-background 'magit-item-highlight "black")
+            (set-face-background 'diff-refine-change "grey10")))
+  (set-face-foreground 'eshell-prompt "turquoise"))
+
+(defun mk ()
+  (interactive)
+  (unless (package-installed-p 'monokai-theme)
+    (package-install 'monokai-theme))
+  (load-theme 'monokai)
+  (set-face-background 'vertical-border "black")
+  (set-face-foreground 'vertical-border "black")
+  (require 'hl-line)
+  (set-face-foreground 'eshell-prompt "turquoise1")
+  (set-face-background 'hl-line "black")
+  (eval-after-load 'diff-mode
+    '(set-face-background 'diff-refine-change "gray18"))
+  (eval-after-load 'magit
+    '(set-face-background 'magit-item-highlight "black")))
+
+(defun db ()
+  (interactive)
+  (load-theme 'deeper-blue)
+  (set-face-background 'hl-line "dark slate gray")
+  (eval-after-load 'magit
+    '(progn (set-face-background 'magit-item-highlight "black"))))
+
+
+
+
 
 ;; ;; Diese Funktion funktioniert leider nicht. Der Tramp Befehl wird nicht ausgeführt. Daher klappts so leider nicht 
 ;; (defun djcb-find-file-as-root ()

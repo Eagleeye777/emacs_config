@@ -1,7 +1,6 @@
 ;c;  keybinds.el --- Setting up my custom binds here
 
 ;; moved from Better defaults
-
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -15,13 +14,17 @@
 
 ;; Smex Stuff
 (global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "M-X") 'helm-M-x)
 
 ;; All the F-Keys I Bind so far
 (global-set-key (kbd "<f2>") ' mu4e) 
+(global-set-key (kbd "<S-f2>") 'helm-mu)
+(global-set-key (kbd "<f5>") 'helm-do-grep)
 (global-set-key (kbd "<f6>") 'visit-ansi-term)
 (global-set-key (kbd "<f7>") ' magit-status)
 (global-set-key (kbd "<S-f7>") 'helm-git-find-files)
+(global-set-key (kbd "C-c o") 'helm-projectile)
 ;; don't know if I am happy with these. Might rebind 
 (global-set-key (kbd "M-<") ' prelude-google)
 (global-set-key (kbd "C-<") ' browse-url)
@@ -52,6 +55,8 @@
 (key-chord-define-global "ii" 'ace-jump-buffer)
 (key-chord-define-global "ui" 'ace-jump-line-mode)
 (key-chord-define-global "bb" 'helm-mini)
+(key-chord-define-global "fg" 'helm-find-files)
+
 (key-chord-define-global "öä" 'deft)
 (key-chord-define-global "cc" 'er/expand-region)
 (key-chord-define gnus-dired-mode-map "öä" 'gnus-dired-attach)
@@ -62,3 +67,16 @@
 (key-chord-define-global "öö" 'my_curly_braces)
 (key-chord-define-global "ää" 'my_square_braces)
 (key-chord-define-global "dd" 'select-current-line)
+
+
+;; ;; Okay, here are some possible rebinds, from standart commands that i might never use.
+
+;; C-k (kill-line)
+;; C-l (recenter-top-bottom)
+;; C-o  (open-line) 
+;; Undefined sofar
+
+;; C-,
+;; C-. 
+;; C-ä
+;; C-ü 

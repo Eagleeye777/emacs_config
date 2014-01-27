@@ -47,6 +47,12 @@
 (add-to-list 'ac-modes 'latex-mode)   ; make auto-complete aware of {{{latex-mode}}}
 (add-to-list 'ac-modes 'LaTex-mode)   ; make auto-complete aware of {{{latex-mode}}}
 
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/auto-complete-auctex")
+(require 'auto-complete-auctex)
+(ac-auctex-setup)
+
+
+
 (defun ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
   (setq ac-sources
      (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
