@@ -36,12 +36,13 @@
 
 ;;All the Ido Stuff 
 (load "~/.emacs.d/ido_init.el")
+
+;;All the Helm Stuff 
+(load "/home/sschaumburg/.emacs.d/helm_init.el")
+
 ;; Whatever is left still 
 (load "~/.emacs.d/various_init.el")
 
-(defun fun (args)
-  (interactive "P")
-  )
 ;;w3m Configurations
 (load "~/.emacs.d/w3m_init.el")
 

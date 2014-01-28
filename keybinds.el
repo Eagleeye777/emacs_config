@@ -7,7 +7,7 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
-
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ;; Undo-Tree Commands 
 (global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
 (global-set-key (kbd "M-z") 'redo) ; 【ALT+z】
@@ -18,6 +18,7 @@
 (global-set-key (kbd "M-X") 'helm-M-x)
 
 ;; All the F-Keys I Bind so far
+(global-set-key [C-f1] 'show-file-name) ; Immature Function so far, but anyhow
 (global-set-key (kbd "<f2>") ' mu4e) 
 (global-set-key (kbd "<S-f2>") 'helm-mu)
 (global-set-key (kbd "<f5>") 'helm-do-grep)
@@ -48,9 +49,13 @@
 ;; Binding a bunch of useful stuff for convenient acess. 
 (key-chord-define-global "cv" ' cua-mode) ; enable or Disable. Sometimes cua get's in the way, and has to be disabled quickly. 
 
-(key-chord-define-global  "dw" 'kill-buffer-and-window) ; Might need rebind.
+;; Muss UN2BEDINGT neu. Das tippe ich offensichtlich doch so häufig, dass ich mir dann immer die buffer kille, leider oft ohne save. Geht so nicht. 
+;; (key-chord-define-global  "dw" 'kill-buffer-and-window) 
 
 (key-chord-define-global "jk" 'ispell-word)
+
+(key-chord-define-global "vv" 'helm-show-kill-ring)
+
 (key-chord-define-global "uu" 'ace-jump-mode)
 (key-chord-define-global "ii" 'ace-jump-buffer)
 (key-chord-define-global "ui" 'ace-jump-line-mode)

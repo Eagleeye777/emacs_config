@@ -314,7 +314,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
     '(progn (set-face-background 'magit-item-highlight "black"))))
 
 
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name)))
 
+(global-set-key [C-f1] 'show-file-name) ; Or any other key you want
 
 
 ;; ;; Diese Funktion funktioniert leider nicht. Der Tramp Befehl wird nicht ausgeführt. Daher klappts so leider nicht 

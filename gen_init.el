@@ -68,12 +68,13 @@
 (defalias 'redo 'undo-tree-redo)
 
 ;; Browse kill ring settings
-(autoload 'browse-kill-ring"" "" t)
-(browse-kill-ring-default-keybindings) ;; use M-y for browsing and selecting from Killring
-(setq browse-kill-ring-highlight-current-entry t)
-(setq browse-kill-ring-no-duplicates t)
-(setq browse-kill-ring-display-duplicates nil)
-(setq browse-kill-ring-highlight-inserted-item nil)
+;; Turning these off in Favour of helm-kill ring stuff
+;; (autoload 'browse-kill-ring"" "" t)
+;; (browse-kill-ring-default-keybindings) ;; use M-y for browsing and selecting from Killring
+;; (setq browse-kill-ring-highlight-current-entry t)
+;; (setq browse-kill-ring-no-duplicates t)
+;; (setq browse-kill-ring-display-duplicates nil)
+;; (setq browse-kill-ring-highlight-inserted-item nil)
 
 
 

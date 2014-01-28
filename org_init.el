@@ -84,6 +84,7 @@
 
 (add-to-list 'deft-directories "~/Dropbox/org/egl_tutorium")
 (add-to-list 'deft-directories "~/Dropbox/org/")
+(add-to-list 'deft-directories "~/Dropbox/Staatsexamen/Hericks_Klausur")
 
 (setq deft-use-filename-as-title t)
 

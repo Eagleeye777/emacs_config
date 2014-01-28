@@ -30,7 +30,7 @@
          auto-complete+
          autopair
          bazaar
-         browse-kill-ring
+         ;; browse-kill-ring               ;Removed in favour of helms functionality
          deft
          diminish         
          dired+
