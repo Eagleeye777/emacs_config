@@ -56,11 +56,6 @@
 (setq key-chord-two-keys-delay 0.15)
 (setq key-chord-one-key-delay 0.25)
  
-;;Jumping around in the buffers  
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quick move minor mode"
-  t)
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ace-jump-buffer-20131221.759")
-(require 'ace-jump-buffer)
+;;fixing open-with attachemnt trouble Here
+(require 'mm-util)
+(add-to-list 'mm-inhibit-file-name-handlers 'openwith-file-handler)  

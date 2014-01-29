@@ -43,6 +43,7 @@
 (require 'workgroups)
 (diminish 'workgroups-mode)
 (setq wg-prefix-key (kbd "C-c w"))
+(setq wg-morph-on nil)
 (workgroups-mode 1)
 (wg-load "~/wg") ;Hier werden meine normalen Workgroups geladen
 

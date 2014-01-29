@@ -36,6 +36,9 @@
   "Samuel Schaumburg\n"
   "Steinweg 12 , 35037 Marburg\n"))
 
+;; hopefully fixing the signature bug here
+(setq mu4e-compose-signature message-signature)
+
 ;; sending mail -- replace USERNAME with your gmail username
 ;; also, make sure the gnutls command line utils are installed
 ;; package 'gnutls-bin' in Debian/Ubuntu

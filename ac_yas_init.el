@@ -6,16 +6,13 @@
 (diminish 'yas-minor-mode)
 ;; (yas/set-ac-modes)
 
-;; Versuchsweise hier mal statt auto-complete ein anderes completion-packet
-;; (add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'emacs-lisp-mode-hook 'company-mode)
 
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-comlete/ac-dict")
+
 (require 'auto-complete-config)
 (ac-config-default)
-;; Ich will selber defnieren, wo ich auto-complete benutzen möchte und wo nicht.
-(setq global-auto-complete-mode nil)
+
 ;; (require 'auto-complete+)
 ;; (define-key ac-complete-mode-map [tab] 'ac-expand)
 
@@ -26,13 +23,6 @@ ac-source-words-in-same-mode-buffers
 ac-source-semantic
 ac-source-yasnippet))
 
-(add-to-list 'ac-modes 'org-mode)
-(add-to-list 'ac-modes 'mu4e-compose-mode)
-
-(add-hook 'org-mode-hook 'auto-complete-mode)
-(add-hook 'mu4e-compose-mode 'auto-complete-mode)
-
-;; (global-auto-complete-mode t)
 (ac-flyspell-workaround)
 
 

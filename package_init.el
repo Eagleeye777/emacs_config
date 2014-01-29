@@ -26,8 +26,8 @@
          ace-jump-mode              
          ac-math    
          anzu    
-         auto-complete
-         auto-complete+
+         ;; auto-complete
+         ;; auto-complete+
          autopair
          bazaar
          ;; browse-kill-ring               ;Removed in favour of helms functionality
@@ -73,9 +73,10 @@
 
 (defvar my-elpa-packages
   '(
+    auto-complete
     ace-jump-buffer
-    company
-    helm-company
+    ac-helm
+    helm-orgcard
     helm-git
     helm-projectile
     projectile

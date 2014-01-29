@@ -7,9 +7,10 @@
 ;; !!!! Do this one first, so everything is already on the load path
 ;; Setting up the load-path for all custom packages, that I cannot get from any package Manager (yet!!!))
 
+
+;; Few things I cannot get anywhere via packages. These go here 
 (add-to-list 'load-path "~/.emacs.d/custom/")
 
-(defvar flx-ido-mode nil)
 (setq gnutls-min-prime-bits '"1024")
 
 ;; el get und Package repos
@@ -18,11 +19,11 @@
 ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.el")
 
+;; Winner Mode configuration, esp. to work better with helm
+(load "/home/sschaumburg/.emacs.d/winner_init.el")
+
 ;; Display Settings
 (load "~/.emacs.d/layout_init.el")
-
-;; Alles zur Buffer Navigation 
-;; (load "~/.emacs.d/buffer_navigation.el")
 
 ; setting up org mode and deft(extern File)
 (load "~/.emacs.d/org_init.el" )

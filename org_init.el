@@ -23,7 +23,9 @@
 (setq org-replace-disputed-keys t) ;; Damit Windmove und Cua Funktionieren
 (setq org-use-speed-commands t)
 (setq org-hide-leading-stars 'hidestars)
+(setq org-indent-mode t)
 
+;; (setq org-start)
 ;; deutscher Kalender:
 (setq calendar-week-start-day 1
       calendar-day-name-array
@@ -46,30 +48,33 @@
 ;; Eigene Workflow States definieren 
 (setq org-todo-keywords
       '((sequence "TODO" "STARTED" "|" "FROZEN" "DONE" "DELEGATED")))
-;;here was hin
 
 ;; Eigene Tag Liste
-(setq org-tag-alist '(("privat") ("uni")("Computer")("Linux") ("Someday")))
+(setq org-tag-alist '(("privat") ("uni")("computer")("linux") ("someday")))
 
 ;; Drawers und log
 (setq org-drawers '("PROPERTIES" "CLOCK" "LOGBOOK" "RESULTS" "NOTES"))
 (setq org-log-into-drawer t)
 (setq org-log-done 'time)
+(setq org-export-with-smart-quotes t)
 
-;; Setting up Org Keybindings 
-
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-(define-key global-map "\C-cc" 'org-capture)
-(define-key global-map (kbd "<f9>") 'org-capture)
 
 ;; Templates für Capture definieren
-(setq org-capture-templates 
-        '(("t" "TODO" entry (file+headline "~/Dropbox/org/default.org" "Todos") "* TODO %? \nErstellt am %U\n" :empty-lines 1) 
-          ("n" "Notes" entry (file "~/Dropbox/org/notes.org") "* %?  \nErstellt am %U \n%A" :empty-lines 1 ) 
-          ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org") "* %?  Erstellt am %U\n" :empty-lines 1)
-          ("i" "Inbox" entry (file+headline  "~/Dropbox/org/default.org" "Inbox" ) "** %?  \nErstellt am %U\n" :empty-lines 1)
+(setq org-capture-templates
+      '(
+        ("t" "TODO" entry (file+headline "~/Dropbox/org/default.org" "Todos") "* TODO %? \n:PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
+
+        ("n" "Notes" entry (file "~/Dropbox/org/notes.org") "* %?  \n :PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
+
+        ("e" "Emacs-Blog" entry (file+headline "~/Dropbox/org/notes/emacs.org" "Emacs-Blog") 
+         "* %?\n :PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
+
+        ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org") "* %? \n
+\n :PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
+
+
+
+        ("i" "Inbox" entry (file+headline  "~/Dropbox/org/default.org" "Inbox" ) "** %?  \nErstellt am %U\n" :empty-lines 1)
 ))
 
 

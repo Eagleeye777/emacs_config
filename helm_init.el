@@ -6,14 +6,17 @@
 
 (require 'helm-git)  ;; 
 
-(autoload 'helm-company "helm-company") ;; Not necessary if using ELPA package
-(eval-after-load 'company
-  '(progn
-     (define-key company-mode-map (kbd "C-:") 'helm-company)
-     (define-key company-active-map (kbd "C-:") 'helm-company))
-) ;; Helm completion mit Company-backend
 
 (autoload 'helm-mu "helm-mu" "" t)
 (autoload 'helm-mu-contacts "helm-mu" "" t)
 
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/helm-orgcard-20130608.430")
+
 (require 'helm-orgcard)
+
+(key-chord-define emacs-lisp-mode-map "qq" 'helm-imenu)
+(key-chord-define org-mode-map "qq" 'helm-org-headlines)
+
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ac-helm-20131224.647")
+
+(require 'ac-helm)

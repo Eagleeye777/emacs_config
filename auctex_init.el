@@ -61,7 +61,7 @@
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)
 
-(add-hook 'LaTeX-mode-hook '(setq TeX-command-default "LaTeX"))
+;; (add-hook 'LaTeX-mode-hook '(setq TeX-command-default "LaTeX"))
 
 ;; set XeTeX mode in TeX/LaTeX
 (add-hook 'LaTeX-mode-hook 
