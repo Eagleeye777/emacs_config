@@ -17,30 +17,14 @@
 (setq sentence-end "[.?!][]\"')}]*\\($\\| \\| \\)[
 ;;]*") ;; Da ist ein "Newline in der Zeile!"
 (setq sentence-end-double-space nil)
-;;direkte Rechtschreib Korrektur:
-;;(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-;; Nur benutzen falls Auctex > 11.81 mit preview-latex:
 (load "preview-latex.el" nil t t)
-;; aspell ist besser als ispell.
-;; Zeile kommentieren, falls nicht installiert:
 
-
-;; MIGRIERT NACH various_init.el
-
-
-;;(setq-default ispell-program-name "aspell")
-;; Deutsche Rechtschreibung falls \usepackage{ngerman}
-;; oder german benutzt wird
 (add-hook 'TeX-language-de-hook
 (function (lambda () (ispell-change-dictionary "german8"))))
+
 ;; stellt das Ausblenden von Befehlen für Latex zur Verfügung
 (add-hook 'TeX-mode-hook (lambda ()
                              (TeX-fold-mode 1)))
-
-
-;; ac.math hinzufügen   ac.math ist ein Code-completion feature für Latex, dass die auto-complete sources erweitert. 
-
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/ac-math/") ;;Der Pfad muss ggf. entsprechend angepasst werden. 
 
 (require 'ac-math)
 
@@ -51,8 +35,6 @@
 (require 'auto-complete-auctex)
 (ac-auctex-setup)
 
-
-
 (defun ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
   (setq ac-sources
      (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
@@ -60,8 +42,6 @@
 
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)
-
-;; (add-hook 'LaTeX-mode-hook '(setq TeX-command-default "LaTeX"))
 
 ;; set XeTeX mode in TeX/LaTeX
 (add-hook 'LaTeX-mode-hook 

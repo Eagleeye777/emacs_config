@@ -17,7 +17,6 @@
       (goto-char (point-max))
       (eval-print-last-sexp))))
 
-
 ; list all packages I want to be installed automatically. Hopefully, after a fresh Install this will get everything I want
 
 (setq my-el-get-packages  
@@ -26,11 +25,8 @@
          ace-jump-mode              
          ac-math    
          anzu    
-         ;; auto-complete
-         ;; auto-complete+
          autopair
          bazaar
-         ;; browse-kill-ring               ;Removed in favour of helms functionality
          deft
          diminish         
          dired+
@@ -41,7 +37,6 @@
          flymake    
          git-emacs
          guru-mode
-         helm    
          ido-hacks         
          ido-ubiquitous    
          jedi    
@@ -60,8 +55,7 @@
          workgroups    
          yasnippet
          yasnippet-config
-         zenburn-theme
-             
+         zenburn-theme           
          ))) 
 
 ;; Call to get everything installed
@@ -70,9 +64,10 @@
 
 
 ;; Same thing here for package-Packages. Some stuff I cannot get via el-get. Those are collected here. (most of those are from Melpa rep)
-
+;; Unfortunately, it is buggy from here. This stuff just does not work yet. I leave it defined, but do not call it. 
 (defvar my-elpa-packages
   '(
+    helm    
     auto-complete
     ace-jump-buffer
     ac-helm
@@ -109,6 +104,7 @@ Missing packages are installed automatically."
     (message "%s" " done.")
     ;; install the missing packages
     (my-require-packages my-elpa-packages)))
+
 ;; Comment this out, in order to get elpa packages after a fresh install. Does not work, if packages are already insatlled. Configuration breaks then. 
 ;; Reason: dunno yet
 ;; (my-install-packages)

@@ -1,5 +1,11 @@
 ;c;  keybinds.el --- Setting up my custom binds here
 
+
+;; Unsets
+
+;; Unbind menu. Will be new modier for some commands maybe
+(global-unset-key (kbd" <menu>"))
+
 ;; moved from Better defaults
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -55,6 +61,8 @@
 ;; Python related Bindings.
 (define-key python-mode-map (kbd "C-x ö") 'py-execute-region)
 
+
+
 ;;  Key-Chords bindings. 
 ;; Binding a bunch of useful stuff for convenient acess. 
 (key-chord-define-global "cv" ' cua-mode) ; enable or Disable. Sometimes cua get's in the way, and has to be disabled quickly. 
@@ -89,7 +97,7 @@
 (key-chord-define-global "öö" 'my_curly_braces)
 (key-chord-define-global "ää" 'my_square_braces)
 (key-chord-define-global "dd" 'select-current-line)
-
+(key-chord-define org-mode-map "ww" 'org-todo)
 
 ;; ;; Okay, here are some possible rebinds, from standart commands that i might never use.
 

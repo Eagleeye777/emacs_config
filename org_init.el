@@ -1,11 +1,19 @@
-
 ;; ;Setting up org-Mode here
+
+(setq org-support-shift-select t)
+(setq org-replace-disputed-keys t) ;; Damit Windmove und Cua Funktionieren
+
+;; Very important: With org-mode >V. 7 use ox-latex here, not org-latex as before
+
 ;; deutsch as export language
 (setq org-export-default-language "de")
+
+;; for German Quotes, during latex-export
+(setq org-export-with-smart-quotes t)
+
 ;; My org files (Setting up the enviroment)
 (setq org-directory (expand-file-name (file-name-as-directory "~/Dropbox/org")))
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 ;; Files for mobile-org (Handy-Export)
@@ -19,14 +27,10 @@
 (add-hook 'org-mode-hook 'flyspell-mode)
 (setq org-completion-use-ido t)
 (setq org-return-follows-link t)
-(setq org-support-shift-select t)
-(setq org-replace-disputed-keys t) ;; Damit Windmove und Cua Funktionieren
 (setq org-use-speed-commands t)
 (setq org-hide-leading-stars 'hidestars)
-(setq org-indent-mode t)
 
-;; (setq org-start)
-;; deutscher Kalender:
+;; Calender Customization for german:
 (setq calendar-week-start-day 1
       calendar-day-name-array
         ["Sonntag" "Montag" "Dienstag" "Mittwoch"
@@ -36,30 +40,32 @@
          "Juni" "Juli" "August" "September"
          "Oktober" "November" "Dezember"])
 
-;;(setq org-outline-path-complete-in-steps nil)
 
 ;; Setting up Agenda Files
 (setq org-agenda-files (list "~/Dropbox/org/" "~/Dropbox/org/notes"))
 
-;; Das hier ist fürs refiling 
+;; Setting up refiling stuff
 (setq org-refile-use-outline-path 'file)
 (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 3) (nil :maxlevel . 3))))
 
-;; Eigene Workflow States definieren 
+;; Define Workflow states   
 (setq org-todo-keywords
-      '((sequence "TODO" "STARTED" "|" "FROZEN" "DONE" "DELEGATED")))
+      '((sequence "TODO(t)" "STARTED(s)" "|" "FROZEN(f@)" "DONE(d@)")))
 
-;; Eigene Tag Liste
-(setq org-tag-alist '(("privat") ("uni")("computer")("linux") ("someday")))
+;; Custom Tag Liste
+(setq org-tag-alist '(("privat" . ?p)
+                      ("uni" . ?u)
+                      ("org" . ?o)
+                      ("emacs" . ?e)
+                      ("linux" .?l)
+                      ("someday" . ?s)))
 
-;; Drawers und log
+;; Drawers and logging stuff
 (setq org-drawers '("PROPERTIES" "CLOCK" "LOGBOOK" "RESULTS" "NOTES"))
 (setq org-log-into-drawer t)
-(setq org-log-done 'time)
-(setq org-export-with-smart-quotes t)
+(setq org-log-done 'note)
 
-
-;; Templates für Capture definieren
+;; Templates for Org-capture
 (setq org-capture-templates
       '(
         ("t" "TODO" entry (file+headline "~/Dropbox/org/default.org" "Todos") "* TODO %? \n:PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
@@ -72,114 +78,33 @@
         ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org") "* %? \n
 \n :PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
 
-
-
         ("i" "Inbox" entry (file+headline  "~/Dropbox/org/default.org" "Inbox" ) "** %?  \nErstellt am %U\n" :empty-lines 1)
 ))
 
 
 
-;setting up Deft (Notiz-Verwaltung, in Kombination mit Org-Mode)
-(add-to-list 'load-path "~/.emacs.d/deft-multidir")
+;setting up Deft for convenient notes view and search 
+
 (require 'deft)
 (setq deft-extension "org")
 (setq deft-text-mode 'org-mode)
 (setq deft-directories
        '("~/Dropbox/org/notes"))
-
 (add-to-list 'deft-directories "~/Dropbox/org/egl_tutorium")
 (add-to-list 'deft-directories "~/Dropbox/org/")
 (add-to-list 'deft-directories "~/Dropbox/Staatsexamen/Hericks_Klausur")
-
 (setq deft-use-filename-as-title t)
 
-(require 'org)
-(require 'org-latex)
-
-(add-to-list 'org-export-latex-classes
-  '("djcb-org-article"
-"\\documentclass[11pt,a4paper]{article}
-\\usepackage[T1]{fontenc}
-\\usepackage{fontspec}
-\\usepackage{graphicx} 
-\\defaultfontfeatures{Mapping=tex-text}
-\\setromanfont{Gentium}
-\\setromanfont [BoldFont={Gentium Basic Bold},
-                ItalicFont={Gentium Basic Italic}]{Gentium Basic}
-\\setsansfont{Charis SIL}
-\\setmonofont[Scale=0.8]{DejaVu Sans Mono}
-\\usepackage{geometry}
-\\geometry{a4paper, textwidth=6.5in, textheight=10in,
-            marginparsep=7pt, marginparwidth=.6in}
-\\pagestyle{empty}
-\\title{}
-      [NO-DEFAULT-PACKAGES]
-      [NO-PACKAGES]"
-     ("\\section{%s}" . "\\section*{%s}")
-     ("\\subsection{%s}" . "\\subsection*{%s}")
-     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-     ("\\paragraph{%s}" . "\\paragraph*{%s}")
-     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-
-(add-to-list 'org-export-latex-classes
-  '("samuel-default"
-"\\documentclass{scrartcl}  % Eine Klasse für beidseitige Texte mit Kapiteln 
-             %
- %%%%%%%%%%%%% Unverzichtbare Pakte
- \\usepackage[T1]{fontenc}% fontenc und inputenc ermöglichen
- \\usepackage[utf8]{inputenc}% Silbentrennung und
-                              % Eingabe von Umlauten.
-
- \\usepackage{% Man kann auch mehrere Pakete ohne Optionen
-             % in einen \\usepackage-Befehl packen.
-   babel,    % Babel für diverse Sprachanpassungen
-   fixltx2e  % Verbessert einige Kernkompetenzen von LaTeX2e
- }
-             %
- %%%%%%%%%%%%% Typografisch empfehlenswerte Pakete
- \\usepackage{% 
-   ellipsis, % Korrigiert den Weißraum um Auslassungspunkte
-   ragged2e, % Ermöglicht Flattersatz mit Silbentrennung
-  marginnote,% Für bessere Randnotizen mit \\marginnote statt
-             % \marginline
- }
- 
-\\usepackage[tracking=true]{microtype}%
-             % Microtype ist einfach super, aber lesen Sie
-             % unbedingt die Anleitung um das Folgende zu
-             % verstehen.
-\\DeclareMicrotypeSet*[tracking]{my}% 
-   { font = */*/*/sc/* }% 
-\\SetTracking{ encoding = *, shape = sc }{ 45 }%
-\\usepackage{paralist}
-
-\\usepackage{ dejavu }
-\\usepackage[ left=2.5cm, right=4cm, top=2cm, bottom=2.3cm]{geometry} % Fürdie Einstellungen der Seitenränder
-\\usepackage{setspace} \\onehalfspacing % für Zeilenabstand                   
-\\setlength{\\parskip}{6pt} 
-\\usepackage{url}
-\\urlstyle{rm}
-\\usepackage{titlesec}
-%Fußnotenformatierung (Koma-Skript)
-\\setkomafont{footnote}{\\rmfamily}
-\\deffootnote[1em]{1em}{1em}{
-\\makebox[1.5em][l]{\\textsuperscript{\\thefootnotemark}}}
-\\usepackage{tabularx}
-\\title{}
-      [NO-DEFAULT-PACKAGES]
-      [NO-PACKAGES]"
-     ("\\section{%s}" . "\\section*{%s}")
-     ("\\subsection{%s}" . "\\subsection*{%s}")
-     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-     ("\\paragraph{%s}" . "\\paragraph*{%s}")
-     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-(setq org-latex-to-pdf-process 
-  '("latex -interaction nonstopmode %f"
-     "latex -interaction nonstopmode %f")) ;; for multiple passes
+;; In this file I define custom Latex-classes for export 
+(load "~/.emacs.d/org_latex.el")
 
 ;; org_init.el ends here
+
+
+;; (setq org-latex-to-pdf-process 
+;;   '("latex -interaction nonstopmode %f"
+;;      "latex -interaction nonstopmode %f")) ;; for multiple passes
+
 
 ;; ;;; Versuchter Kalenderexport. Das ganze schlägt momentan aber fehl 
 ;; ;;; Hier die Anleitung http://orgmode.org/worg/org-tutorials/org-google-sync.html

@@ -34,13 +34,11 @@
 (require 'saveplace)
 (setq-default save-place t))
 
-
-;;powerline status bar
+;;powerline status bar settings
 (require 'powerline)
 (powerline-center-theme)
 
 ;; anzu-mode enhances isearch by showing total matches and current match position
-
 (require 'anzu)
 (global-anzu-mode +1)
 (diminish 'anzu-mode)

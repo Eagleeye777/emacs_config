@@ -1,19 +1,16 @@
 ;; Loading expand Region here
 (autoload 'expand-region "" "" t)
 
-
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; disable beeping
 (setq visible-bell t)
 
-;Der cua Mode 
+;Use cua Mode 
 (cua-mode t)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
-
-;; Cosmetics
 
 ;;moved from better defaults package
   (show-paren-mode 1)
@@ -26,10 +23,8 @@
         save-place-file (concat user-emacs-directory "places")
         backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                  "backups"))))
-
-
+;; Keep mode line tidy
 (autoload 'diminish "" "" t)
-;; (require 'diminish)
 
 ;Windcycle (für Buffer Navigation)
 
@@ -57,8 +52,6 @@
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ace-jump-buffer-20131221.759")
 (require 'ace-jump-buffer)
 
-
-
 ;; Setting up undo-tree
 (require'undo-tree)
 (global-undo-tree-mode 1)
@@ -68,18 +61,7 @@
 (defalias 'undo 'undo-tree-undo)
 (defalias 'redo 'undo-tree-redo)
 
-;; Browse kill ring settings
-;; Turning these off in Favour of helm-kill ring stuff
-;; (autoload 'browse-kill-ring"" "" t)
-;; (browse-kill-ring-default-keybindings) ;; use M-y for browsing and selecting from Killring
-;; (setq browse-kill-ring-highlight-current-entry t)
-;; (setq browse-kill-ring-no-duplicates t)
-;; (setq browse-kill-ring-display-duplicates nil)
-;; (setq browse-kill-ring-highlight-inserted-item nil)
-
-
-
-;; few dired-fixes
+;; few dired-fixes 
 (add-hook 'dired-load-hook
           (function (lambda () (load "dired-x"))))
 

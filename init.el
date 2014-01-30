@@ -1,19 +1,23 @@
-;; disable comments to compile once in a while
-;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
-
 ;;.emacs configuration File
 ;; Loading all the various init files here
 
-;; !!!! Do this one first, so everything is already on the load path
-;; Setting up the load-path for all custom packages, that I cannot get from any package Manager (yet!!!))
 
+
+;; disable comments to compile once in a while
+;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+
+;; Fixing a gnutls error warning and raising sercurity level of tls encyption
+(setq gnutls-min-prime-bits '"1024")
+
+;; !!!! Do this one first, so everything is already on the load path
 
 ;; Few things I cannot get anywhere via packages. These go here 
 (add-to-list 'load-path "~/.emacs.d/custom/")
 
-(setq gnutls-min-prime-bits '"1024")
+;; Setting up the org load path asap here, to avoid things mixing up
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/org-20140127")
 
-;; el get und Package repos
+;; Set up el get und Package repos and install packages if not there (buggy on the elpa side)
 (load "~/.emacs.d/package_init.el")
 
 ;; Allgemeine grundlegende Einstellungen
@@ -53,19 +57,16 @@
 ;; autocomplete and yasnippet
 (load "~/.emacs.d/ac_yas_init.el")
 
-;3; Python Stuff
+;; Python Stuff
 (load "~/.emacs.d/python_init.el")
 
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
 
-;;(add-hook 'after-init-hook 'zb)
-
-;; Fixing a gnutls error warning and raising sercurity level of tls encyption
-
-(load-theme 'zenburn t)
-;;garbagee 3collection
+;; garbage collection settings
 (setq gc-cons-threshold 50000000)
+
+;; why is this here???
 (diminish 'auto-revert-mode)
 
 (custom-set-variables
@@ -90,4 +91,3 @@
  ;; If there is more than one, they won't work right.
  ;; '(mode-line ((t (:background "#5c888b" :foreground "#f0dfaf" :box (:line-width 2 :color "#1e2320"))))))
 )
-;;Projectile (Mal schaun, ob mir das wirklich was nutzt und ich damit warm werde. Bisher habe ichs noch nicht wirklich raus. )
