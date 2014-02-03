@@ -64,7 +64,7 @@
 ;; These might get in the way. Maybe I have to figure out something differnt. Can't use  normal bindings though, because they are terribly inconvenient with german keyboard layout. 
 
 ;; Python related Bindings.
-(define-key python-mode-map (kbd "C-x ö") 'py-execute-region)
+;; (define-key python-mode-map (kbd "C-x ö") 'py-execute-region)
 
 
 

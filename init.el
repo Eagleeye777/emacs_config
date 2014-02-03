@@ -7,7 +7,7 @@
 
 ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.el")
-d
+
 ;; Display Settings
 (load "~/.emacs.d/layout_init.el")
 
