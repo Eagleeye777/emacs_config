@@ -34,6 +34,8 @@
 ;; autocomplete and yasnippet
 (load "~/.emacs.d/ac_yas_init.el")
 
+
+;; Adding some Bullshit here
 ; setting up org mode and deft(extern File)
 (load "~/.emacs.d/org_init.el" )
 
