@@ -5,6 +5,9 @@
 
 ;; !!!! Do this one first, so everything is already on the load path
 
+;; Set up el get und Package repos and install packages if not there (buggy on the elpa side)
+(load "~/.emacs.d/package_init.el")
+
 ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.el")
 
