@@ -3,6 +3,9 @@
 (setq org-support-shift-select t)
 (setq org-replace-disputed-keys t) ;; Damit Windmove und Cua Funktionieren
 
+;; Buffer completion during writing (got rid of autocomplete in favour of company)
+
+(add-hook 'org-mode-hook (lambda () (company-mode)))
 ;; Very important: With org-mode >V. 7 use ox-latex here, not org-latex as before
 
 ;; deutsch as export language
@@ -22,7 +25,7 @@
 (setq org-mobile-inbox-for-pull (expand-file-name "from-mobile.org" org-directory))
 
 ;; org mode General Settings
-(add-hook 'org-mode-hook 'turn-on-font-lock) 
+(add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'text-mode-hook 'turn-on-auto-fill) ; automatische Zeilenumbrüche
 (add-hook 'org-mode-hook 'flyspell-mode)
 (setq org-completion-use-ido t)
@@ -48,7 +51,7 @@
 (setq org-refile-use-outline-path 'file)
 (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 3) (nil :maxlevel . 3))))
 
-;; Define Workflow states   
+;; Define Workflow states
 (setq org-todo-keywords
       '((sequence "TODO(t)" "STARTED(s)" "|" "FROZEN(f@)" "DONE(d@)")))
 
@@ -72,7 +75,7 @@
 
         ("n" "Notes" entry (file "~/Dropbox/org/notes.org") "* %?  \n :PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
 
-        ("e" "Emacs-Blog" entry (file+headline "~/Dropbox/org/notes/emacs.org" "Emacs-Blog") 
+        ("e" "Emacs-Blog" entry (file+headline "~/Dropbox/org/notes/emacs.org" "Emacs-Blog")
          "* %?\n :PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
 
         ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org") "* %? \n
@@ -83,7 +86,7 @@
 
 
 
-;setting up Deft for convenient notes view and search 
+;setting up Deft for convenient notes view and search
 
 (require 'deft)
 (setq deft-extension "org")
@@ -95,18 +98,18 @@
 (add-to-list 'deft-directories "~/Dropbox/Staatsexamen/Hericks_Klausur")
 (setq deft-use-filename-as-title t)
 
-;; In this file I define custom Latex-classes for export 
+;; In this file I define custom Latex-classes for export
 (load "~/.emacs.d/org_latex.el")
 
 ;; org_init.el ends here
 
 
-;; (setq org-latex-to-pdf-process 
+;; (setq org-latex-to-pdf-process
 ;;   '("latex -interaction nonstopmode %f"
 ;;      "latex -interaction nonstopmode %f")) ;; for multiple passes
 
 
-;; ;;; Versuchter Kalenderexport. Das ganze schlägt momentan aber fehl 
+;; ;;; Versuchter Kalenderexport. Das ganze schlägt momentan aber fehl
 ;; ;;; Hier die Anleitung http://orgmode.org/worg/org-tutorials/org-google-sync.html
 
 

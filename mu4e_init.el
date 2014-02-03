@@ -73,8 +73,10 @@
 
 ;; allowing attachements with dired
 (require 'gnus-dired)
+
 ;; make the `gnus-dired-mail-buffers' function also work on
 ;; message-mode derived modes, such as mu4e-compose-mode
+
 (defun gnus-dired-mail-buffers ()
   "Return a list of active message buffers."
   (let (buffers)

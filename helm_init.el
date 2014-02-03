@@ -3,10 +3,10 @@
 
 (require 'helm-config)
 (helm-mode)
+(diminish 'helm-mode)
 (add-to-list 'load-path "~/.emacs.d/el-get/package/elpa/helm-git-20120630.1403")
-
-(require 'helm-git)  ;; 
-
+(setq  helm-always-two-windows t)
+(require 'helm-git)  ;;
 
 (autoload 'helm-mu "helm-mu" "" t)
 (autoload 'helm-mu-contacts "helm-mu" "" t)

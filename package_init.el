@@ -19,55 +19,56 @@
 
 ; list all packages I want to be installed automatically. Hopefully, after a fresh Install this will get everything I want
 
-(setq my-el-get-packages  
-      (append  
+(setq my-el-get-packages
+      (append
        '(
-         ace-jump-mode              
-         ac-math    
-         anzu    
+         ace-jump-mode
+         ac-math
+         anzu
          autopair
          bazaar
          deft
-         diminish         
+         diminish
          dired+
          emacs-w3m
-         expand-region    
+         expand-region
          flx
          flycheck
-         flymake    
+         flymake
          git-emacs
          guru-mode
-         ido-hacks         
-         ido-ubiquitous    
-         jedi    
-         key-chord    
-         magit    
-         openwith    
-         powerline    
+         ido-hacks
+         ido-ubiquitous
+         jedi
+         key-chord
+         magit
+         openwith
+         powerline
          pydoc-info
-         python-mode    
-         smart-operator    
+         python-mode
+         smart-operator
          smex
-         twittering-mode    
+         twittering-mode
          undo-tree
-         volatile-highlights    
-         windcycle    
-         workgroups    
+         volatile-highlights
+         windcycle
+         workgroups
+         whitespace
          yasnippet
          yasnippet-config
-         zenburn-theme           
-         ))) 
+         zenburn-theme
+         )))
 
 ;; Call to get everything installed
-(el-get 'sync my-el-get-packages)  
-(el-get 'sync) 
+(el-get 'sync my-el-get-packages)
+(el-get 'sync)
 
 
 ;; Same thing here for package-Packages. Some stuff I cannot get via el-get. Those are collected here. (most of those are from Melpa rep)
-;; Unfortunately, it is buggy from here. This stuff just does not work yet. I leave it defined, but do not call it. 
+;; Unfortunately, it is buggy from here. This stuff just does not work yet. I leave it defined, but do not call it.
 (defvar my-elpa-packages
   '(
-    helm    
+    helm
     auto-complete
     ace-jump-buffer
     ac-helm
@@ -105,6 +106,6 @@ Missing packages are installed automatically."
     ;; install the missing packages
     (my-require-packages my-elpa-packages)))
 
-;; Comment this out, in order to get elpa packages after a fresh install. Does not work, if packages are already insatlled. Configuration breaks then. 
+;; Comment this out, in order to get elpa packages after a fresh install. Does not work, if packages are already insatlled. Configuration breaks then.
 ;; Reason: dunno yet
 ;; (my-install-packages)

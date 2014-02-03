@@ -22,9 +22,9 @@
 (add-hook 'python-mode-hook
          (lambda ()
          (jedi:setup)
-         (jedi:ac-setup)                  
+         (jedi:ac-setup)
             ))
-
+(add-hook 'python-mode-hook 'whitespace-mode)
 ;; ;; ; switch to the interpreter after executing code
 ;; ;; (setq py-shell-switch-buffers-on-execute-p t)
 ;; ;; (setq py-switch-buffers-on-execute-p t)

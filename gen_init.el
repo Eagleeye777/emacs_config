@@ -7,7 +7,7 @@
 ;; disable beeping
 (setq visible-bell t)
 
-;Use cua Mode 
+;Use cua Mode
 (cua-mode t)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
@@ -42,7 +42,7 @@
 (workgroups-mode 1)
 (wg-load "~/wg") ;Hier werden meine normalen Workgroups geladen
 
-;;Jumping around in the buffers  
+;;Jumping around in the buffers
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -61,7 +61,7 @@
 (defalias 'undo 'undo-tree-undo)
 (defalias 'redo 'undo-tree-redo)
 
-;; few dired-fixes 
+;; few dired-fixes
 (add-hook 'dired-load-hook
           (function (lambda () (load "dired-x"))))
 
@@ -72,9 +72,12 @@
 (autopair-global-mode) ;; to enable in all buffers
 (diminish 'autopair-mode)
 
-;; Fixing keybindings for term mode 
+;; Fixing keybindings for term mode
 ;; autopair overrides noraml keybindings and causes problems there
+
 (add-hook 'term-mode-hook
            '(lambda ()
              (setq autopair-dont-activate t)
              (autopair-mode -1)))
+;; Death to the whitespace :)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)

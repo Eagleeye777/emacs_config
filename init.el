@@ -1,7 +1,9 @@
 ;;.emacs configuration File
 ;; Loading all the various init files here
+;; New Tryout feature
 
-
+;; (require 'discover)
+;; (global-discover-mode 1)
 
 ;; disable comments to compile once in a while
 ;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
@@ -11,7 +13,7 @@
 
 ;; !!!! Do this one first, so everything is already on the load path
 
-;; Few things I cannot get anywhere via packages. These go here 
+;; Few things I cannot get anywhere via packages. These go here
 (add-to-list 'load-path "~/.emacs.d/custom/")
 
 ;; Setting up the org load path asap here, to avoid things mixing up
@@ -29,23 +31,23 @@
 ;; Display Settings
 (load "~/.emacs.d/layout_init.el")
 
+;; autocomplete and yasnippet
+(load "~/.emacs.d/ac_yas_init.el")
+
 ; setting up org mode and deft(extern File)
 (load "~/.emacs.d/org_init.el" )
 
-;; All E-Mail Settings for mu4e  
+;; Setting up the E-Mail Client (Mu4e)
 (load "/home/sschaumburg/.emacs.d/mu4e_init.el")
 (setq mail-user-agent 'mu4e-user-agent)
 
-; Custom Functions (All helper functions and whatever) 
+; Custom Functions (All helper functions and whatever)
 (load "/home/sschaumburg/.emacs.d/func_init.el")
 
-;;All the Ido Stuff 
+;;All the Ido Stuff
 (load "~/.emacs.d/ido_init.el")
 
-;;All the Helm Stuff 
-(load "/home/sschaumburg/.emacs.d/helm_init.el")
-
-;; Whatever is left still 
+;; Whatever is left still
 (load "~/.emacs.d/various_init.el")
 
 ;;w3m Configurations
@@ -54,8 +56,9 @@
 ;; auctex und ac.amath
 (load "~/.emacs.d/auctex_init.el")
 
-;; autocomplete and yasnippet
-(load "~/.emacs.d/ac_yas_init.el")
+;;All the Helm Stuff
+(load "/home/sschaumburg/.emacs.d/helm_init.el")
+
 
 ;; Python Stuff
 (load "~/.emacs.d/python_init.el")
