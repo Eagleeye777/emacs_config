@@ -10,7 +10,6 @@
 
 ;; moved from Better defaults
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
@@ -24,7 +23,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map (kbd "<f9>") 'org-capture)
-
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 
 
 ;; Undo-Tree Commands

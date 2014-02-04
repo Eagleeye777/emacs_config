@@ -15,7 +15,6 @@
 (require 'ac-dabbrev)
 (add-to-list 'ac-sources 'ac-source-dabbrev)
 
-
 (set-default 'ac-sources
 '(ac-source-dictionary
 ac-source-words-in-buffer
