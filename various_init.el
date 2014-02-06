@@ -53,9 +53,12 @@
 ;; Die eigentlichen Keybinds werden in keybinds.el definiert
 (require 'key-chord)
 (key-chord-mode 1)
-(setq key-chord-two-keys-delay 0.15)
+(setq key-chord-two-keys-delay 0.25)
 (setq key-chord-one-key-delay 0.25)
- 
+
 ;;fixing open-with attachemnt trouble Here
 (require 'mm-util)
-(add-to-list 'mm-inhibit-file-name-handlers 'openwith-file-handler)  
+(add-to-list 'mm-inhibit-file-name-handlers 'openwith-file-handler)
+
+(require 'sauron)
+(setq sauron-dbus-cookie t)

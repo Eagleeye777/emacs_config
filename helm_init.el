@@ -21,3 +21,7 @@
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ac-helm-20131224.647")
 
 (require 'ac-helm)
+
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/helm-c-yasnippet-20140131.226")
+(require 'helm-c-yasnippet)
+(setq helm-yas-space-match-any-greedy t) ;[default: nil]

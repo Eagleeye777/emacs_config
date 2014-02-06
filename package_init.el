@@ -68,14 +68,20 @@
 ;; Unfortunately, it is buggy from here. This stuff just does not work yet. I leave it defined, but do not call it.
 (defvar my-elpa-packages
   '(
-    helm
+
     auto-complete
     ace-jump-buffer
     ac-helm
+    company
+    discover
+    helm
+    helm-c-yasnippet
+    helm-helm-commands
     helm-orgcard
     helm-git
     helm-projectile
     projectile
+
     )
   "A list of packages to ensure are installed at launch.")
 

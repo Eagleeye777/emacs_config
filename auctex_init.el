@@ -4,12 +4,16 @@
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq TeX-PDF-mode t) ;; .pdf statt .dvi per default:
+
 ;;Zeilenumbruch
 (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+
 ;;Syntax Higlight
 (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
+
 ;; Mathe Modus
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
 ;; Reftex einflechten und laden
 (setq reftex-plug-into-AUCTeX t)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
@@ -17,6 +21,7 @@
 (setq sentence-end "[.?!][]\"')}]*\\($\\| \\| \\)[
 ;;]*") ;; Da ist ein "Newline in der Zeile!"
 (setq sentence-end-double-space nil)
+
 (load "preview-latex.el" nil t t)
 
 (add-hook 'TeX-language-de-hook
@@ -44,8 +49,7 @@
 (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)
 
 ;; set XeTeX mode in TeX/LaTeX
-(add-hook 'LaTeX-mode-hook 
+(add-hook 'LaTeX-mode-hook
           (lambda()
              (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
-             (setq TeX-save-query nil)
-             (setq TeX-show-compilation t)))
+             (setq TeX-save-query nil)))

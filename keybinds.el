@@ -62,46 +62,44 @@
 ;; Python related Bindings.
 (define-key python-mode-map (kbd "C-x ö") 'py-execute-region)
 
-
-
 ;;  Key-Chords bindings.
 ;; Binding a bunch of useful stuff for convenient acess.
 (key-chord-define-global "cv" ' cua-mode) ; enable or Disable. Sometimes cua get's in the way, and has to be disabled quickly.
+(key-chord-define-global "fv" ' my-helm-grep-recursive)
 
 ;; Muss UN2BEDINGT neu. Das tippe ich offensichtlich doch so häufig, dass ich mir dann immer die buffer kille, leider oft ohne save. Geht so nicht.
-(key-chord-define-global  "xx" 'kill-buffer-and-window)
+;; (key-chord-define-global  "xx" 'kill-buffer-and-window)
 
+;; (key-chord-define-global "oi" 'other-frame)
 (key-chord-define-global "jk" 'ispell-word)
 
 (key-chord-define-global "yy" 'helm-show-kill-ring)
 
 (key-chord-define-global "uu" 'ace-jump-mode)
-(key-chord-define-global "oo" 'ace-jump-buffer)
+;; (key-chord-define-global "oo" 'ace-jump-buffer)
 (key-chord-define-global "ii" 'ace-jump-line-mode)
 (key-chord-define-global "bb" 'helm-mini)
-(key-chord-define-global "fg" 'helm-find-files)
 
 (key-chord-define-global "öä" 'deft)
 (key-chord-define-global "cc" 'er/expand-region)
 (key-chord-define gnus-dired-mode-map "öä" 'gnus-dired-attach)
-(key-chord-define-global "rf" 'helm-recentf)
+;; So schade es ist, ich muss auf das Binding in dieser Form verzichten. Tippe ich im deutschen dann doch viel öfter als ich dachte, von daher keine optino in dieser Formy
+;; (key-chord-define-global "rf" 'helm-recentf)
 
 
 (key-chord-define-global ".." 'ac-complete-with-helm)
 (key-chord-define ac-mode-map ".." 'ac-complete-with-helm)
 
+(key-chord-define-global ",," 'helm-yas-complete)
 ;; Helm-Company
 (eval-after-load 'company
   '(progn
      (key-chord-define company-mode-map ".." 'helm-company)
-     (key-chord-define company-active-map ".." 'helm-company)
-     (define-key company-mode-map (kbd "C-:") 'helm-company)
-     (define-key company-active-map (kbd "C-:") 'helm-company)))
-
+     (key-chord-define company-active-map ".." 'helm-company)))
 
 
 ;; (key-chord-define-global "dd" 'delete-window) ;; Untauglich, das kommt beim schreiben doch immer wieder vor. Ersetzt durch das Default Binding
-
+(key-chord-define-global "zz" 'zap-to-char)
 (key-chord-define emacs-lisp-mode-map "qq" 'helm-imenu)
 (key-chord-define org-mode-map "qq" 'helm-org-headlines)
 (key-chord-define python-mode-map "qq" 'helm-imenu)
@@ -109,16 +107,15 @@
 (key-chord-define-global "jj" 'hippie-expand)
 (key-chord-define-global "öö" 'my_curly_braces)
 (key-chord-define-global "ää" 'my_square_braces)
-(key-chord-define-global "dd" 'select-current-line)
+(key-chord-define-global "ay" 'select-current-line)
 (key-chord-define org-mode-map "ww" 'org-todo)
-
+(key-chord-define-global "--" 'makey-key-mode-popup-rectangles)
 
 ;; ;; Okay, here are some possible rebinds, from standart commands that i might never use.
-
 ;; C-k (kill-line)
-;; C-l (recenter-top-bottom)
 ;; C-o  (open-line)
-;; Undefined sofar
+
+;; Undefined keybinds so far
 
 ;; C-,
 ;; C-.
@@ -126,7 +123,7 @@
 ;; C-ü
 
 ;; Possible keychords that are undefined:
-
+;; qw
 ;; hh
 ;; zz
 ;; nn

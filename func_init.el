@@ -340,3 +340,9 @@ by user."
   (unless (and buffer-file-name
                (file-writable-p buffer-file-name))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(defun my-helm-grep-recursive ()
+  (interactive)
+  (let ((current-prefix-arg t))
+  (helm-do-grep))
+  )

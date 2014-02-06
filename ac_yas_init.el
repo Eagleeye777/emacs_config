@@ -3,8 +3,6 @@
 (add-to-list 'yas-snippet-dirs ' "~/.emacs.d/snippets")
 (require 'yasnippet-config)
 (yas-global-mode 1)
-(diminish 'yas-minor-mode)
-
 
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-comlete/ac-dict")

@@ -5,9 +5,9 @@
 ;; default
 ;; (setq mu4e-maildir "~/Maildir")
 
-(setq mu4e-drafts-folder "/[Gmail].Drafts")
-(setq mu4e-sent-folder   "/[Gmail].Sent Mail")
-(setq mu4e-trash-folder  "/[Gmail].Trash")
+(setq mu4e-drafts-folder "/Gmail/[Gmail].Drafts")
+(setq mu4e-sent-folder   "/Gmail/[Gmail].Sent Mail")
+(setq mu4e-trash-folder  "/Gmail/[Gmail].Trash")
 
 ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
 (setq mu4e-sent-messages-behavior 'delete)
@@ -17,11 +17,12 @@
 ;; then, when you want archive some messages, move them to
 ;; the 'All Mail' folder by pressing ``ma''.
 (setq mu4e-maildir-shortcuts
-        '( ("/INBOX"               . ?i)
-           ("/[Gmail].Sent Mail"   . ?s)
-           ("/[Gmail].Trash"       . ?p)
-           ("/Tutorium Egl"        . ?t)
-           ("/[Gmail].All Mail"    . ?a)))
+        '( ("/Gmail/INBOX"               . ?i)
+           ("/Hotmail/Inbox"             . ?h)
+           ("/Gmail/[Gmail].Sent Mail"   . ?s)
+           ("/Gmail/[Gmail].Trash"       . ?p)
+           ("/Gmail/Tutorium Egl"        . ?t)
+           ("/Gmail/[Gmail].All Mail"    . ?a)))
 
 ;; allow for updating mail using 'U' in the main view:
 ;; disabled: Mails are fetched via a cronjob regularly. Hope that will do
@@ -90,3 +91,45 @@
 
 (setq gnus-dired-mail-mode 'mu4e-user-agent)
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+
+
+;; Multiple Account setting here
+
+
+(defvar my-mu4e-account-alist
+  '(("Gmail"
+     (mu4e-sent-folder "/Gmail/[Gmail].Sent Mail")
+     (mu4e-drafts-folder "/Gmail/[Gmail].Drafts")
+     (user-mail-address "schaumburg777@gmail.com")
+     (smtpmail-default-smtp-server "smtp.gmail.com")
+     (smtpmail-smtp-server "smtp.gmail.com")
+     (smtpmail-stream-type starttls)
+     (smtpmail-smtp-service 587))
+    ("Hotmail"
+     (mu4e-sent-folder "/Hotmail/Saved Items")
+     (mu4e-drafts-folder "/Hotmail/Drafts")
+     (user-mail-address "eagleeye777@hotmail.de")
+     (smtpmail-default-smtp-server "smtp-mail.outlook.com")
+     (smtpmail-smtp-server "smtp-mail.outlook.com")
+     (smtpmail-stream-type starttls)
+     (smtpmail-smtp-service 587))))
+
+(defun my-mu4e-set-account ()
+  "Set the account for composing a message."
+  (let* ((account
+          (if mu4e-compose-parent-message
+              (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+                (string-match "/\\(.*?\\)/" maildir)
+                (match-string 1 maildir))
+            (completing-read (format "Compose with account: (%s) "
+                                     (mapconcat #'(lambda (var) (car var)) my-mu4e-account-alist "/"))
+                             (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
+                             nil t nil nil (caar my-mu4e-account-alist))))
+         (account-vars (cdr (assoc account my-mu4e-account-alist))))
+    (if account-vars
+        (mapc #'(lambda (var)
+                  (set (car var) (cadr var)))
+              account-vars)
+      (error "No email account found"))))
+
+  (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)

@@ -50,9 +50,6 @@
   "Emacs quick move minor mode"
   t)
 
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ace-jump-buffer-20131221.759")
-(require 'ace-jump-buffer)
-
 ;; Setting up undo-tree
 (require'undo-tree)
 (global-undo-tree-mode 1)
@@ -82,3 +79,9 @@
              (autopair-mode -1)))
 ;; Death to the whitespace :)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/discover-20140103.1339")
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/makey-20131231.630")
+
+(require 'discover)
+(global-discover-mode 1)

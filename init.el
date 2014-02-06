@@ -1,9 +1,5 @@
 ;;.emacs configuration File
 ;; Loading all the various init files here
-;; New Tryout feature
-
-;; (require 'discover)
-;; (global-discover-mode 1)
 
 ;; disable comments to compile once in a while
 ;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
