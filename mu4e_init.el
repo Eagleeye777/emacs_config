@@ -92,8 +92,10 @@
 (setq gnus-dired-mail-mode 'mu4e-user-agent)
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
+;; Making sure we can link mail to org
+(require 'org-mu4e)
 
-;; Multiple Account setting here
+;; Multiple Account settings here
 
 
 (defvar my-mu4e-account-alist
@@ -132,4 +134,4 @@
               account-vars)
       (error "No email account found"))))
 
-  (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+(add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)

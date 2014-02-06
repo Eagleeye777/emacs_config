@@ -2,10 +2,31 @@
 ;; Loading all the various init files here
 
 ;; disable comments to compile once in a while
-;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 ;; Fixing a gnutls error warning and raising sercurity level of tls encyption
 (setq gnutls-min-prime-bits '"1024")
+
+(defvar my-package-dir "~/.emacs.d/el-get/package/elpa"
+  "Alles was über package installiert wird")
+
+
+;; Diese Funktion schmeißt mir hoffentlich alles was ich so habe auf den Load-path
+
+(defun add-subfolders-to-load-path (parent-dir)
+ "Add all level PARENT-DIR subdirs to the `load-path'."
+ (dolist (f (directory-files parent-dir))
+   (let ((name (expand-file-name f parent-dir)))
+     (when (and (file-directory-p name)
+                (not (equal f ".."))
+                (not (equal f ".")))
+       (add-to-list 'load-path name)
+       (add-subfolders-to-load-path name)))))
+
+(add-subfolders-to-load-path my-package-dir)
+
+
+
 
 ;; !!!! Do this one first, so everything is already on the load path
 
@@ -16,51 +37,51 @@
 (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/org-20140127")
 
 ;; Set up el get und Package repos and install packages if not there (buggy on the elpa side)
-(load "~/.emacs.d/package_init.el")
+(load "~/.emacs.d/package_init.elc")
 
 ;; Allgemeine grundlegende Einstellungen
-(load "/home/sschaumburg/.emacs.d/gen_init.el")
+(load "/home/sschaumburg/.emacs.d/gen_init.elc")
 
 ;; Winner Mode configuration, esp. to work better with helm
-(load "/home/sschaumburg/.emacs.d/winner_init.el")
+(load "/home/sschaumburg/.emacs.d/winner_init.elc")
 
 ;; Display Settings
-(load "~/.emacs.d/layout_init.el")
+(load "~/.emacs.d/layout_init.elc")
 
 ;; autocomplete and yasnippet
-(load "~/.emacs.d/ac_yas_init.el")
+(load "~/.emacs.d/ac_yas_init.elc")
 
 ; setting up org mode and deft(extern File)
-(load "~/.emacs.d/org_init.el" )
+(load "~/.emacs.d/org_init.elc" )
 
 ;; Setting up the E-Mail Client (Mu4e)
-(load "/home/sschaumburg/.emacs.d/mu4e_init.el")
+(load "/home/sschaumburg/.emacs.d/mu4e_init.elc")
 (setq mail-user-agent 'mu4e-user-agent)
 
 ; Custom Functions (All helper functions and whatever)
-(load "/home/sschaumburg/.emacs.d/func_init.el")
+(load "/home/sschaumburg/.emacs.d/func_init.elc")
 
 ;;All the Ido Stuff
-(load "~/.emacs.d/ido_init.el")
+(load "~/.emacs.d/ido_init.elc")
 
 ;; Whatever is left still
-(load "~/.emacs.d/various_init.el")
+(load "~/.emacs.d/various_init.elc")
 
 ;;w3m Configurations
-(load "~/.emacs.d/w3m_init.el")
+(load "~/.emacs.d/w3m_init.elc")
 
 ;; auctex und ac.amath
-(load "~/.emacs.d/auctex_init.el")
+(load "~/.emacs.d/auctex_init.elc")
 
 ;;All the Helm Stuff
-(load "/home/sschaumburg/.emacs.d/helm_init.el")
+(load "/home/sschaumburg/.emacs.d/helm_init.elc")
 
 
 ;; Python Stuff
-(load "~/.emacs.d/python_init.el")
+(load "~/.emacs.d/python_init.elc")
 
 ;; keybindings
-(load "~/.emacs.d/keybinds.el")
+(load "~/.emacs.d/keybinds.elc")
 
 ;; garbage collection settings
 (setq gc-cons-threshold 50000000)

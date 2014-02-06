@@ -1,5 +1,5 @@
 ;; All Helm configuration here
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/helm-20140127.46")
+(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/helm-20140205.2333")
 
 (require 'helm-config)
 (helm-mode)

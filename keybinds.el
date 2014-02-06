@@ -101,6 +101,7 @@
 ;; (key-chord-define-global "dd" 'delete-window) ;; Untauglich, das kommt beim schreiben doch immer wieder vor. Ersetzt durch das Default Binding
 (key-chord-define-global "zz" 'zap-to-char)
 (key-chord-define emacs-lisp-mode-map "qq" 'helm-imenu)
+(key-chord-define TeX-mode-map "qq" 'helm-imenu)
 (key-chord-define org-mode-map "qq" 'helm-org-headlines)
 (key-chord-define python-mode-map "qq" 'helm-imenu)
 ;; (key-chord-define-global "qq" 'helm-imenu)

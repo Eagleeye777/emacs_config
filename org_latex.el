@@ -6,7 +6,7 @@
 "\\documentclass[11pt,a4paper]{article}
 \\usepackage[T1]{fontenc}
 \\usepackage{fontspec}
-\\usepackage{graphicx} 
+\\usepackage{graphicx}
 \\defaultfontfeatures{Mapping=tex-text}
 \\setromanfont{Gentium}
 \\setromanfont [BoldFont={Gentium Basic Bold},
@@ -29,39 +29,23 @@
 
 (add-to-list 'org-latex-classes
   '("samuel-default"
-"\\documentclass{scrartcl}  % Eine Klasse für beidseitige Texte mit Kapiteln 
-             %
- %%%%%%%%%%%%% Unverzichtbare Pakte
- \\usepackage[T1]{fontenc}% fontenc und inputenc ermöglichen
- \\usepackage[utf8]{inputenc}% Silbentrennung und
-                              % Eingabe von Umlauten.
+"
+\\documentclass{scrartcl}
+\\usepackage[T1]{fontenc}
+\\usepackage[utf8]{inputenc}
+\\usepackage{fixltx2e}
+\\usepackage{ellipsis, ragged2e}
 
- \\usepackage{% Man kann auch mehrere Pakete ohne Optionen
-             % in einen \\usepackage-Befehl packen.
-   fixltx2e  % Verbessert einige Kernkompetenzen von LaTeX2e
- }
-             %
- %%%%%%%%%%%%% Typografisch empfehlenswerte Pakete
- \\usepackage{% 
-   ellipsis, % Korrigiert den Weißraum um Auslassungspunkte
-   ragged2e, % Ermöglicht Flattersatz mit Silbentrennung
-  marginnote,% Für bessere Randnotizen mit \\marginnote statt
-             % \marginline
- }
- 
-\\usepackage[tracking=true]{microtype}%
-             % Microtype ist einfach super, aber lesen Sie
-             % unbedingt die Anleitung um das Folgende zu
-             % verstehen.
-\\DeclareMicrotypeSet*[tracking]{my}% 
-   { font = */*/*/sc/* }% 
+\\usepackage[tracking=true]{microtype}
+\\DeclareMicrotypeSet*[tracking]{my}%
+   { font = */*/*/sc/* }%
 \\SetTracking{ encoding = *, shape = sc }{ 45 }%
 \\usepackage{paralist}
 \\usepackage{hyperref}
 \\usepackage{ dejavu }
-\\usepackage[ left=2.5cm, right=4cm, top=2cm, bottom=2.3cm]{geometry} % Fürdie Einstellungen der Seitenränder
-\\usepackage{setspace} \\onehalfspacing % für Zeilenabstand                   
-\\setlength{\\parskip}{6pt} 
+\\usepackage[ left=2.5cm, right=4cm, top=2cm, bottom=2.3cm]{geometry}
+\\usepackage{setspace} \\onehalfspacing
+\\setlength{\\parskip}{6pt}
 \\usepackage{url}
 \\urlstyle{rm}
 \\usepackage{titlesec}
