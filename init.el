@@ -7,81 +7,67 @@
 ;; Fixing a gnutls error warning and raising sercurity level of tls encyption
 (setq gnutls-min-prime-bits '"1024")
 
-(defvar my-package-dir "~/.emacs.d/el-get/package/elpa"
-  "Alles was über package installiert wird")
+;; (defvar my-package-dir "~/.emacs.d/el-get/package/elpa"
+;;  "Alles was über package installiert wird")
 
 
 ;; Diese Funktion schmeißt mir hoffentlich alles was ich so habe auf den Load-path
 
-(defun add-subfolders-to-load-path (parent-dir)
- "Add all level PARENT-DIR subdirs to the `load-path'."
- (dolist (f (directory-files parent-dir))
-   (let ((name (expand-file-name f parent-dir)))
-     (when (and (file-directory-p name)
-                (not (equal f ".."))
-                (not (equal f ".")))
-       (add-to-list 'load-path name)
-       (add-subfolders-to-load-path name)))))
-
-(add-subfolders-to-load-path my-package-dir)
 
 
-
-
-;; !!!! Do this one first, so everything is already on the load path
+;; ;; !!!! Do this one first, so everything is already on the load path
 
 ;; Few things I cannot get anywhere via packages. These go here
 (add-to-list 'load-path "~/.emacs.d/custom/")
 
-;; Setting up the org load path asap here, to avoid things mixing up
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/org-20140127")
+;; ;; Setting up the org load path asap here, to avoid things mixing up
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/org-20140127")
 
 ;; Set up el get und Package repos and install packages if not there (buggy on the elpa side)
-(load "~/.emacs.d/package_init.elc")
+(load "~/.emacs.d/package_init.el")
 
 ;; Allgemeine grundlegende Einstellungen
-(load "/home/sschaumburg/.emacs.d/gen_init.elc")
+(load "/home/sschaumburg/.emacs.d/gen_init.el")
 
 ;; Winner Mode configuration, esp. to work better with helm
-(load "/home/sschaumburg/.emacs.d/winner_init.elc")
+(load "/home/sschaumburg/.emacs.d/winner_init.el")
 
 ;; Display Settings
-(load "~/.emacs.d/layout_init.elc")
+(load "~/.emacs.d/layout_init.el")
+
+;;All the Ido Stuff
+(load "~/.emacs.d/ido_init.el")
 
 ;; autocomplete and yasnippet
-(load "~/.emacs.d/ac_yas_init.elc")
+(load "~/.emacs.d/ac_yas_init.el")
 
 ; setting up org mode and deft(extern File)
-(load "~/.emacs.d/org_init.elc" )
+(load "~/.emacs.d/org_init.el" )
 
 ;; Setting up the E-Mail Client (Mu4e)
-(load "/home/sschaumburg/.emacs.d/mu4e_init.elc")
+(load "/home/sschaumburg/.emacs.d/mu4e_init.el")
 (setq mail-user-agent 'mu4e-user-agent)
 
 ; Custom Functions (All helper functions and whatever)
-(load "/home/sschaumburg/.emacs.d/func_init.elc")
-
-;;All the Ido Stuff
-(load "~/.emacs.d/ido_init.elc")
+(load "/home/sschaumburg/.emacs.d/func_init.el")
 
 ;; Whatever is left still
-(load "~/.emacs.d/various_init.elc")
+(load "~/.emacs.d/various_init.el")
 
 ;;w3m Configurations
-(load "~/.emacs.d/w3m_init.elc")
+(load "~/.emacs.d/w3m_init.el")
 
 ;; auctex und ac.amath
-(load "~/.emacs.d/auctex_init.elc")
+(load "~/.emacs.d/auctex_init.el")
 
 ;;All the Helm Stuff
-(load "/home/sschaumburg/.emacs.d/helm_init.elc")
-
+(load "/home/sschaumburg/.emacs.d/helm_init.el")
 
 ;; Python Stuff
-(load "~/.emacs.d/python_init.elc")
+(load "~/.emacs.d/python_init.el")
 
 ;; keybindings
-(load "~/.emacs.d/keybinds.elc")
+(load "~/.emacs.d/keybinds.el")
 
 ;; garbage collection settings
 (setq gc-cons-threshold 50000000)
@@ -103,11 +89,11 @@
  '(dired-listing-switches "-alhog")
  '(font-lock-maximum-decoration (quote ((t . t))))
  '(foreground-color "#839496")
+ '(helm-ack-grep-executable "ack")
  '(openwith-associations (quote (("\\.pdf\\'" "evince" (file)) ("\\.docx\\'" "libreoffice" (file)) ("\\.doc\\'" "libreoffice" (file)) ("\\.odt\\'" "libreoffice" (file)) ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer" ("-idx" file)) ("\\.epub\\'" "calibre" (file)) ("\\.\\(?:jp?g\\|png\\)\\'" "display" (file))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(mode-line ((t (:background "#5c888b" :foreground "#f0dfaf" :box (:line-width 2 :color "#1e2320"))))))
-)
+ )

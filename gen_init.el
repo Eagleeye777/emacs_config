@@ -81,8 +81,8 @@
 ;; Death to the whitespace :)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/discover-20140103.1339")
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/makey-20131231.630")
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/discover-20140103.1339")
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/makey-20131231.630")
 
 (require 'discover)
 (global-discover-mode 1)

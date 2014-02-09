@@ -27,21 +27,41 @@
      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 
+
+;; \usepackage[ngerman]{babel}
+;; \usepackage[utf8]{inputenc}
+;; \usepackage[T1]{fontenc}
+;; \usepackage{fixltx2e}
+;; \usepackage{graphicx}
+;; \usepackage{longtable}
+;; \usepackage{float}
+;; \usepackage{wrapfig}
+;; \usepackage{rotating}
+;; \usepackage[normalem]{ulem}
+;; \usepackage{amsmath}
+;; \usepackage{textcomp}
+;; \usepackage{marvosym}
+;; \usepackage{wasysym}
+;; \usepackage{amssymb}
+;; \usepackage{hyperref}                   ;
+
+
 (add-to-list 'org-latex-classes
   '("samuel-default"
 "
 \\documentclass{scrartcl}
+\\usepackage[ngerman]{babel}
 \\usepackage[T1]{fontenc}
 \\usepackage[utf8]{inputenc}
 \\usepackage{fixltx2e}
+\\usepackage{graphicx}
 \\usepackage{ellipsis, ragged2e}
-
 \\usepackage[tracking=true]{microtype}
 \\DeclareMicrotypeSet*[tracking]{my}%
    { font = */*/*/sc/* }%
 \\SetTracking{ encoding = *, shape = sc }{ 45 }%
-\\usepackage{paralist}
 \\usepackage{hyperref}
+\\usepackage{paralist}
 \\usepackage{ dejavu }
 \\usepackage[ left=2.5cm, right=4cm, top=2cm, bottom=2.3cm]{geometry}
 \\usepackage{setspace} \\onehalfspacing

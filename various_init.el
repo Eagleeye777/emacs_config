@@ -62,3 +62,6 @@
 
 (require 'sauron)
 (setq sauron-dbus-cookie t)
+
+;; Improved zap-to char functionallyty
+(require 'zop-to-char)

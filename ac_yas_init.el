@@ -1,7 +1,6 @@
 (require 'yasnippet)
 (setq yas-snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"))
 (add-to-list 'yas-snippet-dirs ' "~/.emacs.d/snippets")
-(require 'yasnippet-config)
 (yas-global-mode 1)
 
 (require 'auto-complete)
@@ -10,8 +9,8 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-(require 'ac-dabbrev)
-(add-to-list 'ac-sources 'ac-source-dabbrev)
+;; (require 'ac-dabbrev)
+;; (add-to-list 'ac-sources 'ac-source-dabbrev)
 
 (set-default 'ac-sources
 '(ac-source-dictionary
@@ -23,7 +22,7 @@ ac-source-yasnippet))
 
 ;; Loading company mode also, for completion in org
 
-(add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/company-20140130.2109")
+;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/company-20140205.2103")
 
 (require 'company)
 

@@ -24,7 +24,7 @@
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map (kbd "<f9>") 'org-capture)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-
+(global-set-key (kbd "C-c f") 'helm-recentf)
 
 ;; Undo-Tree Commands
 (global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
@@ -40,6 +40,8 @@
 (global-set-key (kbd "<f2>") ' mu4e)
 (global-set-key (kbd "<S-f2>") 'helm-mu)
 (global-set-key (kbd "<f5>") 'helm-do-grep)
+(global-set-key (kbd "<S-f5>") 'my-helm-do-grep-recursive)
+
 (global-set-key (kbd "<f6>") 'visit-ansi-term)
 (global-set-key (kbd "<f7>") ' magit-status)
 (global-set-key (kbd "<S-f7>") 'helm-git-find-files)
@@ -65,7 +67,7 @@
 ;;  Key-Chords bindings.
 ;; Binding a bunch of useful stuff for convenient acess.
 (key-chord-define-global "cv" ' cua-mode) ; enable or Disable. Sometimes cua get's in the way, and has to be disabled quickly.
-(key-chord-define-global "fv" ' my-helm-grep-recursive)
+(key-chord-define-global "fv" ' my-helm-do-grep-recursive)
 
 ;; Muss UN2BEDINGT neu. Das tippe ich offensichtlich doch so häufig, dass ich mir dann immer die buffer kille, leider oft ohne save. Geht so nicht.
 ;; (key-chord-define-global  "xx" 'kill-buffer-and-window)
@@ -80,7 +82,6 @@
 (key-chord-define-global "ii" 'ace-jump-line-mode)
 (key-chord-define-global "bb" 'helm-mini)
 
-(key-chord-define-global "öä" 'deft)
 (key-chord-define-global "cc" 'er/expand-region)
 (key-chord-define gnus-dired-mode-map "öä" 'gnus-dired-attach)
 ;; So schade es ist, ich muss auf das Binding in dieser Form verzichten. Tippe ich im deutschen dann doch viel öfter als ich dachte, von daher keine optino in dieser Formy
@@ -97,9 +98,8 @@
      (key-chord-define company-mode-map ".." 'helm-company)
      (key-chord-define company-active-map ".." 'helm-company)))
 
-
 ;; (key-chord-define-global "dd" 'delete-window) ;; Untauglich, das kommt beim schreiben doch immer wieder vor. Ersetzt durch das Default Binding
-(key-chord-define-global "zz" 'zap-to-char)
+(key-chord-define-global "zz" 'zop-to-char)
 (key-chord-define emacs-lisp-mode-map "qq" 'helm-imenu)
 (key-chord-define TeX-mode-map "qq" 'helm-imenu)
 (key-chord-define org-mode-map "qq" 'helm-org-headlines)
@@ -112,7 +112,17 @@
 (key-chord-define org-mode-map "ww" 'org-todo)
 (key-chord-define-global "--" 'makey-key-mode-popup-rectangles)
 
-;; ;; Okay, here are some possible rebinds, from standart commands that i might never use.
+
+;; Set these
+(key-chord-define-global "hb" 'hs-hide-block)
+(key-chord-define-global "hv" 'hs-show-block)
+
+
+
+
+
+;; ;; Okay, here are some possible rebinds, from standart
+;; commands that i might never use.
 ;; C-k (kill-line)
 ;; C-o  (open-line)
 

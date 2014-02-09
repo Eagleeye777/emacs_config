@@ -106,15 +106,17 @@
 ;setting up Deft for convenient notes view and search
 ; Todo: Get rid of Deft and replace with a customized Version of Helm-grep
 
-(require 'deft)
-(setq deft-extension "org")
-(setq deft-text-mode 'org-mode)
-(setq deft-directories
-       '("~/Dropbox/org/notes"))
-(add-to-list 'deft-directories "~/Dropbox/org/egl_tutorium")
-(add-to-list 'deft-directories "~/Dropbox/org/")
-(add-to-list 'deft-directories "~/Dropbox/Staatsexamen/Hericks_Klausur")
-(setq deft-use-filename-as-title t)
+;; Deft has been removed in Favour of helm-do-grep
+
+;; (require 'deft)
+;; (setq deft-extension "org")
+;; (setq deft-text-mode 'org-mode)
+;; (setq deft-directories
+;;        '("~/Dropbox/org/notes"))
+;; (add-to-list 'deft-directories "~/Dropbox/org/egl_tutorium")
+;; (add-to-list 'deft-directories "~/Dropbox/org/")
+;; (add-to-list 'deft-directories "~/Dropbox/Staatsexamen/Hericks_Klausur")
+;; (setq deft-use-filename-as-title t)
 
 
 ;; org_init.el ends here

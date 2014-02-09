@@ -26,15 +26,15 @@
          ac-math
          anzu
          autopair
-         bazaar
-         deft
+         ;; bazaar
+         ;; deft
          diminish
          dired+
          emacs-w3m
          expand-region
          flx
-         flycheck
-         flymake
+         ;; flycheck
+         ;; flymake
          git-emacs
          guru-mode
          ido-hacks
@@ -53,9 +53,7 @@
          volatile-highlights
          windcycle
          workgroups
-         whitespace
          yasnippet
-         yasnippet-config
          zenburn-theme
          )))
 
@@ -64,53 +62,66 @@
 (el-get 'sync)
 
 
+(defvar my-package-dir "~/.emacs.d/el-get/package/elpa")
+(defun add-subfolders-to-load-path (parent-dir)
+  "Add all level PARENT-DIR subdirs to the `load-path'."
+  (dolist (f (directory-files parent-dir))
+    (let ((name (expand-file-name f parent-dir)))
+      (when (and (file-directory-p name)
+                 (not (equal f ".."))
+                 (not (equal f ".")))
+        (add-to-list 'load-path name)
+        (add-subfolders-to-load-path name)))))
+
+(add-subfolders-to-load-path my-package-dir)
+
 ;; Same thing here for package-Packages. Some stuff I cannot get via el-get. Those are collected here. (most of those are from Melpa rep)
 ;; Unfortunately, it is buggy from here. This stuff just does not work yet. I leave it defined, but do not call it.
-(defvar my-elpa-packages
-  '(
+;; (defvar my-elpa-packages
+;;   '(
 
-    auto-complete
-    ace-jump-buffer
-    ac-helm
-    company
-    discover
-    helm
-    helm-c-yasnippet
-    helm-helm-commands
-    helm-orgcard
-    helm-git
-    helm-projectile
-    projectile
+;;     auto-complete
+;;     ace-jump-buffer
+;;     ac-helm
+;;     company
+;;     discover
+;;     helm
+;;     helm-c-yasnippet
+;;     helm-helm-commands
+;;     helm-orgcard
+;;     helm-git
+;;     helm-projectile
+;;     projectile
 
-    )
-  "A list of packages to ensure are installed at launch.")
+;;     )
+  ;; "A list of packages to ensure are installed at launch.")
 
-(defun my-packages-installed-p ()
-  "Check if all packages in `my-elpa-packages' are installed."
-  ;; (interactive)
-  (every #'package-installed-p my-elpa-packages))
+;; (defun my-packages-installed-p ()
+;;   "Check if all packages in `my-elpa-packages' are installed."
+;;   ;; (interactive)
+;;   (every #'package-installed-p my-elpa-packages))
 
-(defun my-require-package (package)
-  "Install PACKAGE unless already installed."
-  (unless (memq package my-elpa-packages)
-    (add-to-list 'my-elpa-packages package))
-  (unless (package-installed-p package)
-    (package-install package)))
+;; (defun my-require-package (package)
+;;   "Install PACKAGE unless already installed."
+;;   (unless (memq package my-elpa-packages)
+;;     (add-to-list 'my-elpa-packages package))
+;;   (unless (package-installed-p package)
+;;     (package-install package)))
 
-(defun my-require-packages (packages)
-  "Ensure PACKAGES are installed.
-Missing packages are installed automatically."
-  (mapc #'my-require-package packages))
+;; (defun my-require-packages (packages)
+;;   "Ensure PACKAGES are installed.
+;; Missing packages are installed automatically."
+;;   (mapc #'my-require-package packages))
 
-(defun my-install-packages ()
-  "Install all packages listed in `my-elpa-packages'."
-  (unless (my-packages-installed-p)
-    ;; check for new packages (package versions)
-    (message "%s" "Emacs is now refreshing its package database...")
-    (package-refresh-contents)
-    (message "%s" " done.")
-    ;; install the missing packages
-    (my-require-packages my-elpa-packages)))
+;; (defun my-install-packages ()
+;;   "Install all packages listed in `my-elpa-packages'."
+;;   (unless (my-packages-installed-p)
+;;     ;; check for new packages (package versions)
+;;     (message "%s" "Emacs is now refreshing its package database...")
+;;     (package-refresh-contents)
+;;     (message "%s" " done.")
+;;     ;; install the missing packages
+;;     (my-require-packages my-elpa-packages)))
 
 ;; Comment this out, in order to get elpa packages after a fresh install. Does not work, if packages are already insatlled. Configuration breaks then.
 ;; Reason: dunno yet
