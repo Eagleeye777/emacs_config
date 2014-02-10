@@ -28,7 +28,7 @@
 
 
 (setq helm-ls-git-status-command 'magit-status)
-
+(setq helm-split-window-default-side 'right)
 
 ;; ;; Testing Stuff
 

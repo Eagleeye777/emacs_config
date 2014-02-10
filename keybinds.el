@@ -14,10 +14,9 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
-;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
 ;;; Setting up Org Keybindings
-
+(global-set-key (kbd "C-c r") 'helm-resume)
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
@@ -44,7 +43,8 @@
 
 (global-set-key (kbd "<f6>") 'visit-ansi-term)
 (global-set-key (kbd "<f7>") ' magit-status)
-(global-set-key (kbd "<S-f7>") 'helm-git-find-files)
+(global-set-key (kbd "<S-f7>") 'helm-ls-git-ls)
+
 (global-set-key (kbd "C-c o") 'helm-projectile)
 ;; don't know if I am happy with these. Might rebind
 (global-set-key (kbd "M-<") ' prelude-google)
@@ -88,15 +88,16 @@
 ;; (key-chord-define-global "rf" 'helm-recentf)
 
 
-(key-chord-define-global ".." 'ac-complete-with-helm)
-(key-chord-define ac-mode-map ".." 'ac-complete-with-helm)
+;; (key-chord-define-global ".." 'ac-complete-with-helm)
+;; (key-chord-define ac-mode-map ".." 'ac-complete-with-helm)
 
 (key-chord-define-global ",," 'helm-yas-complete)
 ;; Helm-Company
-(eval-after-load 'company
-  '(progn
+;; (eval-after-load 'company
+;;   '(progn
      (key-chord-define company-mode-map ".." 'helm-company)
-     (key-chord-define company-active-map ".." 'helm-company)))
+     (key-chord-define company-active-map ".." 'helm-company)
+;; ))
 
 ;; (key-chord-define-global "dd" 'delete-window) ;; Untauglich, das kommt beim schreiben doch immer wieder vor. Ersetzt durch das Default Binding
 (key-chord-define-global "zz" 'zop-to-char)

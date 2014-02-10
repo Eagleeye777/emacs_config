@@ -69,6 +69,9 @@
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
 
+(load "~/.emacs.d/eshell_init.el")
+
+
 ;; garbage collection settings
 (setq gc-cons-threshold 50000000)
 
@@ -95,5 +98,4 @@
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  )

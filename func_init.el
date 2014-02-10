@@ -322,6 +322,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 
+
+;; This is my replacement for the deft extension for Org-browsing
 (defun my-helm-do-grep-recursive ()
   (interactive)
 (let ((files (helm-walk-directory "~/Dropbox/org"
@@ -330,6 +332,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                   :match ".*\\.org$"
                                   :skip-subdirs t)))
   (helm-do-grep-1 files)))
+
+
+
+;; another slightly modified zap-to-char. Might be usefull
+(autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
+(global-set-key (kbd "<menu> m") 'zap-up-to-char)
 
 
 ;; ;; This would have been usefull, if I could make helm work with ack-grep
