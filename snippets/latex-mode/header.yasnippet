@@ -1,0 +1,60 @@
+# -*- mode: snippet -*-
+# name: header
+# key: header
+# --
+%%%%%%%%%%%%% Klassen-Optionen
+\documentclass[%
+  paper=A4, % Stellt auf A4-Papier ein
+  pagesize, % Diese Option reicht die Papiergröße an
+            % alle Ausgabeformate weiter
+  DIV=calc, % Errechnet einen guten Satzspiegel
+  headings=small,% Für etwas kleinere Überschriften
+  12pt,
+  ngerman   % Neue Rechtschreibung, d.\,h. (Silbentrennung)
+ ]{scrartcl}  % Eine Klasse für beidseitige Texte mit Kapiteln 
+             %
+ %%%%%%%%%%%%% Unverzichtbare Pakte
+ \usepackage[T1]{fontenc}% fontenc und inputenc ermöglichen
+ \usepackage[utf8]{inputenc}% Silbentrennung und
+                              % Eingabe von Umlauten.
+
+ \usepackage{% Man kann auch mehrere Pakete ohne Optionen
+             % in einen \usepackage-Befehl packen.
+   babel,    % Babel für diverse Sprachanpassungen
+   fixltx2e  % Verbessert einige Kernkompetenzen von LaTeX2e
+ }
+             %
+ %%%%%%%%%%%%% Typografisch empfehlenswerte Pakete
+ \usepackage{% 
+   ellipsis, % Korrigiert den Weißraum um Auslassungspunkte
+   ragged2e, % Ermöglicht Flattersatz mit Silbentrennung
+  marginnote,% Für bessere Randnotizen mit \marginnote statt
+             % \marginline
+ }
+ 
+\usepackage[tracking=true]{microtype}%
+             % Microtype ist einfach super, aber lesen Sie
+             % unbedingt die Anleitung um das Folgende zu
+             % verstehen.
+ \DeclareMicrotypeSet*[tracking]{my}% 
+   { font = */*/*/sc/* }% 
+ \SetTracking{ encoding = *, shape = sc }{ 45 }%
+\usepackage{paralist}
+
+\usepackage{ dejavu }
+\usepackage[ left=2.5cm, right=4cm, top=2cm, bottom=2.3cm]{geometry} % Fürdie Einstellungen der Seitenränder
+\usepackage{setspace} \onehalfspacing % für Zeilenabstand                   
+\setlength{\parskip}{6pt} 
+\usepackage{url}
+\urlstyle{rm}
+\usepackage{titlesec}
+%\usepackage{hyperref}
+%Fußnotenformatierung (Koma-Skript)
+\setkomafont{footnote}{\rmfamily}
+\deffootnote[1em]{1em}{1em}{
+ \makebox[1.5em][l]{\textsuperscript{\thefootnotemark}}}
+\usepackage{tabularx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\begin{document}
+$0
+\end{document}

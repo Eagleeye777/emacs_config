@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: LaTeX class
+# key: lcl
+# condition: (= (current-column) 3)
+# contributor: Rafael Villarroel (rvf0068@gmail.com)
+# --
+#+LaTeX_CLASS: ${1:$$(yas/choose-value '("samuel-default" "djcb-org-article" "report" "book" "article" "beamer"))}

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Drawer
+# key: draw
+# contributor : Samuel Schaumburg  <eagleeye777@hotmail.de>
+# --
+
+#+DRAWERS: ${1:Drawername}$0
