@@ -65,3 +65,8 @@
 
 ;; Improved zap-to char functionallyty
 (require 'zop-to-char)
+
+
+(require 'hideshow)
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+(diminish 'hs-minor-mode)

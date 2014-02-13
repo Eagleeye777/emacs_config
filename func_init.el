@@ -337,7 +337,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 ;; another slightly modified zap-to-char. Might be usefull
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
-(global-set-key (kbd "<menu> m") 'zap-up-to-char)
 
 
 ;; ;; This would have been usefull, if I could make helm work with ack-grep

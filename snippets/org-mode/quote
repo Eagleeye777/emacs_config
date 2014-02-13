@@ -3,8 +3,5 @@
 # key: quote
 # --
 #+begin_quote
-
 $1
-
-
 #+end_quote

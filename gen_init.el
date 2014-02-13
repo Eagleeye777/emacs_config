@@ -86,3 +86,14 @@
 
 (require 'discover)
 (global-discover-mode 1)
+
+;; Trying to use John Wigleys use-package here
+
+(require 'use-package)
+
+(defmacro hook-into-modes (func modes)
+  `(dolist (mode-hook ,modes)
+     (add-hook mode-hook ,func)))
+
+(use-package esh-toggle
+  :requires eshell)
