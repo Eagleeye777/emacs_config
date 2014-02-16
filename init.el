@@ -7,16 +7,6 @@
 ;; Fixing a gnutls error warning and raising sercurity level of tls encyption
 (setq gnutls-min-prime-bits '"1024")
 
-;; (defvar my-package-dir "~/.emacs.d/el-get/package/elpa"
-;;  "Alles was über package installiert wird")
-
-
-;; Diese Funktion schmeißt mir hoffentlich alles was ich so habe auf den Load-path
-
-
-
-;; ;; !!!! Do this one first, so everything is already on the load path
-
 ;; Few things I cannot get anywhere via packages. These go here
 (add-to-list 'load-path "~/.emacs.d/custom/")
 
@@ -26,10 +16,10 @@
 ;; Set up el get und Package repos and install packages if not there (buggy on the elpa side)
 (load "~/.emacs.d/package_init.el")
 
-;; Allgemeine grundlegende Einstellungen
+;; ;; Allgemeine grundlegende Einstellungen
 (load "/home/sschaumburg/.emacs.d/gen_init.el")
 
-;; Winner Mode configuration, esp. to work better with helm
+;; ;; Winner Mode configuration, esp. to work better with helm
 (load "/home/sschaumburg/.emacs.d/winner_init.el")
 
 ;; Display Settings

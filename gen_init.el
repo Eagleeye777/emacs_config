@@ -88,7 +88,7 @@
 (global-discover-mode 1)
 
 ;; Trying to use John Wigleys use-package here
-
+(require 'ert) ; Usepackage seems to have problem atm. For the time being I have to require this also, not to get an error
 (require 'use-package)
 
 (defmacro hook-into-modes (func modes)

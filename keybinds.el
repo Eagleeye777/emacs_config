@@ -78,7 +78,6 @@
 (key-chord-define gnus-dired-mode-map "öä" 'gnus-dired-attach)  ;Attaching a file to a mail
 (key-chord-define-global "zz" 'zop-to-char)
 
-
 (key-chord-define-global "uu" 'ace-jump-char-mode)
 (key-chord-define-global "ii" 'ace-jump-line-mode)
 

@@ -50,11 +50,12 @@
          smex
          twittering-mode
          undo-tree
+         use-package
          volatile-highlights
          windcycle
          workgroups
-         yasnippet
          zenburn-theme
+         sauron
          )))
 
 ;; Call to get everything installed
@@ -63,6 +64,7 @@
 
 
 (defvar my-package-dir "~/.emacs.d/el-get/package/elpa")
+
 (defun add-subfolders-to-load-path (parent-dir)
   "Add all level PARENT-DIR subdirs to the `load-path'."
   (dolist (f (directory-files parent-dir))
@@ -75,13 +77,11 @@
 
 (add-subfolders-to-load-path my-package-dir)
 
-;; Same thing here for package-Packages. Some stuff I cannot get via el-get. Those are collected here. (most of those are from Melpa rep)
-;; Unfortunately, it is buggy from here. This stuff just does not work yet. I leave it defined, but do not call it.
+;; ;; Same thing here for package-Packages. Some stuff I cannot get via el-get. Those are collected here. (most of those are from Melpa rep)
+;; ;; Unfortunately, it is buggy from here. This stuff just does not work yet. I leave it defined, but do not call it.
 ;; (defvar my-elpa-packages
 ;;   '(
-
-;;     auto-complete
-;;     ace-jump-buffer
+;;     use-package
 ;;     ac-helm
 ;;     company
 ;;     discover
@@ -94,7 +94,7 @@
 ;;     projectile
 
 ;;     )
-  ;; "A list of packages to ensure are installed at launch.")
+;;   "A list of packages to ensure are installed at launch.")
 
 ;; (defun my-packages-installed-p ()
 ;;   "Check if all packages in `my-elpa-packages' are installed."
@@ -123,6 +123,6 @@
 ;;     ;; install the missing packages
 ;;     (my-require-packages my-elpa-packages)))
 
-;; Comment this out, in order to get elpa packages after a fresh install. Does not work, if packages are already insatlled. Configuration breaks then.
-;; Reason: dunno yet
-;; (my-install-packages)
+;; ;; Comment this out, in order to get elpa packages after a fresh install. Does not work, if packages are already insatlled. Configuration breaks then.
+;; ;; Reason: dunno yet
+;; ;; (my-install-packages)
