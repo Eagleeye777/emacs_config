@@ -61,16 +61,15 @@
 
 (load "~/.emacs.d/eshell_init.el")
 
-
 ;; garbage collection settings
 (setq gc-cons-threshold 50000000)
 
 ;; why is this here???
-(diminish 'auto-revert-mode)
-
+;; (diminish 'auto-revert-mode)
+(use-package my-nav-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; If you edit it by hand, you could emss it up, so be caref3ul.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ac-ispell-requires 4)
@@ -88,4 +87,9 @@
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
- )
+ ;; If there is more than one, they won't work right.
+ '(mode-line ((t (:background "#93e0e3" :foreground "black" :box (:line-width -1 :style released-button))))))
+
+
+
+       ;; (zenburn-cyan		"#93e0e3")

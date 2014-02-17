@@ -1,17 +1,13 @@
 ;; All Helm configuration here
 ;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/helm-20140205.2333")
 
-(require 'helm-config)
-(helm-mode)
-(diminish 'helm-mode)
-;; (add-to-list 'load-path "~/.emacs.d/el-get/package/elpa/helm-git-20120630.1403")
-(setq  helm-always-two-windows t)
-(require 'helm-git)  ;;
+(use-package helm-config
+  :init (helm-mode)
+  :diminish helm-mode
+  :config (setq  helm-always-two-windows t))
 
-(autoload 'helm-mu "helm-mu" "" t)
-(autoload 'helm-mu-contacts "helm-mu" "" t)
 
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/helm-orgcard-20130608.430")
+(use-package helm-mu)
 
 (require 'helm-orgcard)
 

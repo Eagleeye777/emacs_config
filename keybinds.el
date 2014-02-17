@@ -26,6 +26,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (define-key org-mode-map (kbd "M-e") 'org-emphasize)
 (define-key org-mode-map (kbd "C-j") 'org-insert-heading-respect-content)
+(define-key org-mode-map (kbd "<XF86Launch7>") 'helm-orgcard)
 
 ;;; Helm Keybindings
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
@@ -40,6 +41,7 @@
 
 ;; Smex Stuff
 (global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd  "C-c n") 'global-my-nav-mode)
 
 ;; All the F-Keys I Bind so far
 (global-set-key [C-f1] 'show-file-name)
@@ -47,10 +49,13 @@
 (global-set-key (kbd "<S-f2>") 'helm-mu)
 (global-set-key (kbd "<f5>") 'helm-do-grep)
 (global-set-key (kbd "<S-f5>") 'my-helm-do-grep-recursive)
-(global-set-key (kbd "<f6>") 'eshell-toggle)
+;; F6 Binding is taken, but had to be set up in gen_init.el to make it work (esh-toggle)
+
 (global-set-key (kbd "<f7>") ' magit-status)
 (global-set-key (kbd "<S-f7>") 'helm-ls-git-ls)
 (define-key global-map (kbd "<f9>") 'org-capture)
+
+(global-set-key (kbd "<XF86Launch7>") 'helm-descbinds)
 
 ;; don't know if I am happy with these. Might rebind
 (global-set-key (kbd "M-<") ' prelude-google)
@@ -98,6 +103,9 @@
 ;; (key-chord-define-global "oi" 'other-frame)
 
 (key-chord-define emacs-lisp-mode-map "qq" 'helm-imenu)
+(key-chord-define emacs-lisp-mode-map "ee" 'eval-last-sexp)
+
+
 (key-chord-define TeX-mode-map "qq" 'helm-imenu)
 (key-chord-define org-mode-map "qq" 'helm-org-headlines)
 (key-chord-define python-mode-map "qq" 'helm-imenu)
@@ -108,7 +116,6 @@
 (key-chord-define-global "ay" 'select-current-line)
 (key-chord-define org-mode-map "ww" 'org-todo)
 (key-chord-define-global "--" 'makey-key-mode-popup-rectangles)
-
 
 ;; Set these
 (key-chord-define hs-minor-mode-map "hb" 'hs-hide-block)

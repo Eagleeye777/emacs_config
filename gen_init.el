@@ -1,5 +1,12 @@
+;; Trying to use John Wigleys use-package here
+(require 'ert) ; Usepackage seems to have problem atm. For the time being I have to require this also, not to get an error
+(require 'use-package)
+;; Keep mode line tidy
+(require 'diminish)
+
 ;; Loading expand Region here
-(autoload 'expand-region "" "" t)
+(use-package expand-region)
+
 (setq shift-select-mode t)
 
 ;; Changes all yes/no questions to y/n type
@@ -25,13 +32,6 @@
    save-place-file (concat user-emacs-directory "places")
    backup-directory-alist `(("." . ,(concat user-emacs-directory
                                             "backups"))))
-;; Keep mode line tidy
-(autoload 'diminish "" "" t)
-
-;Windcycle (für Buffer Navigation)
-
-(autoload 'windcycle "" "" t)
-
 ;Winner Mode (Nice Addition for quickly reverting window changes)
 (when (fboundp 'winner-mode)
   (winner-mode 1))
@@ -45,16 +45,13 @@
 (wg-load "~/wg") ;Hier werden meine normalen Workgroups geladen
 
 ;;Jumping around in the buffers
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quick move minor mode"
-  t)
+(use-package ace-jump-mode)
+
 
 ;; Setting up undo-tree
-(require'undo-tree)
-(global-undo-tree-mode 1)
-(diminish 'undo-tree-mode)
+(use-package undo-tree
+  :init (global-undo-tree-mode 1)
+  :diminish undo-tree-mode)
 
 ;; These are necessary, for later setting up the Keybinds
 (defalias 'undo 'undo-tree-undo)
@@ -67,9 +64,9 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 
-(require 'autopair)
-(autopair-global-mode) ;; to enable in all buffers
-(diminish 'autopair-mode)
+(use-package autopair
+  :init (autopair-global-mode) ;; to enable in all buffers
+  :diminish autopair-mode)
 
 ;; Fixing keybindings for term mode
 ;; autopair overrides noraml keybindings and causes problems there
@@ -81,19 +78,14 @@
 ;; Death to the whitespace :)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/discover-20140103.1339")
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/makey-20131231.630")
 
-(require 'discover)
-(global-discover-mode 1)
-
-;; Trying to use John Wigleys use-package here
-(require 'ert) ; Usepackage seems to have problem atm. For the time being I have to require this also, not to get an error
-(require 'use-package)
+(use-package discover
+  :init (global-discover-mode 1))
 
 (defmacro hook-into-modes (func modes)
   `(dolist (mode-hook ,modes)
      (add-hook mode-hook ,func)))
 
 (use-package esh-toggle
-  :requires eshell)
+  :requires eshell
+  :bind ("<f6>" . eshell-toggle))

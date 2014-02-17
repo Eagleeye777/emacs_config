@@ -52,7 +52,6 @@
          undo-tree
          use-package
          volatile-highlights
-         windcycle
          workgroups
          zenburn-theme
          sauron
@@ -87,6 +86,7 @@
 ;;     discover
 ;;     helm
 ;;     helm-c-yasnippet
+;;     helm-company
 ;;     helm-helm-commands
 ;;     helm-orgcard
 ;;     helm-git
