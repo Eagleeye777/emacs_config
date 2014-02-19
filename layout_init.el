@@ -49,3 +49,7 @@
 (use-package volatile-highlights
   :init (volatile-highlights-mode t)
   :diminish volatile-highlights-mode)
+
+(use-package rainbow-delimiters
+  :init (global-rainbow-delimiters-mode)
+  :diminish rainbow-delimiters-mode)

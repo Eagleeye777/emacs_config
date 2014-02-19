@@ -3,36 +3,38 @@
 (add-to-list 'yas-snippet-dirs ' "~/.emacs.d/snippets")
 (yas-global-mode 1)
 
-(require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-comlete/ac-dict")
+;; (require 'auto-complete)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-comlete/ac-dict")
 
-(require 'auto-complete-config)
-(ac-config-default)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 
 ;; (require 'ac-dabbrev)
 ;; (add-to-list 'ac-sources 'ac-source-dabbrev)
 
-(set-default 'ac-sources
-'(ac-source-dictionary
-ac-source-words-in-buffer
-ac-source-words-in-same-mode-buffers
-ac-source-semantic
-ac-source-yasnippet))
+;; (set-default 'ac-sources
+;; '(ac-source-dictionary
+;; ac-source-words-in-buffer
+;; ac-source-words-in-same-mode-buffers
+;; ac-source-semantic
+;; ac-source-yasnippet))
 
 
 ;; Loading company mode also, for completion in org
 
 ;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/company-20140205.2103")
 
-(require 'company)
+(use-package company
+  :config (setq company-idle-delay 0.3 )
+  :init (global-company-mode t) )
 
-(setq company-idle-delay 0.3 )
-(setq company--include-capf t)
 
-(defun add-pcomplete-to-capf ()
-  (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+;;   (setq company--include-capf t)
 
-(add-hook 'org-mode-hook #'add-pcomplete-to-capf)
+;; (defun add-pcomplete-to-capf ()
+;;   (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+
+;; (add-hook 'org-mode-hook #'add-pcomplete-to-capf)
 
 
 ;; ;; Fixes für yasnippet und org, nach org-mode Anleitung

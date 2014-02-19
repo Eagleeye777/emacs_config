@@ -30,6 +30,7 @@
          ;; deft
          diminish
          dired+
+         elisp-slime-nav
          emacs-w3m
          expand-region
          flx
@@ -46,6 +47,7 @@
          powerline
          pydoc-info
          python-mode
+         rainbow-delimiters
          smart-operator
          smex
          twittering-mode

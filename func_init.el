@@ -4,10 +4,6 @@
 
 (require 'term)
 
-(defun shell ()
-  (interactive)
-  (visit-ansi-term ))
-
 (defun visit-ansi-term ()
   "If the current buffer is:
      1) a running ansi-term named *ansi-term*, rename it.
@@ -274,7 +270,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
         (last-command last-command)
         (buffer-modified (buffer-modified-p))
         (hippie-expand-function (or hippie-expand-function 'hippie-expand)))
-    (flet ((ding)) ; avoid the (ding) when hippie-expand exhausts its options.
+    (cl-flet ((ding)) ; avoid the (ding) when hippie-expand exhausts its options.
       (while (progn
                (funcall hippie-expand-function nil)
                (setq last-command 'my-hippie-expand-completions)
@@ -337,6 +333,29 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 ;; another slightly modified zap-to-char. Might be usefull
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
+(setq var (wg-current-workgroup))
+
+(defun toggle-sunrise()
+  (interactive)
+  (let*
+      ((myvar (wg-current-workgroup)))
+       ;; (result (assoc 'name myvar)))
+    (unless (equal (cdr(assoc 'name myvar)) "Sunrise")
+      (progn
+        (wg-switch-to-index-7)
+        (sunrise)
+        (wg-revert-workgroup(wg-current-workgroup))
+        )
+      )))
+
+(defun create-scratch-buffer ()
+  "Create a new scratch buffer."
+  (interactive)
+  (progn
+    (switch-to-buffer
+     (get-buffer-create (generate-new-buffer-name "*scratch*")))
+    (emacs-lisp-mode)
+    (insert initial-scratch-message)))
 
 
 ;; ;; This would have been usefull, if I could make helm work with ack-grep

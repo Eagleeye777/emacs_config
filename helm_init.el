@@ -4,8 +4,8 @@
 (use-package helm-config
   :init (helm-mode)
   :diminish helm-mode
-  :config (setq  helm-always-two-windows t))
-
+  :config (setq  helm-always-two-windows t)
+  (setq helm-split-window-default-side 'right))
 
 (use-package helm-mu)
 
@@ -14,17 +14,22 @@
 (key-chord-define emacs-lisp-mode-map "qq" 'helm-imenu)
 (key-chord-define org-mode-map "qq" 'helm-org-headlines)
 
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/ac-helm-20131224.647")
 
-(require 'ac-helm)
+(use-package ac-helm)
 
-;; (add-to-list 'load-path "/home/sschaumburg/.emacs.d/el-get/package/elpa/helm-c-yasnippet-20140131.226")
-(require 'helm-c-yasnippet)
-(setq helm-yas-space-match-any-greedy t) ;[default: nil]
+(use-package helm-c-yasnippet
+  :config
+  (setq helm-yas-space-match-any-greedy t))
+ ;[default: nil]
+
+(use-package helm-ls-git
+  :config (setq helm-ls-git-status-command 'magit-status))
 
 
-(setq helm-ls-git-status-command 'magit-status)
-(setq helm-split-window-default-side 'right)
+(use-package helm-descbinds
+  :init helm-descbinds-mode
+  :config (setq helm-descbinds-window-style 'split-window))
+
 
 ;; ;; Testing Stuff
 

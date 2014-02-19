@@ -12,7 +12,7 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
-
+(global-set-key (kbd "C-c s") 'create-scratch-buffer)
 
 ;; Rework company bindings if it goes well
 (define-key company-active-map (kbd "C-n") 'company-select-next)
@@ -26,7 +26,9 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (define-key org-mode-map (kbd "M-e") 'org-emphasize)
 (define-key org-mode-map (kbd "C-j") 'org-insert-heading-respect-content)
+
 (define-key org-mode-map (kbd "<XF86Launch7>") 'helm-orgcard)
+(global-set-key (kbd "<XF86Launch8>") 'bury-buffer)
 
 ;;; Helm Keybindings
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
@@ -63,6 +65,13 @@
 (global-set-key (kbd "C-x C-o") 'browse-url-at-point)
 (global-set-key (kbd "C-c y") 'bury-buffer)
 (global-set-key (kbd "C-c C-d") 'insert-date)
+
+
+;; Edit util keybinds
+(global-set-key (kbd "C-c h") 'ergoemacs-backward-open-bracket)
+(global-set-key (kbd "C-c j") 'ergoemacs-forward-close-bracket)
+
+
 
 ;; Font size
 (global-set-key (kbd "C-+") 'text-scale-increase)
@@ -104,6 +113,8 @@
 
 (key-chord-define emacs-lisp-mode-map "qq" 'helm-imenu)
 (key-chord-define emacs-lisp-mode-map "ee" 'eval-last-sexp)
+(key-chord-define lisp-interaction-mode-map "ee" 'eval-last-sexp)
+
 
 
 (key-chord-define TeX-mode-map "qq" 'helm-imenu)

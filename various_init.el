@@ -56,7 +56,17 @@
 ;; Improved zap-to char functionallyty
 (use-package zop-to-char)
 
+(use-package elisp-slime-nav
+  :init
+  (hook-into-modes #'elisp-slime-nav  '(emacs-lock-mode-hook
+                                        ielm-mode-hook
+                                        ))
+  :diminish elisp-slime-nav-mode)
+
+
 
 (require 'hideshow)
 (diminish 'hs-minor-mode)
 (add-hook 'prog-mode-hook 'hs-minor-mode)
+
+(use-package my-nav-mode)

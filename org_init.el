@@ -102,6 +102,17 @@
 ;; In this file I define custom Latex-classes for export
 (load "~/.emacs.d/org_latex.el")
 
+(defun my-return-from-fn ()
+"Making C-c C-c work in longer org-footnotes, no matter where I am currently positioned"
+  (let* ((context (org-element-context))
+	 (parent (org-element-property :parent context)))
+    (when (eq (org-element-type parent) 'footnote-definition)
+      (goto-char (org-element-property :post-affiliated context))
+      (call-interactively 'org-footnote-action)
+      (ergoemacs-forward-close-bracket))))
+
+(add-hook 'org-ctrl-c-ctrl-c-final-hook 'my-return-from-fn)
+
 
 ;setting up Deft for convenient notes view and search
 ; Todo: Get rid of Deft and replace with a customized Version of Helm-grep
