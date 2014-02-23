@@ -12,7 +12,31 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
+
+;; Control-c Bindings
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key (kbd "C-c d") 'helm-all-mark-rings)
+(global-set-key (kbd "C-c f") 'helm-recentf)
+(global-set-key (kbd "C-c h") 'ergoemacs-backward-open-bracket)
+(global-set-key (kbd "C-c j") 'ergoemacs-forward-close-bracket)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key (kbd  "C-c n") 'global-my-nav-mode)
+
+(global-set-key (kbd "C-c o") 'helm-projectile)
+(global-set-key (kbd "C-c p") 'my-paredit-autopair-switch)
+(global-set-key (kbd "C-c r") 'helm-resume)
 (global-set-key (kbd "C-c s") 'create-scratch-buffer)
+(global-set-key (kbd "C-c C-v") 'sauron-toggle-hide-show)
+
+;; Control-x Bindings
+
+(global-set-key (kbd "C-x x") 'delete-window)
+;; Buffer-navigation Bindings
+(global-set-key (kbd "C-x <up>") 'windmove-up-cycle)
+(global-set-key (kbd "C-x <down>") 'windmove-down-cycle)
+(global-set-key (kbd "C-x <right>") 'windmove-right-cycle)
+(global-set-key (kbd "C-x <left>") 'windmove-left-cycle)
 
 ;; Rework company bindings if it goes well
 (define-key company-active-map (kbd "C-n") 'company-select-next)
@@ -20,30 +44,32 @@
 (define-key company-active-map (kbd "TAB") 'company-complete)
 (define-key company-active-map [tab] 'company-complete)
 
+
+;; Emacs Lips Settings
+(define-key emacs-lisp-mode-map (kbd "C-w") 'my-paredit-delete)
+
 ;;; Setting up Org Keybindings
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
+
 (define-key org-mode-map (kbd "M-e") 'org-emphasize)
+
 (define-key org-mode-map (kbd "C-j") 'org-insert-heading-respect-content)
 
+(global-set-key (kbd "<XF86Launch7>") 'helm-descbinds)
 (define-key org-mode-map (kbd "<XF86Launch7>") 'helm-orgcard)
+(global-set-key (kbd "S-<XF86Launch7>") 'one-key-open-associated-menu-set)
+
 (global-set-key (kbd "<XF86Launch8>") 'bury-buffer)
 
 ;;; Helm Keybindings
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-c f") 'helm-recentf)
-(global-set-key (kbd "C-c r") 'helm-resume)
 (global-set-key (kbd "M-X") 'helm-M-x)
-(global-set-key (kbd "C-c o") 'helm-projectile)
-(global-set-key (kbd "C-c d") 'helm-all-mark-rings)
+
 ;; Undo-Tree Commands
 (global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
 (global-set-key (kbd "M-z") 'redo) ; 【ALT+z】
 
 ;; Smex Stuff
 (global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd  "C-c n") 'global-my-nav-mode)
 
 ;; All the F-Keys I Bind so far
 (global-set-key [C-f1] 'show-file-name)
@@ -57,20 +83,12 @@
 (global-set-key (kbd "<S-f7>") 'helm-ls-git-ls)
 (define-key global-map (kbd "<f9>") 'org-capture)
 
-(global-set-key (kbd "<XF86Launch7>") 'helm-descbinds)
 
 ;; don't know if I am happy with these. Might rebind
 (global-set-key (kbd "M-<") ' prelude-google)
 (global-set-key (kbd "C-<") ' browse-url)
 (global-set-key (kbd "C-x C-o") 'browse-url-at-point)
-(global-set-key (kbd "C-c y") 'bury-buffer)
 (global-set-key (kbd "C-c C-d") 'insert-date)
-
-
-;; Edit util keybinds
-(global-set-key (kbd "C-c h") 'ergoemacs-backward-open-bracket)
-(global-set-key (kbd "C-c j") 'ergoemacs-forward-close-bracket)
-
 
 
 ;; Font size
@@ -85,6 +103,13 @@
 (define-key python-mode-map (kbd "C-x ö") 'py-execute-region)
 
 ;;  Key-Chords bindings.
+
+;; kills current line from anywhere (mimic C-a C-k)
+(key-chord-define-global "ak"
+                         (lambda () (interactive)
+                           (move-beginning-of-line 1)
+                           (kill-line)
+                           (kill-line)))
 
 (key-chord-define-global "cv" ' cua-mode) ; Sometimes cua get's in the way, and has to be disabled quickly.
 (key-chord-define-global "jk" 'ispell-word)
@@ -104,41 +129,30 @@
 ;; (key-chord-define-global ".." 'ac-complete-with-helm)
 ;; (key-chord-define ac-mode-map ".." 'ac-complete-with-helm)
 
-
-
-;; Muss UN2BEDINGT neu. Das tippe ich offensichtlich doch so häufig, dass ich mir dann immer die buffer kille, leider oft ohne save. Geht so nicht.
-
-;; (key-chord-define-global  "xx" 'kill-buffer-and-window)
-;; (key-chord-define-global "oi" 'other-frame)
-
+;;Elisp
 (key-chord-define emacs-lisp-mode-map "qq" 'helm-imenu)
 (key-chord-define emacs-lisp-mode-map "ee" 'eval-last-sexp)
 (key-chord-define lisp-interaction-mode-map "ee" 'eval-last-sexp)
 
-
-
 (key-chord-define TeX-mode-map "qq" 'helm-imenu)
 (key-chord-define org-mode-map "qq" 'helm-org-headlines)
 (key-chord-define python-mode-map "qq" 'helm-imenu)
-;; (key-chord-define-global "qq" 'helm-imenu)
-(key-chord-define-global "jj" 'hippie-expand)
+
+;;Edit Utils
 (key-chord-define-global "öö" 'my_curly_braces)
 (key-chord-define-global "ää" 'my_square_braces)
 (key-chord-define-global "ay" 'select-current-line)
+
+
+
+(key-chord-define-global "jj" 'hippie-expand)
 (key-chord-define org-mode-map "ww" 'org-todo)
 (key-chord-define-global "--" 'makey-key-mode-popup-rectangles)
 
 ;; Set these
 (key-chord-define hs-minor-mode-map "hb" 'hs-hide-block)
 (key-chord-define hs-minor-mode-map "hv" 'hs-show-block)
-
 (key-chord-define hs-minor-mode-map "zh" 'hs-hide-all)
-
-;; (key-chord-define-global "hb" 'hs-hide-block)
-;; (key-chord-define-global "hv" 'hs-show-block)
-
-
-
 
 
 ;; ;; Okay, here are some possible rebinds, from standart

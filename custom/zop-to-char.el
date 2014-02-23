@@ -42,7 +42,7 @@
          (char   "")
          (prompt (propertize "Zap to char: " 'face 'minibuffer-prompt))
          (doc    (propertize
-                  "   [RET/C-k:kill, C-c:copy, C-n/right:next, C-p/left:prec, C-g:abort, C-q:quit, DEL:erase]"
+                  "   [RET/C-k:kill, C-c:copy, C-v: Replace with Clipboard C-n/right:next, C-p/left:prec, C-g:abort, C-q:quit, DEL:erase]"
                   'face 'minibuffer-prompt)))
     (overlay-put ov 'face 'region)
     (unwind-protect
@@ -58,6 +58,8 @@
                      (setq arg 1) t)
                     ((left ?\C-p)  ; Prec occurence.
                      (setq arg -1) t)
+                    ((?\C-v)  ; Replace with Clipboard.
+                     (delete-region beg end) (yank) nil)
                     ((?\d ?\C-d)   ; Erase input.
                      (setq char "") (goto-char pos) t)
                     (?\C-q nil)    ; Quit at point

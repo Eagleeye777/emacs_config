@@ -6,7 +6,10 @@
 ;Twittering mode
 (use-package twittering-mode
   :config (setq twittering-use-master-password t)
-  (setq twittering-icon-mode t))
+  (setq twittering-icon-mode t)
+  (add-hook 'twittering-mode-hook 'sauron-start)
+)
+
 
 ;;magit stuff related
 (eval-after-load 'diff-mode
@@ -34,10 +37,13 @@
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
 
 ;; flyspell-mode does spell-checking on the fly as you type
-(require 'flyspell)
-(setq ispell-program-name "aspell" ; use aspell instead of ispell
-      ispell-extra-args '("--sug-mode=ultra"))
-(setq ispell-dictionary "german8")
+(use-package flyspell
+  :config (setq ispell-program-name "aspell" ; use aspell instead of ispell
+                ispell-extra-args '("--sug-mode=ultra"))
+  (setq ispell-dictionary "german8")
+  :diminish flyspell-mode
+  )
+
 
 ;; Erlaubt zusätzliche Keybindings durch simultanes pressen von Tasten
 ;; Die eigentlichen Keybinds werden in keybinds.el definiert
@@ -56,17 +62,18 @@
 ;; Improved zap-to char functionallyty
 (use-package zop-to-char)
 
-(use-package elisp-slime-nav
-  :init
-  (hook-into-modes #'elisp-slime-nav  '(emacs-lock-mode-hook
-                                        ielm-mode-hook
-                                        ))
-  :diminish elisp-slime-nav-mode)
-
-
-
 (require 'hideshow)
 (diminish 'hs-minor-mode)
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
 (use-package my-nav-mode)
+
+
+;; Stuff to make preview pane working as I want to
+;; I might have to manually reenable openwith afterwards though
+(add-hook 'latex-mode-hook '(lambda () (openwith-mode -1)))
+(setq doc-view-continuous t)
+
+
+;; Automatically byte-compile elisp-files
+(add-hook 'after-save-hook 'byte-compile-current-buffer)

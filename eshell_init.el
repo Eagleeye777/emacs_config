@@ -1,4 +1,5 @@
 ;; init e-shell during start-up
+
 (require 'pcomplete-extension)
 (add-hook 'emacs-startup-hook #'(lambda ()
                                   (let ((default-directory (getenv "HOME")))
@@ -25,6 +26,14 @@
               (define-key eshell-mode-map
                 (kbd "M-p")
                 'helm-eshell-history)))
+
+
+;; My one
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map
+                (kbd "C-l")
+           'eshell-clears-buffer)))
 
 (defun eshell-clears-buffer ()
   "Deletes the contents of eshell buffer, except the last prompt"

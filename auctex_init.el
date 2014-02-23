@@ -6,7 +6,11 @@
 (setq TeX-PDF-mode t) ;; .pdf statt .dvi per default:
 
 ;;Zeilenumbruch
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
+
+
+;; Latex Preview pane
+(add-hook 'LaTeX-mode-hook (lambda () (latex-preview-pane-mode 1)))
 
 ;;Syntax Higlight
 (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)

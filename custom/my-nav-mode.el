@@ -3,7 +3,6 @@
 ;; This is a minor mode for Window and Buffer Managment in Emacs
 ;; It provides a key-map and some convenience Funktions
 
-
 (defvar my-nav-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "S-C-<left>") 'shrink-window-horizontally)
@@ -16,29 +15,24 @@
     (define-key map (kbd "S-M-<right>") 'buffer-right-swap)
     (define-key map (kbd "S-M-<left>") 'buffer-left-swap)
 
-
-    (define-key map (kbd "C-x <up>") 'windmove-up-cycle)
-    (define-key map (kbd "C-x <down>") 'windmove-down-cycle)
-    (define-key map (kbd "C-x <right>") 'windmove-right-cycle)
-    (define-key map (kbd "C-x <left>") 'windmove-left-cycle)
-
     (define-key map (kbd "w") 'windmove-up-cycle)
     (define-key map (kbd "s") 'windmove-down-cycle)
-    (define-key map (kbd "d") 'windmove-right-cycle)
+    ;; (define-key map (kbd "d") 'windmove-right-cycle)
     (define-key map (kbd "a") 'windmove-left-cycle)
     (define-key map (kbd "q") 'global-my-nav-mode)
     ;; (define-key map (kbd "M-<up>") 'windmove-up-cycle)
     ;; (define-key map (kbd "M-<down>") 'windmove-down-cycle)
     ;; (define-key map (kbd "M-<right>") 'windmove-right-cycle)
     ;; (define-key map (kbd "M-<left>") 'windmove-left-cycle)
-
+    (define-key map  (kbd "d")
+      '(lambda () (interactive)
+         (delete-other-windows)
+         (diff-buffer-with-file (window-buffer))
+         (other-window 1)))
     (define-key map (kbd "S-C-<left>") 'shrink-window-horizontally)
     (define-key map (kbd "S-C-<right>") 'enlarge-window-horizontally)
     (define-key map (kbd "S-C-<down>") 'shrink-window)
     (define-key map (kbd "S-C-<up>") 'enlarge-window)
-    (define-key map (kbd "C-x x") 'delete-window)
-
-
     (define-key map (kbd "TAB") 'other-window)
     ;; (define-key map (kbd "C-c s") 'other-window)
     map)
@@ -169,7 +163,6 @@ functions for switching Buffers"
 ;; (define-key input-decode-map "\e[1;10B" [M-S-down])
 ;; (define-key input-decode-map "\e[1;10C" [M-S-right])
 ;; (define-key input-decode-map "\e[1;10D" [M-S-left])
-
 
 
 (provide 'my-nav-mode)

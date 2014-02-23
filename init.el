@@ -28,6 +28,9 @@
 ; setting up org mode and deft(extern File)
 (load "~/.emacs.d/org_init.el" )
 
+;; Init stuff around elisp
+(load "~/.emacs.d/elisp_init.el")
+
 ;; Setting up the E-Mail Client (Mu4e)
 (load "/home/sschaumburg/.emacs.d/mu4e_init.el.gpg")
 (setq mail-user-agent 'mu4e-user-agent)
@@ -50,13 +53,12 @@
 ;; Python Stuff
 (load "~/.emacs.d/python_init.el")
 
-;; keybindings
 (load "~/.emacs.d/edit_utils.el")
 
+;; keybindings
 (load "~/.emacs.d/keybinds.el")
 
 (load "~/.emacs.d/eshell_init.el")
-
 
 ;; garbage collection settings
 (setq gc-cons-threshold 50000000)
@@ -69,14 +71,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ac-ispell-requires 4)
- '(background-color "#002b36")
- '(background-mode dark)
- '(cursor-color "#839496")
  '(custom-enabled-themes (quote (zenburn)))
- '(custom-safe-themes (quote ("a3d519ee30c0aa4b45a277ae41c4fa1ae80e52f04098a2654979b1ab859ab0bf" "73fe242ddbaf2b985689e6ec12e29fab2ecd59f765453ad0e93bc502e6e478d6" "a7816e280688829bde537faf2a1ec736d383ce6d97e39e1439d65d153143c2fa" "e9bb17437af915e0d16ad22be4965b26c51a3c978ba5778d59c20588ee269c9e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "9c26d896b2668f212f39f5b0206c5e3f0ac301611ced8a6f74afe4ee9c7e6311" "9370aeac615012366188359cb05011aea721c73e1cb194798bc18576025cabeb" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
+ '(custom-safe-themes (quote ("8aedc342b67e6ca6de84f154c1536b6007d8b0b2d1b2fc86c642689eeff51097" "a3d519ee30c0aa4b45a277ae41c4fa1ae80e52f04098a2654979b1ab859ab0bf" "73fe242ddbaf2b985689e6ec12e29fab2ecd59f765453ad0e93bc502e6e478d6" "a7816e280688829bde537faf2a1ec736d383ce6d97e39e1439d65d153143c2fa" "e9bb17437af915e0d16ad22be4965b26c51a3c978ba5778d59c20588ee269c9e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "9c26d896b2668f212f39f5b0206c5e3f0ac301611ced8a6f74afe4ee9c7e6311" "9370aeac615012366188359cb05011aea721c73e1cb194798bc18576025cabeb" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(dired-listing-switches "-alhog")
- '(font-lock-maximum-decoration (quote ((t . 1))))
- '(foreground-color "#839496")
+ '(font-lock-maximum-decoration (quote ((t . t))))
  '(helm-ack-grep-executable "ack")
  '(openwith-associations (quote (("\\.pdf\\'" "evince" (file)) ("\\.docx\\'" "libreoffice" (file)) ("\\.doc\\'" "libreoffice" (file)) ("\\.odt\\'" "libreoffice" (file)) ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer" ("-idx" file)) ("\\.epub\\'" "calibre" (file)) ("\\.\\(?:jp?g\\|png\\)\\'" "display" (file))))))
 (custom-set-faces
@@ -84,4 +82,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "#94bff3" :foreground "black" :box (:line-width -1 :style released-button))))))
+ '(mode-line ((t (:background "#93e0e3" :foreground "black" :box (:line-width -1 :style released-button))))))

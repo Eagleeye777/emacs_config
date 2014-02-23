@@ -257,8 +257,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 (defun show-file-name ()
-  "Show the full path file name in the minibuffer."
-  "Addition inserts path right in the Buffer. Would be better btw, to be able to just push the buffer-name to the Kill ring. I would be perfectly fine with this. But right now, I do not know how to do that"
   (interactive)
   (kill-new (buffer-file-name))
   (message (buffer-file-name)))
@@ -333,6 +331,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 ;; another slightly modified zap-to-char. Might be usefull
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
+
 (setq var (wg-current-workgroup))
 
 (defun toggle-sunrise()
@@ -357,20 +356,42 @@ This is the same as using \\[set-mark-command] with the prefix argument."
     (emacs-lisp-mode)
     (insert initial-scratch-message)))
 
+(defun my-paredit-delete (beg end)
+  "Delete the region selected"
+  (interactive "r")
+  (unless (and beg end)
+    (error "The mark is not set"))
+  (kill-region beg end)  )
 
-;; ;; This would have been usefull, if I could make helm work with ack-grep
+;; Automatically byte-compile lisp-files, incase they are already
+(defun byte-compile-current-buffer ()
+  "`byte-compile' current buffer if it's emacs-lisp-mode and compiled file exists."
+  (interactive)
+  (when (and (eq major-mode 'emacs-lisp-mode)
+             (file-exists-p (byte-compile-dest-file buffer-file-name)))
+    (byte-compile-file buffer-file-name)))
 
-;; (defun eselect-toggle-grep ()
-;;   (interactive)
-;;   (when (y-or-n-p (format "Current grep program is %s, switching? "
-;;                           (helm-grep-command)))
-;;     (if (helm-grep-use-ack-p)
-;;         (setq helm-grep-default-command
-;;               "grep -d skip %e -n%cH -e %p %f"
-;;               helm-grep-default-recurse-command
-;;               "grep -d recurse %e -n%cH -e %p %f")
-;;         (setq helm-grep-default-command
-;;               "ack-grep -Hn --smart-case --no-group --no-color %e %p %f"
-;;               helm-grep-default-recurse-command
-;;               "ack-grep -H --smart-case --no-group --no-color %e %p %f"))
-;;     (message "Switched to %s" (helm-grep-command))))
+(defun my-paredit-autopair-switch ()
+  (interactive)
+  (paredit-mode 'toggle)
+  (autopair-mode 'toggle)
+  (if paredit-mode (message "Switched to paredit")
+    (message "Switched to autopair")))
+
+(provide 'func-init)
+ ;; ;; This would have been usefull, if I could make helm work with ack-grep
+
+  ;; (defun eselect-toggle-grep ()
+  ;;   (interactive)
+  ;;   (when (y-or-n-p (format "Current grep program is %s, switching? "
+  ;;                           (helm-grep-command)))
+  ;;     (if (helm-grep-use-ack-p)
+  ;;         (setq helm-grep-default-command
+  ;;               "grep -d skip %e -n%cH -e %p %f"
+  ;;               helm-grep-default-recurse-command
+  ;;               "grep -d recurse %e -n%cH -e %p %f")
+  ;;         (setq helm-grep-default-command
+  ;;               "ack-grep -Hn --smart-case --no-group --no-color %e %p %f"
+  ;;               helm-grep-default-recurse-command
+  ;;               "ack-grep -H --smart-case --no-group --no-color %e %p %f"))
+  ;;     (message "Switched to %s" (helm-grep-command))))
