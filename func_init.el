@@ -228,9 +228,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
   (set-face-background 'hl-line "gray17")
-  (eval-after-load 'magit
-    '(progn (set-face-background 'magit-item-highlight "black")
-            (set-face-background 'diff-refine-change "grey10")))
+
+  ;; (eval-after-load 'magit
+  ;;   '(progn (set-face-background 'magit-item-highlight "black")
+  ;;           (set-face-background 'diff-refine-change "grey10")))
+
   (set-face-foreground 'eshell-prompt "turquoise"))
 
 (defun mk ()
@@ -243,10 +245,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (require 'hl-line)
   (set-face-foreground 'eshell-prompt "turquoise1")
   (set-face-background 'hl-line "black")
-  (eval-after-load 'diff-mode
-    '(set-face-background 'diff-refine-change "gray18"))
+  ;; (eval-after-load 'diff-mode
+  ;;   '(set-face-background 'diff-refine-change "gray18"))
   (eval-after-load 'magit
-    '(set-face-background 'magit-item-highlight "black")))
+    '(set-face-background 'magit-item-highlight "black"))
+)
 
 (defun db ()
   (interactive)
@@ -377,6 +380,16 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (autopair-mode 'toggle)
   (if paredit-mode (message "Switched to paredit")
     (message "Switched to autopair")))
+
+(defun create-temp-wg ()
+  (interactive)
+  (let (my-tmp-wg )
+    (setq my-tmp-wg (wg-make-default-workgroup "tmp"))
+    (wg-check-and-add my-tmp-wg)
+    (wg-switch-to-workgroup my-tmp-wg)
+    (wg-update-workgroup my-tmp-wg)
+    )
+  )
 
 (provide 'func-init)
  ;; ;; This would have been usefull, if I could make helm work with ack-grep

@@ -9,6 +9,11 @@
 ;; Loading expand Region here
 (use-package expand-region)
 
+;Setup utf8
+(prefer-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
+
 (setq shift-select-mode t)
 
 ;; Changes all yes/no questions to y/n type
@@ -80,6 +85,7 @@
 ;; Death to the whitespace :)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; (require 'my-context-menu)
 
 (use-package discover
   :init (global-discover-mode 1))

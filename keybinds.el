@@ -1,4 +1,4 @@
-;c;  keybinds.el --- Setting up my custom binds here
+;c;  keybinds.el --- Setting up my cuwstom binds here
 
 ;; Unsets
 ;; Unbind menu. Will be new modier for some commands maybe
@@ -102,21 +102,28 @@
 ;; Python related Bindings.
 (define-key python-mode-map (kbd "C-x ö") 'py-execute-region)
 
+
+;; Reworking some helm keys here
+(define-key helm-buffer-map (kbd "C-+") 'helm-toggle-buffers-details)
+
 ;;  Key-Chords bindings.
 
 ;; kills current line from anywhere (mimic C-a C-k)
-(key-chord-define-global "ak"
+(key-chord-define-global "kk"
                          (lambda () (interactive)
                            (move-beginning-of-line 1)
                            (kill-line)
                            (kill-line)))
+
+(key-chord-define-global "pw" 'wg-switch-to-previous-workgroup)
+(key-chord-define-global "tw" 'wg-switch-to-previous-workgroup)
+
 
 (key-chord-define-global "cv" ' cua-mode) ; Sometimes cua get's in the way, and has to be disabled quickly.
 (key-chord-define-global "jk" 'ispell-word)
 (key-chord-define-global "cc" 'er/expand-region)
 (key-chord-define gnus-dired-mode-map "öä" 'gnus-dired-attach)  ;Attaching a file to a mail
 (key-chord-define-global "zz" 'zop-to-char)
-
 (key-chord-define-global "uu" 'ace-jump-char-mode)
 (key-chord-define-global "ii" 'ace-jump-line-mode)
 
