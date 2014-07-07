@@ -56,7 +56,7 @@
 
 (global-set-key (kbd "<XF86Launch7>") 'helm-descbinds)
 (define-key org-mode-map (kbd "<XF86Launch7>") 'helm-orgcard)
-(global-set-key (kbd "S-<XF86Launch7>") 'one-key-open-associated-menu-set)
+;; (global-set-key (kbd "S-<XF86Launch7>") 'one-key-open-associated-menu-set)
 
 (global-set-key (kbd "<XF86Launch8>") 'bury-buffer)
 
@@ -115,8 +115,8 @@
                            (kill-line)
                            (kill-line)))
 
-(key-chord-define-global "pw" 'wg-switch-to-previous-workgroup)
-(key-chord-define-global "tw" 'wg-switch-to-previous-workgroup)
+;; (key-chord-define-global "pw" 'wg-switch-to-previous-workgroup)
+;; (key-chord-define-global "tw" 'wg-switch-to-previous-workgroup)
 
 
 (key-chord-define-global "cv" ' cua-mode) ; Sometimes cua get's in the way, and has to be disabled quickly.
@@ -149,7 +149,7 @@
 (key-chord-define-global "öö" 'my_curly_braces)
 (key-chord-define-global "ää" 'my_square_braces)
 (key-chord-define-global "ay" 'select-current-line)
-
+(key-chord-define-global "pp" 'comment-line)
 
 
 (key-chord-define-global "jj" 'hippie-expand)

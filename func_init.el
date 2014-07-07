@@ -218,6 +218,13 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (beginning-of-line) ; move to end of line
   (set-mark (line-end-position)))
 
+(defun comment-line (arg)
+  (interactive "*P")
+  (select-current-line)
+  (comment-dwim arg)
+  )
+
+
 ;; convenien functions for setting up color themes easily
 (defun zb ()
   (interactive)

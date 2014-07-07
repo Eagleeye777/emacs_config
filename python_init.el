@@ -1,4 +1,5 @@
 ;; ;;Setting up pyhton-mode
+
 (require 'python-mode)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -25,6 +26,7 @@
          (jedi:ac-setup)
             ))
 (add-hook 'python-mode-hook 'whitespace-mode)
+
 ;; ;; ; switch to the interpreter after executing code
 ;; ;; (setq py-shell-switch-buffers-on-execute-p t)
 ;; ;; (setq py-switch-buffers-on-execute-p t)
