@@ -1,0 +1,65 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("stundenplan"
+ (filename . "~/Dropbox/org/stundenplan.org")
+ (front-context-string . "* Stundenplan 1 ")
+ (rear-context-string)
+ (position . 1))
+("org_init"
+ (filename . "~/.emacs.d/org_init.el")
+ (front-context-string . "\n(use-package or")
+ (rear-context-string . "fw\n  :ensure t)\n")
+ (position . 7623))
+("hydra.el"
+ (filename . "~/.emacs.d/hydra_init.el")
+ (front-context-string . "  (\"q\" nil \"Quit")
+ (rear-context-string . "-command \"Tag\")\n")
+ (position . 229))
+("init.el"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "\n(load \"~/.emacs")
+ (rear-context-string . ")\n;; Hydra Setup")
+ (position . 1602))
+("leftover.org"
+ (filename . "~/.emacs.d/leftover.org")
+ (front-context-string)
+ (rear-context-string . "e 'respectful)\n\n")
+ (position . 1839))
+("keybinds"
+ (filename . "~/.emacs.d/keybinds.el")
+ (front-context-string . "\n\n(key-chord-def")
+ (rear-context-string . "helm-bookmarks)\n")
+ (position . 3473))
+("default.org"
+ (filename . "~/Dropbox/org/default.org")
+ (front-context-string . "computer task au")
+ (rear-context-string . " habe.\n\n** TODO ")
+ (position . 7425))
+("org-dired-buffer"
+ (filename . "~/Dropbox/org/")
+ (front-context-string)
+ (rear-context-string . "1 spiritual.org\n")
+ (position . 2449))
+(".emacs.f Dired"
+ (filename . "~/.emacs.d/")
+ (front-context-string . "backups\n  -rw-rw")
+ (rear-context-string . "96 Aug 10 10:26 ")
+ (position . 526))
+("org-capture-last-stored-marker"
+ (filename . "~/Dropbox/org/default.org")
+ (front-context-string . "** TODO Test    ")
+ (rear-context-string . "}][Oauth Json]]\n")
+ (position . 13402))
+("org-refile-last-stored"
+ (filename . "~/Dropbox/org/default.org")
+ (front-context-string . "*** TERM Rückfah")
+ (rear-context-string . "* Orga /Regular\n")
+ (position . 13802))
+("org-capture-last-stored"
+ (filename . "~/Dropbox/org/default.org")
+ (front-context-string . "** TODO 11 FOT r")
+ (rear-context-string . "oviel wie geht\n\n")
+ (position . 4718))
+)
