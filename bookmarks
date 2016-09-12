@@ -59,7 +59,7 @@
  (position . 13802))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/default.org")
- (front-context-string . "** TODO 11 FOT r")
- (rear-context-string . "oviel wie geht\n\n")
- (position . 4718))
+ (front-context-string . "** TODO Set up m")
+ (rear-context-string . "1:46]\n   :END:\n\n")
+ (position . 4026))
 )

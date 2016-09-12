@@ -63,7 +63,11 @@
         helm-ff-file-name-history-use-recentf t
         helm-ff-search-library-in-sexp t)
   )
-(use-package validate                   ; Validate options
+
+(use-package projectile
+  :ensure t)
+
+(use-package helm-projectile
   :ensure t)
 
 (use-package helm-ag                    ; Helm frontend for Ag
@@ -119,8 +123,6 @@
 (use-package helm-descbinds
   :ensure t
   :init    (helm-descbinds-mode)
-  :config (setq helm-descbinds-window-style 'split-window))
-
-(use-package helm-ag
-  :ensure t
+  :config (setq helm-descbinds-window-style 'split-window)
+  :chords (".q" . helm-descbinds)
   )

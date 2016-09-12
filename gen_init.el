@@ -11,6 +11,7 @@
 ;; Setting up use-package an use-package-chords
 (eval-when-compile
   (require 'use-package))
+
 (use-package use-package-chords
   :ensure   t
   :config (key-chord-mode 1)
@@ -20,6 +21,7 @@
 (use-package validate
   :ensure t)
 
+;;Code from john wiegly
 (use-package recentf
   :defer 10
   :commands (recentf-mode
@@ -38,7 +40,9 @@
   :init
   (add-hook 'dired-mode-hook 'recentf-add-dired-directory)
   :config
-  (recentf-mode 1))
+  (setq recentf-max-saved-items 200)
+  (recentf-mode 1)
+  )
 
 
 ;; Loading expand Region here

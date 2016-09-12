@@ -63,13 +63,15 @@
 
 ;; Some utils I use
 (load "~/.emacs.d/edit_utils.el")
+
 ;; Hydra Setup
 (load "~/.emacs.d/hydra_init.el")
+
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
 
 ;;Email
-(load  "~/.emacs.d/mu4e_init.el")
+;; (load  "~/.emacs.d/mu4e_init.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -88,7 +90,7 @@
     ("82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "1fc1fdf975c8c8c3767c29787a063eee50cbceef903644a0771fa66568ee8777" "b6ea07510c0ceb500ba53a846062df4c4bd89b14d7db11cebe34ecbbe69886ca" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" default)))
  '(epg-gpg-program "gpg2")
  '(global-aggressive-indent-mode t)
- '(global-hi-lock-mode t)
+ ;; '(global-hi-lock-mode t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map

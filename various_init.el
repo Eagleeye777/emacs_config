@@ -9,6 +9,7 @@
   :init (global-ace-isearch-mode 1)
   :config
   (setq ace-isearch-function 'avy-goto-char)
+  :diminish (ace-isearch-mode)
   )
 
 ;; Twittering mode
@@ -19,13 +20,12 @@
   (add-hook 'twittering-mode-hook 'sauron-start)
   )
 
-
 ;;magit stuff : Git-Version Controll for emacs
 (eval-after-load 'magit
   '(progn
      (set-face-foreground 'magit-diff-added "green4")
      (set-face-foreground 'magit-diff-removed "red3")
-     (setq magit-repo-dirs "~/.emacs.d")
+     (setq magit-repository-directories "~/.emacs.d")
      ))
 
 ;; Pdf's aus emacs an evince weitergeben

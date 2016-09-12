@@ -109,6 +109,7 @@ _h_tml    ^ ^         ^ ^             _A_SCII:
   ("f" scroll-up "Scroll +")
   ("h" helm-bookmarks "Bookmarks")
   ("k" kill-this-buffer "KillBuff")
+  ("K" kill-buffer-and-window)
   ("l" avy-goto-line "line")
   ("ö" ace-window "AceWindow")
   ("ä" sent-rectangular-region-anchor "Rect")

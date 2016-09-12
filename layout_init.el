@@ -66,6 +66,13 @@
   (setq wg-prefix-key (kbd "C-c e"))
   (setq wg-session-file "~/.emacs.d/.emacs_workgroups")
   )
+
+(use-package golden-ratio
+  :ensure t
+  :init (  golden-ratio-mode 1)
+  :diminish (golden-ratio-mode)
+  )
+
 (use-package rainbow-delimiters
   :ensure t
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
