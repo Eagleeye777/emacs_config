@@ -56,7 +56,10 @@
   :config (global-hungry-delete-mode)
   :diminish (hungry-delete-mode))
 
-;;Don't use use-package with crux. this is not working somehow
+;;Ensure crux for portable init file
+(use-package crux
+  :ensure t)
+;; have to require because of future setup
 (require 'crux)
 (setq kill-whole-line t)
 

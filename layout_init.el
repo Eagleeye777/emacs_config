@@ -47,8 +47,13 @@
 
 ;; anzu-mode enhances isearch by showing total matches and current match position
 (use-package anzu
+  :ensure t
   :init (global-anzu-mode +1)
   :diminish anzu-mode)
+
+(use-package zenburn
+  :ensure t
+  :pin melpa)
 
 ;; highlight the current line
 (global-hl-line-mode +1)

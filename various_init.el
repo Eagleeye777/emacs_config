@@ -21,12 +21,18 @@
   )
 
 ;;magit stuff : Git-Version Controll for emacs
-(eval-after-load 'magit
-  '(progn
-     (set-face-foreground 'magit-diff-added "green4")
-     (set-face-foreground 'magit-diff-removed "red3")
-     (setq magit-repository-directories "~/.emacs.d")
-     ))
+(use-package magit
+  :ensure t
+  :config
+  (eval-after-load 'magit
+    '(progn
+       (set-face-foreground 'magit-diff-added "green4")
+       (set-face-foreground 'magit-diff-removed "red3")
+       (setq magit-repository-directories "~/.emacs.d")
+       ))
+  :bind ("<f7>" . magit-status)
+  )
+
 
 ;; Pdf's aus emacs an evince weitergeben
 (use-package openwith

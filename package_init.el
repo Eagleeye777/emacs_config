@@ -3,9 +3,20 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
+(setq package-pinned-packages '((use-package . "melpa")))
+
+(package-initialize)
+
+;; Further configuration depends on use-package being installed, so make sure the package is loaded
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;; ; Setting up El-get here
+;; I NO LONGER USE THIS ATM. Keeping the code for potential reuse
 
 ;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 ;; (unless (require 'el-get nil 'noerror)
