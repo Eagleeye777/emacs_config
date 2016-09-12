@@ -56,10 +56,8 @@
 ;; auctex und ac.amath
 (load "~/.emacs.d/auctex_init.el")
 
-;; All Helm Configuration
-
-;;(load "~/.emacs.d/helm_init.el")
-(load "~/.emacs.d/init_helm.el")
+;;helm
+(load "~/.emacs.d/helm_init.el")
 
 ;; Some utils I use
 (load "~/.emacs.d/edit_utils.el")
