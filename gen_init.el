@@ -61,6 +61,7 @@
 (setq kill-whole-line t)
 
 ;;;Setup utf8
+
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
@@ -70,6 +71,8 @@
 (setq default-buffer-file-coding-system 'utf-8)
 ;; From Emacs wiki
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
+(setq shift-select-mode t)
 
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -158,12 +161,12 @@
 
   :diminish undo-tree-mode)
 
-
 ;; few dired-fixes
 (add-hook 'dired-load-hook
           (function (lambda () (load "dired-x"))))
 
 (put 'dired-find-alternate-file 'disabled nil)
+
 ;; Death to the whitespace :)
 (hook-into-modes 'delete-trailing-whitespace '(before-save-hook))
 
@@ -176,4 +179,4 @@
 ;; (use-package esh-toggle
 ;;   :ensure t
 ;;   :requires eshell
-;;   :bind ("<f6>" . eshell-toggle))
+;;   :bind ("<f6>" . eshell-

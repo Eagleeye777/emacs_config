@@ -32,7 +32,7 @@
 
 ;; stellt das Ausblenden von Befehlen für Latex zur Verfügung
 (add-hook 'TeX-mode-hook (lambda ()
-                             (TeX-fold-mode 1)))
+                           (TeX-fold-mode 1)))
 
 ;; (require 'ac-math)
 ;; (add-to-list 'ac-modes 'latex-mode)   ; make auto-complete aware of {{{latex-mode}}}

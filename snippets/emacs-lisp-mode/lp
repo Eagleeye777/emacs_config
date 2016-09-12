@@ -1,0 +1,6 @@
+#contributor: Samuel Schaumburg 
+#name: load-path
+#key: lp
+#key: lp
+# --
+(add-to-list 'load-path "$0")

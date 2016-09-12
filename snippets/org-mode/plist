@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: plist
+#key: plist
+# --
+#+LaTeX_HEADER: \usepackage{paralist}
+#+LaTeX_HEADER: \let\itemize\compactitem
+#+LaTeX_HEADER: \let\description\compactdesc
+#+LaTeX_HEADER: \let\enumerate\compactenum
+$0

@@ -47,8 +47,8 @@
 
 
 (add-to-list 'org-latex-classes
-  '("samuel-default"
-"
+             '("samuel-default"
+               "
 \\documentclass{scrartcl}
 \\usepackage[ngerman]{babel}
 \\usepackage[T1]{fontenc}
@@ -77,8 +77,8 @@
 \\title{}
       [NO-DEFAULT-PACKAGES]
       [NO-PACKAGES]"
-     ("\\section{%s}" . "\\section*{%s}")
-     ("\\subsection{%s}" . "\\subsection*{%s}")
-     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-     ("\\paragraph{%s}" . "\\paragraph*{%s}")
-     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))

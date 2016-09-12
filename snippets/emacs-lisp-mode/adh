@@ -1,0 +1,7 @@
+#contributor: Samuel Schaumburg)
+#name: add-hook
+#key: adh
+#key: adh
+# --
+(add-hook '${1:hook} '${2:func})
+$0

@@ -16,6 +16,7 @@
 ;terminals in Farbe
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
+
 ;; no menu Bars or Toolbars
 ;;;###autoload
 (progn
@@ -29,8 +30,6 @@
 (use-package uniquify
   :config (setq uniquify-buffer-name-style 'forward))
 
-;; (require 'uniquify)
-;; (setq uniquify-buffer-name-style 'forward)
 
 ;; Ich hab im Augenblick keine Ahnung wozu das gut ist
 (use-package saveplace
@@ -39,16 +38,15 @@
   )
 
 ;;powerline status bar settings
-  (use-package powerline
-    :ensure t
-    :init (powerline-center-theme))
+(use-package powerline
+  :ensure t
+  :init (powerline-center-theme))
 
 ;; (use-package nyan-mode
-  ;; :init (nyan-mode +1))
+;; :init (nyan-mode +1))
 
 ;; anzu-mode enhances isearch by showing total matches and current match position
 (use-package anzu
-  :ensure   t
   :init (global-anzu-mode +1)
   :diminish anzu-mode)
 

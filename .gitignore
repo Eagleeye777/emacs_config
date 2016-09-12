@@ -1,0 +1,15 @@
+backups/
+/elget/**
+auto-save-list/
+*.elc
+*~
+*#
+/.#bookmarks
+/.org-id-locations
+/ac-comphist.dat
+/bookmarks
+/el-get/anzu/
+/places
+/el-get/
+/auto-complete-auctex/
+/url/cookies

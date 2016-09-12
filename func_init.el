@@ -134,7 +134,6 @@ nil are ignored."
     )
   )
 
-;; Hilfs Funktion, die ich mir bei Adrea Crotti geklaut habe, brauche ich damit das Bang Snippet funktioniertl
 (defun ca-with-comment (str)
   (format "%s%s%s" comment-start str comment-end))
 
@@ -148,7 +147,6 @@ nil are ignored."
       (ca-all-asscs (cdr asslist) query)))))
 
 ;; Glaube, die hier habe ich immer noch nicht zum laufen gekriegt
-
 (defun leo (word)
   (interactive "Word: ")
   (browse-url (format "http://dict.leo.org/?search=%s" word)))
@@ -172,7 +170,6 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (interactive)
   (push-mark (point) t nil)
   (message "Pushed mark to ring"))
-
 
 (defun jump-to-mark ()
   "Jumps to the local mark, respecting the `mark-ring' order.
@@ -371,6 +368,7 @@ Repeated invocations toggle between the two most recently open buffers."
      (get-buffer-create (generate-new-buffer-name "*scratch*")))
     (emacs-lisp-mode)
     (insert initial-scratch-message)))
+
 
 
 (defun my-append-to-file (start end)

@@ -27,11 +27,11 @@
 
 ;; ;; Winner Mode configuration, esp. to work better with helm
 (load "~/.emacs.d/winner_init.el")
+;; (add-to-list 'load-path "~/.emacs.d/custom/")
 
 ;; Display Settings
 (load "~/.emacs.d/layout_init.el")
 
-;;All the Ido Stuff
 ;; (load "~/.emacs.d/ido_init.el")
 ;; (load "~/.emacs.d/init_ivy.el")
 
@@ -67,9 +67,14 @@
 
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
-
 ;;Email
 ;; (load  "~/.emacs.d/mu4e_init.el")
+
+;; (load "~/.emacs.d/eshell_init.el")
+
+;; garbage collection settings
+(setq gc-cons-threshold 50000000)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

@@ -50,6 +50,7 @@
   )
 (use-package validate
   :ensure t  )
+
 ;;fixing open-with attachemnt trouble Here
 (require 'mm-util)
 (add-to-list 'mm-inhibit-file-name-handlers 'openwith-file-handler)

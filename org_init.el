@@ -41,8 +41,6 @@
 (setq org-mobile-inbox-for-pull (expand-file-name "from-mobile.org" org-directory))
 (setq org-mobile-agendas '("a"))
 
-
-
 ;; org mode General Settings
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'text-mode-hook 'turn-on-auto-fill) ; automatische Zeilenumbrüche
@@ -295,6 +293,7 @@ To use this function, add it to `org-agenda-finalize-hook':
 ;; (setq org-gcal-client-id "60571600375-7k1hkd0gd8170qh8t4eodupnh8cs9kh9.apps.googleusercontent.com")
 ;; (setq org-gcal-client-secret "tAELBEaMcPd8wXZL9qy4jhGP")
 ;; (setq org-gcal-file-alist '(("samuel.schaumburg@googlemail.com" . "~/schedule.org")))
+
 
 
 ;; org_init.el ends here
