@@ -81,7 +81,10 @@
                                        (crux-with-region-or-line comment-or-uncomment-region))))
 (key-chord-define-global ".." 'my/prefix-map)
 
-(bind-key "h" 'my/multiple-cursors-hydra/body 'my/prefix-map)
+(bind-keys :map my/prefix-map
+           ("h" . my/multiple-cursors-hydra/body)
+           ("a" . my/smartparens/body)
+           )
 
 
 

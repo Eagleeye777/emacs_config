@@ -25,7 +25,7 @@
   :preface
   (defun recentf-add-dired-directory ()
     (if (and dired-directory
-             (file-directory-p dired-direuctory)
+             (file-directory-p dired-directory)
              (not (string= "/" dired-directory)))
         (let ((last-idx (1- (length dired-directory))))
           (recentf-add-file
@@ -39,7 +39,6 @@
   (recentf-mode 1)
   )
 
-
 ;; Loading expand Region here
 (use-package expand-region
   :ensure t
@@ -52,9 +51,6 @@
   :config (global-hungry-delete-mode)
   :diminish (hungry-delete-mode))
 
-
-;;Ensure crux for portable init file
-;; :bind (([remap execute-extended-command] . helm-M-x))
 
 (setq kill-whole-line t)
 (use-package crux
@@ -121,13 +117,10 @@
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
 
-
 ;;Jumping around in the buffers
 (use-package avy
   :ensure t
   :defer t
-  ;;  (("s-." . avy-goto-word-or-subword-1)
-  ;; ("s-," . avy-goto-char))
   :config  (setq avy-background nil)
   (setq avy-keys
         (nconc (number-sequence ?a ?z)

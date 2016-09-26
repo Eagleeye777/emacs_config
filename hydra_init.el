@@ -54,8 +54,7 @@
   ("i" (org-emphasize ?*) "Bold")
   ("z" org-next-visible-heading "SubForw" :exit nil)
   ("u" org-previous-visible-heading "SubBack" :exit nil)
-  ("n" org-narrow-to-subtree "Narrow")
-  )
+  ("n" org-narrow-to-subtree "Narrow"))
 
 (defhydra my/windmove-hydra ()
   "Windmove"
