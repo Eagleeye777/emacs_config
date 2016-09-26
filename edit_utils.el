@@ -8,10 +8,15 @@
 (use-package guide-key
   :ensure t
   :config
-  (setq guide-key/guide-key-sequence '("C-c" "C-x r" "C-x 4"))
+  (setq guide-key/guide-key-sequence '("C-c" "C-c h" "C-x r" "C-x 4"))
   (guide-key-mode 1)
   :diminish (guide-key-mode)
   )
+
+;; (use-package which-key
+;;   :ensure t
+;;   :config (which-key-mode)
+;;   )
 
 (use-package whole-line-or-region
   :ensure t

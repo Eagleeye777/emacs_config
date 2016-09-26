@@ -39,6 +39,12 @@
   :config
   (setq-default save-place t)
   )
+;; anzu-mode enhances isearch by showing total matches and current match position
+
+(use-package anzu
+  :ensure t
+  :init (global-anzu-mode +1)
+  :diminish anzu-mode)
 
 ;;powerline status bar settings
 (use-package spaceline
@@ -50,11 +56,6 @@
 ;; (use-package nyan-mode
 ;; :init (nyan-mode +1))
 
-;; anzu-mode enhances isearch by showing total matches and current match position
-(use-package anzu
-  :ensure t
-  :init (global-anzu-mode +1)
-  :diminish anzu-mode)
 
 ;; (use-package zenburn
 ;;   :ensure t

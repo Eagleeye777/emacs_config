@@ -346,12 +346,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                     :skip-subdirs t)))
     (helm-do-grep-1 files)))
 
-(defun my/switch-to-previous-buffer ()
-  "Switch to previously open buffer.
-Repeated invocations toggle between the two most recently open buffers."
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
-
 (defun my-search-init-files ()
   (interactive)
   (let ((files (helm-walk-directory "~/.emacs.d"

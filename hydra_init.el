@@ -1,13 +1,30 @@
-;; Defining hydras
+1;; Defining hydras
 ;; Hydras can be used to set up commands faster and bind them together
 
 (use-package hydra
   :ensure t)
 
+(defhydra my/multiple-cursors-hydra (:hint nil)
+  "
+     ^Up^            ^Down^        ^Miscellaneous^
+----------------------------------------------
+[_p_]   Next    [_n_]   Next    [_l_] Edit lines
+[_P_]   Skip    [_N_]   Skip    [_a_] Mark all
+[_M-p_] Unmark  [_M-n_] Unmark  [_q_] Quit"
+  ("l" mc/edit-lines)
+  ("a" mc/mark-all-like-this :exit t)
+  ("n" mc/mark-next-like-this)
+  ("N" mc/skip-to-next-like-this)
+  ("M-n" mc/unmark-next-like-this)
+  ("p" mc/mark-previous-like-this)
+  ("P" mc/skip-to-previous-like-this)
+  ("M-p" mc/unmark-previous-like-this)
+("q" nil)
+)
+
 ;; make windmove available
 (use-package windmove)
 ;; windmove hydra
-
 (defhydra my/org-navigation ()
   "OrgNav"
   ("a" org-next-visible-heading "VisNext")
@@ -130,7 +147,7 @@ _h_tml    ^ ^         ^ ^             _A_SCII:
   ("e" mc/edit-lines "MC" :exit nil)
   ;; home
   ("a" my/org-check-agenda "Agenda" :color blue)
-  ("s" my/switch-to-previous-buffer "Switch Buffer" :color blue)
+  ("s" crux-switch-to-previous-buffer "Switch Buffer" :color blue)
   ("d" helm-recentf "RecentFiles")
   ("f" scroll-up "Scroll +")
   ("g" my/smartparens/body "SpNav" :color blue)
@@ -174,7 +191,7 @@ _h_tml    ^ ^         ^ ^             _A_SCII:
   ("f" sp-forward-sexp  "FowSp")
   ("n" sp-backward-down-sexp "BaDoSp" )
   ("p" sp-backward-up-sexp "BaUpSp" )
-  ("d" sp-down-sexp "DoSp" ) ; root - towards the root
+  ("d" sp-down-sexp "DoSp" )
   ("u" sp-up-sexp "UpSp")
   ("N" sp-next-sexp "NextSp")
   ("P" sp-previous-sexp "PrevSp")
@@ -182,8 +199,9 @@ _h_tml    ^ ^         ^ ^             _A_SCII:
   ("C-b" sp-backward-symbol "BackSym")
   ("a" sp-beginning-of-sexp "BegSp")
   ("z" sp-end-of-sexp "EndSp")
+  ("e" eval-last-sexp "EvalEx" :color blue)
+  ("c" er/expand-region "ExpandRegeion")
   )
-
 (defhydra hydra-learn-sp (:hint nil)
   "
   _B_ backward-sexp            -----

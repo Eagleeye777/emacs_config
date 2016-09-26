@@ -3,8 +3,9 @@
   :ensure t
   :init
   (helm-mode 1)
-  (with-eval-after-load 'helm-config
-    (warn "Helm Config loaded"))
+  ;;(require 'helm-config)
+  ;; (with-eval-after-load 'helm-config
+  ;;   (warn "Helm Config loaded"))
   :config
   (setq  helm-always-two-windows t)
   (setq helm-split-window-default-side 'right)
@@ -16,7 +17,6 @@
   (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
   :bind (
          "C-c r". helm-resume)
-
   :diminish helm-mode
   )
 

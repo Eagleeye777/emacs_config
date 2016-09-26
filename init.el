@@ -64,11 +64,12 @@
 ;; Some utils I use
 (load "~/.emacs.d/edit_utils.el")
 
+
 ;; Hydra Setup
 (load "~/.emacs.d/hydra_init.el")
-
 ;; keybindings
 (load "~/.emacs.d/keybinds.el")
+
 ;;Email
 ;; (load  "~/.emacs.d/mu4e_init.el")
 

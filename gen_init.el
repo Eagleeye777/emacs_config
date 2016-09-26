@@ -12,7 +12,7 @@
   :ensure t)
 
 
-(use-package auto-revert
+(use-package autorevert
   :diminish auto-revert-mode
   )
 
@@ -52,6 +52,7 @@
   :config (global-hungry-delete-mode)
   :diminish (hungry-delete-mode))
 
+
 ;;Ensure crux for portable init file
 ;; :bind (([remap execute-extended-command] . helm-M-x))
 
@@ -60,6 +61,7 @@
   :ensure t
   :demand t
   :bind ("C-a" . crux-move-beginning-of-line)
+  ("C-c k" . crux-find-user-init-file)
   )
 ;; have to require because of future setup
 ;; (require 'crux)
