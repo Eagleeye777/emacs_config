@@ -36,7 +36,7 @@
  ("<f9>" . org-capture)
  )
 
-.;;    (bind-keys :prefix-map my-customize-prefix-map
+;;    (bind-keys :prefix-map my-customize-prefix-map
 ;;               :prefix "C-c c"
 ;;               ("f" . customize-face)
 ;;               ("v" . customize-variable))

@@ -12,28 +12,32 @@
   :ensure t)
 
 
-;; ;;Code from john wiegly
-;; (use-package recentf
-;;   :defer 10
-;;   :commands (recentf-mode
-;;              recentf-add-file
-;;              recentf-apply-filename-handlers)
-;;   :preface
-;;   (defun recentf-add-dired-directory ()
-;;     (if (and dired-directory
-;;              (file-directory-p dired-direuctory)
-;;              (not (string= "/" dired-directory)))
-;;         (let ((last-idx (1- (length dired-directory))))
-;;           (recentf-add-file
-;;            (if (= ?/ (aref dired-directory last-idx))
-;;                (substring dired-directory 0 last-idx)
-;;              dired-directory)))))
-;;   :init
-;;   (add-hook 'dired-mode-hook 'recentf-add-dired-directory)
-;;   :config
-;;   (setq recentf-max-saved-items 200)
-;;   (recentf-mode 1)
-;;   )
+(use-package auto-revert
+  :diminish auto-revert-mode
+  )
+
+;;Code from john wiegly
+(use-package recentf
+  :defer 10
+  :commands (recentf-mode
+             recentf-add-file
+             recentf-apply-filename-handlers)
+  :preface
+  (defun recentf-add-dired-directory ()
+    (if (and dired-directory
+             (file-directory-p dired-direuctory)
+             (not (string= "/" dired-directory)))
+        (let ((last-idx (1- (length dired-directory))))
+          (recentf-add-file
+           (if (= ?/ (aref dired-directory last-idx))
+               (substring dired-directory 0 last-idx)
+             dired-directory)))))
+  :init
+  (add-hook 'dired-mode-hook 'recentf-add-dired-directory)
+  :config
+  (setq recentf-max-saved-items 200)
+  (recentf-mode 1)
+  )
 
 
 ;; Loading expand Region here

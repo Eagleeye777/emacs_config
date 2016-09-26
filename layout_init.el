@@ -41,9 +41,11 @@
   )
 
 ;;powerline status bar settings
-(use-package powerline
+(use-package spaceline
   :ensure t
-  :init (powerline-center-theme))
+  :init (require 'spaceline-config)
+  :config (spaceline-spacemacs-theme)
+  (spaceline-helm-mode))
 
 ;; (use-package nyan-mode
 ;; :init (nyan-mode +1))

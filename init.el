@@ -51,7 +51,10 @@
 ;;(load "~/.emacs.d/w3m_init.el")
 
 ;; auctex und ac.amath
-(load "~/.emacs.d/auctex_init.el")
+(if gnulinux-p
+    (progn
+      (load "~/.emacs.d/auctex_init.el")
+      ))
 
 (load "~/.emacs.d/eshell_init.el")
 

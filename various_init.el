@@ -24,6 +24,7 @@
 ;;magit stuff : Git-Version Controll for emacs
 (use-package magit
   :ensure t
+  :demand t
   :config
   (eval-after-load 'magit
     '(progn
@@ -33,7 +34,6 @@
        ))
   :bind ("<f7>" . magit-status)
   )
-
 ;; Pdf's aus emacs an evince weitergeben
 (use-package openwith
   :ensure   t
