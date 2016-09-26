@@ -13,4 +13,5 @@
   :init (hook-into-modes #'elisp-slime-nav-mode '(emacs-lock-mode-hook
                                                   emacs-lisp-mode-hook
                                                   ielm-mode-hook ))
+  :diminish elisp-slime-nav-mode
   )

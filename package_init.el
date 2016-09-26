@@ -15,6 +15,16 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Setting up use-package an use-package-chords
+(eval-when-compile
+  (require 'use-package))
+
+(use-package use-package-chords
+  :ensure   t
+  :config (key-chord-mode 1)
+  (setq key-chord-two-keys-delay 0.35)
+  (setq key-chord-one-key-delay 0.25))
+
 ;; ; Setting up El-get here
 ;; I NO LONGER USE THIS ATM. Keeping the code for potential reuse
 

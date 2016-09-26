@@ -1,9 +1,15 @@
 ;; (require 'yasnippet)
+(setq use-package-verbose t)
 (use-package yasnippet
   :ensure t
-  :config (setq yas-snippet-dirs '("/home/deepthought/.emacs.d/snippets/"))
-  :init (yas-global-mode 1)
-  :diminish (yas-minor-mode)  )
+  :demand t
+  :commands (yas-expand yas-minor-mode)
+  :config (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
+  (yas-load-directory "~/.emacs.d/snippets/")
+  (yas-global-mode 1)
+  :diminish yas-minor-mode
+  )
+
 
 
 ;; Loading company mode for completion in org

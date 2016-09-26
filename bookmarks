@@ -54,12 +54,12 @@
  (position . 13402))
 ("org-refile-last-stored"
  (filename . "~/Dropbox/org/default.org")
- (front-context-string . "*** TERM Rückfah")
- (rear-context-string . "* Orga /Regular\n")
- (position . 13802))
+ (front-context-string . "** 5. Stunde\n   ")
+ (rear-context-string . "uss Truman Show\n")
+ (position . 30731))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/default.org")
- (front-context-string . "** TODO Set up m")
- (rear-context-string . "1:46]\n   :END:\n\n")
- (position . 4026))
+ (front-context-string . "** Haltung der S")
+ (rear-context-string . "2:10]\n\".*\\.org\"\n")
+ (position . 36725))
 )

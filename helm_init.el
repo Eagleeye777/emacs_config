@@ -19,11 +19,14 @@
 
   :diminish helm-mode
   )
+
+;; (require 'helm-config)
 ;; Make M-x use helm
 (use-package helm-command
   :ensure helm
   :defer t
-  :bind (([remap execute-extended-command] . helm-M-x)))
+  :bind (([remap execute-extended-command] . helm-M-x))
+  )
 (use-package helm-org
   :ensure helm
   :defer t
@@ -99,8 +102,17 @@
 ;;Helm-Swoop (Unfinished)
 (use-package helm-swoop
   :ensure t
+  :preface
+  (defun my/swoop_wrapper (&optional arg)
+    "docstring"
+    (interactive "P")
+    (save-excursion
+      (push-mark-no-activate)
+      (beginning-of-buffer))
+    (helm-swoop)
+    )
   :bind(
-        ("M-i" . helm-swoop)
+        ("M-i" . my/swoop_wrapper )
         ("M-I" . helm-swoop-back-to-last-point)
         ("C-c M-i" . helm-multi-swoop)
         ("C-x M-i" . helm-multi-swoop-all)
@@ -111,6 +123,7 @@
   :config
   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
   )
+
 ;;Browse Mark Ring and Kill Ring
 (use-package helm-ring
   :ensure helm

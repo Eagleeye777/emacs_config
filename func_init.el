@@ -4,6 +4,13 @@
 
 (require 'term)
 
+;;requires whole-line-or-region
+(defun my/copy_line (prefix)
+  (interactive "p")
+  (whole-line-or-region-kill-ring-save prefix)
+  (message "Line copied")
+  )
+
 (defun visit-ansi-term ()
   "If the current buffer is:
      1) a running ansi-term named *ansi-term*, rename it.
@@ -261,6 +268,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (eval-after-load 'magit
     '(progn (set-face-background 'magit-item-highlight "black"))))
 
+;;making helm work with golden ratio
+(defun pl/helm-alive-p ()
+  (if (boundp 'helm-alive-p)
+      (symbol-value 'helm-alive-p)))
+(add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)
 
 (defun show-file-name ()
   (interactive)
@@ -443,20 +455,29 @@ contents; END is ignored."
     (switch-to-buffer-other-window "*Org Agenda*"))
    (t (org-agenda nil "a"))))
 
-(provide 'func-init)
- ;; ;; This would have been usefull, if I could make helm work with ack-grep
+;; Copy entire buffer
+(defun my/copy/buffer ()
+  "Copy whole Buffer to clipboard"
+  (interactive)
+  (kill-new (buffer-string))
+  (message "Buffer copied")
+  )
 
-  ;; (defun eselect-toggle-grep ()
-  ;;   (interactive)
-  ;;   (when (y-or-n-p (format "Current grep program is %s, switching? "
-  ;;                           (helm-grep-command)))
-  ;;     (if (helm-grep-use-ack-p)
-  ;;         (setq helm-grep-default-command
-  ;;               "grep -d skip %e -n%cH -e %p %f"
-  ;;               helm-grep-default-recurse-command
-  ;;               "grep -d recurse %e -n%cH -e %p %f")
-  ;;         (setq helm-grep-default-command
-  ;;               "ack-grep -Hn --smart-case --no-group --no-color %e %p %f"
-  ;;               helm-grep-default-recurse-command
-  ;;               "ack-grep -H --smart-case --no-group --no-color %e %p %f"))
-  ;;     (message "Switched to %s" (helm-grep-command))))
+
+(provide 'func-init)
+;; ;; This would have been usefull, if I could make helm work with ack-grep
+
+;; (defun eselect-toggle-grep ()
+;;   (interactive)
+;;   (when (y-or-n-p (format "Current grep program is %s, switching? "
+;;                           (helm-grep-command)))
+;;     (if (helm-grep-use-ack-p)
+;;         (setq helm-grep-default-command
+;;               "grep -d skip %e -n%cH -e %p %f"
+;;               helm-grep-default-recurse-command
+;;               "grep -d recurse %e -n%cH -e %p %f")
+;;         (setq helm-grep-default-command
+;;               "ack-grep -Hn --smart-case --no-group --no-color %e %p %f"
+;;               helm-grep-default-recurse-command
+;;               "ack-grep -H --smart-case --no-group --no-color %e %p %f"))
+;;     (message "Switched to %s" (helm-grep-command))))

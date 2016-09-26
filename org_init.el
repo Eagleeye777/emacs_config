@@ -61,27 +61,25 @@
        "Oktober" "November" "Dezember"])
 
 
-;; Setting up Agenda Files
-;; (setq org-agenda-files (list org-directory (concat org-directory "notes") ))
+;; Setting up Notes-directory
+(defvar my/org-default-notes-directory)
+(setq my/org-default-notes-directory  (concat org-directory "notes") )
 (setq org-agenda-files (list org-directory))
 ;; (setq org-agenda-files org-directory)
-
-
-
-
-;; ;; Setting up refiling stuff
-;; (setq org-refile-use-outline-path 'file)
-;; (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 6) (nil :maxlevel . 6))))
-;; (setq org-outline-path-complete-in-steps nil)
 
 ;;using sacha-chuas here, to see how that goes
 (setq org-reverse-note-order nil)
 (setq org-refile-use-outline-path nil)
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 (setq org-refile-use-cache nil)
-(setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
-(setq org-blank-before-new-entry nil)
 
+(setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))
+                           ("~/Dropbox/org/notes/schule.org" :maxlevel . 6)))
+
+;; (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
+;; (((directory-files my/org-default-notes-directory t org-agenda-file-regexp) . (:maxlevel . 6)))))
+
+(setq org-blank-before-new-entry nil)
 
 ;; Define Workflow states
 (setq org-todo-keywords
@@ -133,7 +131,7 @@
          "* TODO %^{Entry} %^g \n:PROPERTIES:\n :CREATED: %U\n:END:\n %? \n" :empty-lines 1)
 
         ("T" "TERM" entry (file+headline (concat master_file_dir master_file) "Termine")
-         "* TERM %? \n%^T\n :PROPERTIES:\n :CREATED: %U\n:END:\n" :empty-lines 1)
+         "* TERM %? \n%^T\n :PROPERTIES:\n :CREATED: %U\n :END:\n" :empty-lines 1)
 
         ;; ("s" "Shopping List" checkitem (file+headline org-default-notes-file "Shopping List"))
         ("e" "Einkaufsliste" checkitem (file+headline (concat master_file_dir master_file) "Einkaufsliste")
@@ -177,85 +175,85 @@
 
 (add-hook 'org-ctrl-c-ctrl-c-final-hook 'my-return-from-fn)
 
-;;Taken from John wiegly
+;; ;;Taken from John wiegly
+;; ;; Code not working
+;; (defun org-get-global-property (name)
+;;   (save-excursion
+;;     (goto-char (point-min))
+;;     (and (re-search-forward (concat "#\\+PROPERTY: " name " \\(.*\\)") nil t)
+;;          (match-string 1))))
 
-(defun org-get-global-property (name)
-  (save-excursion
-    (goto-char (point-min))
-    (and (re-search-forward (concat "#\\+PROPERTY: " name " \\(.*\\)") nil t)
-         (match-string 1))))
 
+;; (defun org-agenda-add-overlays (&optional line)
+;;   "Add overlays found in OVERLAY properties to agenda items.
+;; Note that habitual items are excluded, as they already
+;; extensively use text properties to draw the habits graph.
 
-(defun org-agenda-add-overlays (&optional line)
-  "Add overlays found in OVERLAY properties to agenda items.
-Note that habitual items are excluded, as they already
-extensively use text properties to draw the habits graph.
+;; For example, for work tasks I like to use a subtle, yellow
+;; background color; for tasks involving other people, green; and
+;; for tasks concerning only myself, blue.  This way I know at a
+;; glance how different responsibilities are divided for any given
+;; day.
 
-For example, for work tasks I like to use a subtle, yellow
-background color; for tasks involving other people, green; and
-for tasks concerning only myself, blue.  This way I know at a
-glance how different responsibilities are divided for any given
-day.
+;; To achieve this, I have the following in my todo file:
 
-To achieve this, I have the following in my todo file:
+;;   * Work
+;;     :PROPERTIES:
+;;     :CATEGORY: Work
+;;     :OVERLAY:  (face (:background \"#fdfdeb\"))
+;;     :END:
+;;   ** TODO Task
+;;   * Family
+;;     :PROPERTIES:
+;;     :CATEGORY: Personal
+;;     :OVERLAY:  (face (:background \"#e8f9e8\"))
+;;     :END:
+;;   ** TODO Task
+;;   * Personal
+;;     :PROPERTIES:
+;;     :CATEGORY: Personal
+;;     :OVERLAY:  (face (:background \"#e8eff9\"))
+;;     :END:
+;;   ** TODO Task
 
-  * Work
-    :PROPERTIES:
-    :CATEGORY: Work
-    :OVERLAY:  (face (:background \"#fdfdeb\"))
-    :END:
-  ** TODO Task
-  * Family
-    :PROPERTIES:
-    :CATEGORY: Personal
-    :OVERLAY:  (face (:background \"#e8f9e8\"))
-    :END:
-  ** TODO Task
-  * Personal
-    :PROPERTIES:
-    :CATEGORY: Personal
-    :OVERLAY:  (face (:background \"#e8eff9\"))
-    :END:
-  ** TODO Task
+;; The colors (which only work well for white backgrounds) are:
 
-The colors (which only work well for white backgrounds) are:
+;;   Yellow: #fdfdeb
+;;   Green:  #e8f9e8
+;;   Blue:   #e8eff9
 
-  Yellow: #fdfdeb
-  Green:  #e8f9e8
-  Blue:   #e8eff9
+;; To use this function, add it to `org-agenda-finalize-hook':
 
-To use this function, add it to `org-agenda-finalize-hook':
+;;   (add-hook 'org-finalize-agenda-hook 'org-agenda-add-overlays)"
+;;   (let ((inhibit-read-only t) l c
+;;         (buffer-invisibility-spec '(org-link)))
+;;     (save-excursion
+;;       (goto-char (if line (point-at-bol) (point-min)))
+;;       (while (not (eobp))
+;;         (let ((org-marker (get-text-property (point) 'org-marker)))
+;;           (when (and org-marker
+;;                      (null (overlays-at (point)))
+;;                      (not (get-text-property (point) 'org-habit-p))
+;;                      (string-match "\\(sched\\|dead\\|todo\\)"
+;;                                    (get-text-property (point) 'type)))
+;;             (let ((overlays
+;;                    (or (org-entry-get org-marker "OVERLAY" t)
+;;                        (with-current-buffer (marker-buffer org-marker)
+;;                          (org-get-global-property "OVERLAY")))))
+;;               (when overlays
+;;                 (goto-char (line-end-position))
+;;                 (let ((rest (- (window-width) (current-column))))
+;;                   (if (> rest 0)
+;;                       (insert (make-string rest ? ))))
+;;                 (let ((ol (make-overlay (line-beginning-position)
+;;                                         (line-end-position)))
+;;                       (proplist (read overlays)))
+;;                   (while proplist
+;;                     (overlay-put ol (car proplist) (cadr proplist))
+;;                     (setq proplist (cddr proplist))))))))
+;;         (forward-line)))))
 
-  (add-hook 'org-finalize-agenda-hook 'org-agenda-add-overlays)"
-  (let ((inhibit-read-only t) l c
-        (buffer-invisibility-spec '(org-link)))
-    (save-excursion
-      (goto-char (if line (point-at-bol) (point-min)))
-      (while (not (eobp))
-        (let ((org-marker (get-text-property (point) 'org-marker)))
-          (when (and org-marker
-                     (null (overlays-at (point)))
-                     (not (get-text-property (point) 'org-habit-p))
-                     (string-match "\\(sched\\|dead\\|todo\\)"
-                                   (get-text-property (point) 'type)))
-            (let ((overlays
-                   (or (org-entry-get org-marker "OVERLAY" t)
-                       (with-current-buffer (marker-buffer org-marker)
-                         (org-get-global-property "OVERLAY")))))
-              (when overlays
-                (goto-char (line-end-position))
-                (let ((rest (- (window-width) (current-column))))
-                  (if (> rest 0)
-                      (insert (make-string rest ? ))))
-                (let ((ol (make-overlay (line-beginning-position)
-                                        (line-end-position)))
-                      (proplist (read overlays)))
-                  (while proplist
-                    (overlay-put ol (car proplist) (cadr proplist))
-                    (setq proplist (cddr proplist))))))))
-        (forward-line)))))
-
-(add-hook 'org-finalize-agenda-hook 'org-agenda-add-overlays)
+;; (add-hook 'org-finalize-agenda-hook 'org-agenda-add-overlays)
 
 
 
@@ -268,7 +266,7 @@ To use this function, add it to `org-agenda-finalize-hook':
 ;; (use-package deft
 ;;   :ensure   t
 ;;   :config
-;;   (setq deft-extension "org")
+;;   (setq defrmit-extension "org")
 ;;   (setq deft-text-mode 'org-mode)
 ;;   (setq deft-directory "~/Dropbox/org/")
 ;;   (setq deft-recursive t)
@@ -279,16 +277,19 @@ To use this function, add it to `org-agenda-finalize-hook':
 ;; (setq org-gcal-client-id "60571600375-7k1hkd0gd8170qh8t4eodupnh8cs9kh9.apps.googleusercontent.com")
 ;; (setq org-gcal-client-secret "tAELBEaMcPd8wXZL9qy4jhGP")
 ;; (setq org-gcal-file-alist '(("an5jn7d21lr01ti1j1dgpoeobs@group.calendar.google.com" .  "~/schedule.org")))
-(use-package calfw
-  :ensure t)
-(use-package calfw-ical)
-(use-package org-gcal
-  :ensure t
-  :config (setq org-gcal-client-id "60571600375-7k1hkd0gd8170qh8t4eodupnh8cs9kh9.apps.googleusercontent.com"
-                org-gcal-client-secret "tAELBEaMcPd8wXZL9qy4jhGP"
-                org-gcal-file-alist '(("samuel.schaumburg@googlemail.com" .  "~/schedule.org")
-                                      ("an5jn7d21lr01ti1j1dgpoeobs@group.calendar.google.com"
-                                       . "~/schedule.org"))))
+(use-package simple
+  :diminish auto-fill-mode )
+
+;; (use-package calfw
+;;   :ensure t)
+;; (use-package calfw-ical)
+;; (use-package org-gcal
+;;   :ensure t
+;;   :config (setq org-gcal-client-id "60571600375-7k1hkd0gd8170qh8t4eodupnh8cs9kh9.apps.googleusercontent.com"
+;;                 org-gcal-client-secret "tAELBEaMcPd8wXZL9qy4jhGP"
+;;                 org-gcal-file-alist '(("samuel.schaumburg@googlemail.com" .  "~/schedule.org")
+;;                                       ("an5jn7d21lr01ti1j1dgpoeobs@group.calendar.google.com"
+;;                                        . "~/schedule.org"))))
 
 ;; (setq org-gcal-client-id "60571600375-7k1hkd0gd8170qh8t4eodupnh8cs9kh9.apps.googleusercontent.com")
 ;; (setq org-gcal-client-secret "tAELBEaMcPd8wXZL9qy4jhGP")

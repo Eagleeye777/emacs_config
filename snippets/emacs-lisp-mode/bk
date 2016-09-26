@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bind-key
+# key: bk
+# --
+(bind-key "${1:key}" '${2:function})

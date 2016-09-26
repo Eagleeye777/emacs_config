@@ -5,6 +5,21 @@
   (global-aggressive-indent-mode)
   :diminish (aggressive-indent-mode))
 
+(use-package guide-key
+  :ensure t
+  :config
+  (setq guide-key/guide-key-sequence '("C-c" "C-x r" "C-x 4"))
+  (guide-key-mode 1)
+  :diminish (guide-key-mode)
+  )
+
+(use-package whole-line-or-region
+  :ensure t
+  :config
+  (whole-line-or-region-mode)
+  :diminish whole-line-or-region-mode
+  )
+
 ;; (require 'multiple-cursors)
 ;; (global-set-key (kbd "C-c s") 'mc/edit-lines)
 

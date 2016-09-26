@@ -1,24 +1,25 @@
 ;;; various_init.el -- Putting a bunch of stuff here that found no other place yet
 
-                                        ;smart operator
-;; (use-package smart-operator)
+(use-package disable-mouse
+  :ensure t
+  :config (global-disable-mouse-mode 1))
 
 ;; ace-isearch
 (use-package ace-isearch
   :ensure t
-  :init (global-ace-isearch-mode 1)
   :config
   (setq ace-isearch-function 'avy-goto-char)
+  (global-ace-isearch-mode 1)
   :diminish (ace-isearch-mode)
   )
 
 ;; Twittering mode
-(use-package twittering-mode
-  :ensure t
-  :config (setq twittering-use-master-password t)
-  (setq twittering-icon-mode t)
-  (add-hook 'twittering-mode-hook 'sauron-start)
-  )
+;; (use-package twittering-mode
+;;   :ensure t
+;;   :config (setq twittering-use-master-password t)
+;;   (setq twittering-icon-mode t)
+;;   (add-hook 'twittering-mode-hook 'sauron-start)
+;;   )
 
 ;;magit stuff : Git-Version Controll for emacs
 (use-package magit
@@ -32,7 +33,6 @@
        ))
   :bind ("<f7>" . magit-status)
   )
-
 
 ;; Pdf's aus emacs an evince weitergeben
 (use-package openwith
@@ -114,3 +114,10 @@
   (setq bbdb-file "~/Dropbox/bbdb")
   )
 (use-package bbdb-vcard)
+
+;;(use-package switch-window
+;;  :ensure t
+;;  :config
+;;  (setq-default switch-window-shortcut-style 'alphabet)
+;;  (setq-default switch-window-timeout nil)
+;;  :bind (([remap other-window] . switch-window)))
